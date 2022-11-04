@@ -1,4 +1,4 @@
-import { ProductType } from "./enums/ProductType";
+import { ProductType } from "./enums";
 
 export class ProductAuto {
   private _type: ProductType;

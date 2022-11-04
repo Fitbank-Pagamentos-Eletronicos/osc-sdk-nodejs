@@ -1,5 +1,4 @@
-import { ProductType } from "./enums/ProductType";
-import { RealEstateType } from "./enums/RealEstateType";
+import { ProductType, RealEstateType } from "./enums";
 
 export class ProductHome {
   private _type: ProductType;

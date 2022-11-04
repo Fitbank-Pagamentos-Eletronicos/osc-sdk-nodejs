@@ -2,19 +2,14 @@ import {
   validate,
   Length,
   MaxLength,
-  Matches,
-  MinLength,
   IsEmail,
   IsNumberString,
   IsDateString,
 } from "class-validator";
-import { Education, Occupation } from "./enums";
-import { Products } from "./Products";
 import { LogData } from "./LogData";
 
-export class SignupMatch {
+export class SimpleSignup {
   @Length(3, 11)
-  // @Matches(RegExp(/^[0-9]*$/))
   @IsNumberString()
   private _cpf: string;
 
@@ -22,9 +17,6 @@ export class SignupMatch {
   private _name: string;
 
   @Length(10, 10)
-  // @Matches(/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/i, {
-  //   message: "$property must be formatted as yyyy-mm-dd",
-  // })
   @IsDateString()
   private _birthday: string;
 
@@ -41,19 +33,7 @@ export class SignupMatch {
 
   @Length(4, 9)
   @IsNumberString()
-  // @Matches(/^[0-9]{5}-[0-9]{3}$/, {
-  //   message: "$property precisa ser no formato 00000-000",
-  // })
   private _zipCode: string;
-
-  private _education: Education;
-
-  private _banks: string;
-
-  private _occupation: Occupation;
-
-  @IsNumberString()
-  private _income: string;
 
   private _hasCreditCard: boolean;
 
@@ -64,8 +44,6 @@ export class SignupMatch {
   private _hasVehicle: boolean;
 
   private _hasAndroid: boolean;
-
-  private _products: Products;
 
   private _logData: LogData;
 
@@ -89,24 +67,8 @@ export class SignupMatch {
     return this._phone;
   }
 
-  get education() {
-    return this._education;
-  }
-
   get zipCode() {
     return this._zipCode;
-  }
-
-  get banks() {
-    return this._banks;
-  }
-
-  get occupation() {
-    return this._occupation;
-  }
-
-  get income() {
-    return this._income;
   }
 
   get hasCreditCard() {
@@ -127,10 +89,6 @@ export class SignupMatch {
 
   get hasAndroid() {
     return this._hasAndroid;
-  }
-
-  get products() {
-    return this._products;
   }
 
   get logData() {
@@ -161,22 +119,6 @@ export class SignupMatch {
     this._zipCode = zipCode;
   }
 
-  set education(education: Education) {
-    this._education = education;
-  }
-
-  set banks(banks: string) {
-    this._banks = banks;
-  }
-
-  set occupation(occupation: Occupation) {
-    this._occupation = occupation;
-  }
-
-  set income(income: string) {
-    this._income = income;
-  }
-
   set hasCreditCard(hasCreditCard: boolean) {
     this._hasCreditCard = hasCreditCard;
   }
@@ -195,10 +137,6 @@ export class SignupMatch {
 
   set hasAndroid(hasAndroid: boolean) {
     this._hasVehicle = hasAndroid;
-  }
-
-  set products(products: Products) {
-    this._products = products;
   }
 
   set logData(logData: LogData) {

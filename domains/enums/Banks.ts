@@ -1,3 +1,3 @@
-export enum Education {
+export enum Banks {
   banks = 0,
 }

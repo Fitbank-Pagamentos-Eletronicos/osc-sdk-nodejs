@@ -1,4 +1,4 @@
-import { Scopes } from "./enums/Scopes";
+import { Scopes } from "./enums";
 
 export class Address {
   private _client_id: string;

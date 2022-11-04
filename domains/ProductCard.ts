@@ -1,5 +1,4 @@
-import { ProductType } from "./enums/ProductType";
-import { Network } from "./enums/Network";
+import { ProductType, Network } from "./enums";
 
 export class ProductCard {
   private _type: ProductType;
