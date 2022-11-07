@@ -3,5 +3,5 @@ export enum RealEstateType {
   apartment = 1,
   commercial = 2,
   land = 3,
-  other = 4,
+  others = 4,
 }
