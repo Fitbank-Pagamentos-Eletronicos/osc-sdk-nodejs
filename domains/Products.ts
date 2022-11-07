@@ -9,35 +9,35 @@ export class Products {
   private _productAuto: ProductAuto;
   private _productHome: ProductHome;
 
-  get productLoan() {
+  public get productLoan(): ProductLoan {
     return this._productLoan;
   }
 
-  get productCard() {
-    return this._productCard;
-  }
-
-  get productAuto() {
-    return this._productAuto;
-  }
-
-  get productHome() {
-    return this._productHome;
-  }
-
-  set productLoan(productLoan: ProductLoan) {
+  public set productLoan(productLoan: ProductLoan) {
     this._productLoan = productLoan;
   }
 
-  set productCard(productCard: ProductCard) {
+  public get productCard(): ProductCard {
+    return this._productCard;
+  }
+
+  public set productCard(productCard: ProductCard) {
     this._productCard = productCard;
   }
 
-  set productAuto(productAuto: ProductAuto) {
+  public get productAuto(): ProductAuto {
+    return this._productAuto;
+  }
+
+  public set productAuto(productAuto: ProductAuto) {
     this._productAuto = productAuto;
   }
 
-  set productHome(productHome: ProductHome) {
+  public get productHome(): ProductHome {
+    return this._productHome;
+  }
+
+  public set productHome(productHome: ProductHome) {
     this._productHome = productHome;
   }
 }

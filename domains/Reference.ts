@@ -2,19 +2,19 @@ export class Reference {
   private _name: string;
   private _phone: string;
 
-  get name() {
+  public get name(): string {
     return this._name;
   }
 
-  get phone() {
-    return this._phone;
-  }
-
-  set name(name: string) {
+  public set name(name: string) {
     this._name = name;
   }
 
-  set phone(phone: string) {
+  public get phone(): string {
+    return this._phone;
+  }
+
+  public set phone(phone: string) {
     this._phone = phone;
   }
 }

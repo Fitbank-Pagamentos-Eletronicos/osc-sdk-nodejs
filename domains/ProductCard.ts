@@ -5,27 +5,27 @@ export class ProductCard {
   private _network: Network;
   private _payDay: string;
 
-  get type() {
+  public get type(): ProductType {
     return this._type;
   }
 
-  get network() {
-    return this._network;
-  }
-
-  get payDay() {
-    return this._payDay;
-  }
-
-  set type(type: ProductType) {
+  public set type(type: ProductType) {
     this._type = type;
   }
 
-  set network(network: Network) {
+  public get network(): Network {
+    return this._network;
+  }
+
+  public set network(network: Network) {
     this._network = network;
   }
 
-  set payDay(payDay: string) {
+  public get payDay(): string {
+    return this._payDay;
+  }
+
+  public set payDay(payDay: string) {
     this._payDay = payDay;
   }
 }

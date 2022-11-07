@@ -13,43 +13,43 @@ export class Identity {
   @IsDateString()
   private _issuingDate: string;
 
-  get type() {
+  public get type(): IdentityType {
     return this._type;
   }
 
-  get number() {
-    return this._number;
-  }
-
-  get issuer() {
-    return this._issuer;
-  }
-
-  get state() {
-    return this._state;
-  }
-
-  get issuingDate() {
-    return this._issuingDate;
-  }
-
-  set type(type: IdentityType) {
+  public set type(type: IdentityType) {
     this._type = type;
   }
 
-  set number(number: string) {
+  public get number(): string {
+    return this._number;
+  }
+
+  public set number(number: string) {
     this._number = number;
   }
 
-  set issuer(issuer: IdentityIssuer) {
+  public get issuer(): IdentityIssuer {
+    return this._issuer;
+  }
+
+  public set issuer(issuer: IdentityIssuer) {
     this._issuer = issuer;
   }
 
-  set state(state: State) {
+  public get state(): State {
+    return this._state;
+  }
+
+  public set state(state: State) {
     this._state = state;
   }
 
-  set issuingDate(issuingDate: string) {
+  public get issuingDate(): string {
+    return this._issuingDate;
+  }
+
+  public set issuingDate(issuingDate: string) {
     this._issuingDate = issuingDate;
   }
 }

@@ -69,139 +69,139 @@ export class SignupMatch {
 
   private _logData: LogData;
 
-  get cpf() {
+  public get cpf(): string {
     return this._cpf;
   }
 
-  get name() {
-    return this._name;
-  }
-
-  get birthday() {
-    return this._birthday;
-  }
-
-  get email() {
-    return this._email;
-  }
-
-  get phone() {
-    return this._phone;
-  }
-
-  get education() {
-    return this._education;
-  }
-
-  get zipCode() {
-    return this._zipCode;
-  }
-
-  get banks() {
-    return this._banks;
-  }
-
-  get occupation() {
-    return this._occupation;
-  }
-
-  get income() {
-    return this._income;
-  }
-
-  get hasCreditCard() {
-    return this._hasCreditCard;
-  }
-
-  get hasRestriction() {
-    return this._hasRestriction;
-  }
-
-  get hasOwnHouse() {
-    return this._hasOwnHouse;
-  }
-
-  get hasVehicle() {
-    return this._hasVehicle;
-  }
-
-  get hasAndroid() {
-    return this._hasAndroid;
-  }
-
-  get products() {
-    return this._products;
-  }
-
-  get logData() {
-    return this._logData;
-  }
-
-  set cpf(cpf: string) {
+  public set cpf(cpf: string) {
     this._cpf = cpf;
   }
 
-  set name(name: string) {
+  public get name(): string {
+    return this._name;
+  }
+
+  public set name(name: string) {
     this._name = name;
   }
 
-  set birthday(birthday: string) {
+  public get birthday(): string {
+    return this._birthday;
+  }
+
+  public set birthday(birthday: string) {
     this._birthday = birthday;
   }
 
-  set email(email: string) {
+  public get email(): string {
+    return this._email;
+  }
+
+  public set email(email: string) {
     this._email = email;
   }
 
-  set phone(phone: string) {
+  public get phone(): string {
+    return this._phone;
+  }
+
+  public set phone(phone: string) {
     this._phone = phone;
   }
 
-  set zipCode(zipCode: string) {
+  public get zipCode(): string {
+    return this._zipCode;
+  }
+
+  public set zipCode(zipCode: string) {
     this._zipCode = zipCode;
   }
 
-  set education(education: Education) {
+  public get education(): Education {
+    return this._education;
+  }
+
+  public set education(education: Education) {
     this._education = education;
   }
 
-  set banks(banks: string) {
+  public get banks(): string {
+    return this._banks;
+  }
+
+  public set banks(banks: string) {
     this._banks = banks;
   }
 
-  set occupation(occupation: Occupation) {
+  public get occupation(): Occupation {
+    return this._occupation;
+  }
+
+  public set occupation(occupation: Occupation) {
     this._occupation = occupation;
   }
 
-  set income(income: string) {
+  public get income(): string {
+    return this._income;
+  }
+
+  public set income(income: string) {
     this._income = income;
   }
 
-  set hasCreditCard(hasCreditCard: boolean) {
+  public get hasCreditCard(): boolean {
+    return this._hasCreditCard;
+  }
+
+  public set hasCreditCard(hasCreditCard: boolean) {
     this._hasCreditCard = hasCreditCard;
   }
 
-  set hasRestriction(hasRestriction: boolean) {
+  public get hasRestriction(): boolean {
+    return this._hasRestriction;
+  }
+
+  public set hasRestriction(hasRestriction: boolean) {
     this._hasRestriction = hasRestriction;
   }
 
-  set hasOwnHouse(hasOwnHouse: boolean) {
+  public get hasOwnHouse(): boolean {
+    return this._hasOwnHouse;
+  }
+
+  public set hasOwnHouse(hasOwnHouse: boolean) {
     this._hasOwnHouse = hasOwnHouse;
   }
 
-  set hasVehicle(hasVehicle: boolean) {
+  public get hasVehicle(): boolean {
+    return this._hasVehicle;
+  }
+
+  public set hasVehicle(hasVehicle: boolean) {
     this._hasVehicle = hasVehicle;
   }
 
-  set hasAndroid(hasAndroid: boolean) {
-    this._hasVehicle = hasAndroid;
+  public get hasAndroid(): boolean {
+    return this._hasAndroid;
   }
 
-  set products(products: Products) {
+  public set hasAndroid(hasAndroid: boolean) {
+    this._hasAndroid = hasAndroid;
+  }
+
+  public get products(): Products {
+    return this._products;
+  }
+
+  public set products(products: Products) {
     this._products = products;
   }
 
-  set logData(logData: LogData) {
+  public get logData(): LogData {
+    return this._logData;
+  }
+
+  public set logData(logData: LogData) {
     this._logData = logData;
   }
 }

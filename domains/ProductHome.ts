@@ -8,51 +8,51 @@ export class ProductHome {
   private _realEstateValue: number;
   private _outstandingBalance: number;
 
-  get type() {
+  public get type(): ProductType {
     return this._type;
   }
 
-  get value() {
-    return this._value;
-  }
-
-  get installments() {
-    return this._installments;
-  }
-
-  get realEstateType() {
-    return this._realEstateType;
-  }
-
-  get realEstateValue() {
-    return this._realEstateValue;
-  }
-
-  get outstandingBalance() {
-    return this._outstandingBalance;
-  }
-
-  set type(type: ProductType) {
+  public set type(type: ProductType) {
     this._type = type;
   }
 
-  set value(value: number) {
+  public get value(): number {
+    return this._value;
+  }
+
+  public set value(value: number) {
     this._value = value;
   }
 
-  set installments(installments: number) {
+  public get installments(): number {
+    return this._installments;
+  }
+
+  public set installments(installments: number) {
     this._installments = installments;
   }
 
-  set realEstateType(realEstateType: RealEstateType) {
+  public get realEstateType(): RealEstateType {
+    return this._realEstateType;
+  }
+
+  public set realEstateType(realEstateType: RealEstateType) {
     this._realEstateType = realEstateType;
   }
 
-  set realEstateValue(realEstateValue: number) {
+  public get realEstateValue(): number {
+    return this._realEstateValue;
+  }
+
+  public set realEstateValue(realEstateValue: number) {
     this._realEstateValue = realEstateValue;
   }
 
-  set outstandingBalance(outstandingBalance: number) {
+  public get outstandingBalance(): number {
+    return this._outstandingBalance;
+  }
+
+  public set outstandingBalance(outstandingBalance: number) {
     this._outstandingBalance = outstandingBalance;
   }
 }

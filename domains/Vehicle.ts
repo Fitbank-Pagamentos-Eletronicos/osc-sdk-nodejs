@@ -1,11 +1,11 @@
 export class Vehicle {
   private _licensePlate: string;
 
-  get licensePlate() {
+  public get licensePlate(): string {
     return this._licensePlate;
   }
 
-  set licensePlate(licensePlate: string) {
+  public set licensePlate(licensePlate: string) {
     this._licensePlate = licensePlate;
   }
 }

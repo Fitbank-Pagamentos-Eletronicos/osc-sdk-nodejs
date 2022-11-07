@@ -10,67 +10,67 @@ export class ProductAuto {
   private _codeFipe: string;
   private _vehicleFipeValue: number;
 
-  get type() {
+  public get type(): ProductType {
     return this._type;
   }
 
-  get value() {
-    return this._value;
-  }
-
-  get vehicleBrand() {
-    return this._vehicleBrand;
-  }
-
-  get vehicleModel() {
-    return this._vehicleModel;
-  }
-
-  get installments() {
-    return this._installments;
-  }
-
-  get vehicleModelYear() {
-    return this._vehicleModelYear;
-  }
-
-  get codeFipe() {
-    return this._codeFipe;
-  }
-
-  get vehicleFipeValue() {
-    return this._vehicleFipeValue;
-  }
-
-  set type(type: ProductType) {
+  public set type(type: ProductType) {
     this._type = type;
   }
 
-  set value(value: number) {
+  public get value(): number {
+    return this._value;
+  }
+
+  public set value(value: number) {
     this._value = value;
   }
 
-  set vehicleBrand(vehicleBrand: string) {
+  public get vehicleBrand(): string {
+    return this._vehicleBrand;
+  }
+
+  public set vehicleBrand(vehicleBrand: string) {
     this._vehicleBrand = vehicleBrand;
   }
 
-  set vehicleModel(vehicleModel: string) {
+  public get vehicleModel(): string {
+    return this._vehicleModel;
+  }
+
+  public set vehicleModel(vehicleModel: string) {
     this._vehicleModel = vehicleModel;
   }
 
-  set installments(installments: number) {
+  public get installments(): number {
+    return this._installments;
+  }
+
+  public set installments(installments: number) {
     this._installments = installments;
   }
 
-  set vehicleModelYear(vehicleModelYear: string) {
+  public get vehicleModelYear(): string {
+    return this._vehicleModelYear;
+  }
+
+  public set vehicleModelYear(vehicleModelYear: string) {
     this._vehicleModelYear = vehicleModelYear;
   }
 
-  set codeFipe(codeFipe: string) {
+  public get codeFipe(): string {
+    return this._codeFipe;
+  }
+
+  public set codeFipe(codeFipe: string) {
     this._codeFipe = codeFipe;
   }
 
-  set vehicleFipeValue(vehicleFipeValue: number) {
+  public get vehicleFipeValue(): number {
+    return this._vehicleFipeValue;
+  }
+
+  public set vehicleFipeValue(vehicleFipeValue: number) {
     this._vehicleFipeValue = vehicleFipeValue;
   }
 }

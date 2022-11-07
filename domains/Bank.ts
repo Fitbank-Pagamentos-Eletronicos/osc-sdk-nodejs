@@ -1,40 +1,41 @@
 import { AccountType } from "./enums";
+import { Banks } from "./enums";
 
 export class Bank {
-  private _banks: string; //importar enum
+  private _bank: Banks;
   private _type: AccountType;
   private _agency: string;
   private _account: string;
 
-  get banks() {
-    return this._banks;
+  public get bank(): Banks {
+    return this._bank;
   }
 
-  get type() {
+  public set bank(bank: Banks) {
+    this._bank = bank;
+  }
+
+  public get type(): AccountType {
     return this._type;
   }
 
-  get agency() {
-    return this._agency;
-  }
-
-  get account() {
-    return this._account;
-  }
-
-  set banks(banks: string) {
-    this._banks = banks;
-  }
-
-  set type(type: AccountType) {
+  public set type(type: AccountType) {
     this._type = type;
   }
 
-  set agency(agency: string) {
+  public get agency(): string {
+    return this._agency;
+  }
+
+  public set agency(agency: string) {
     this._agency = agency;
   }
 
-  set account(account: string) {
+  public get account(): string {
+    return this._account;
+  }
+
+  public set account(account: string) {
     this._account = account;
   }
 }

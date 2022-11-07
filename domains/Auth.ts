@@ -5,27 +5,27 @@ export class Address {
   private _client_secret: string;
   private _scopes: Scopes;
 
-  get client_id() {
+  public get client_id(): string {
     return this._client_id;
   }
 
-  get client_secret() {
-    return this._client_secret;
-  }
-
-  get scopes() {
-    return this._scopes;
-  }
-
-  set client_id(client_id: string) {
+  public set client_id(client_id: string) {
     this._client_id = client_id;
   }
 
-  set client_secret(client_secret: string) {
+  public get client_secret(): string {
+    return this._client_secret;
+  }
+
+  public set client_secret(client_secret: string) {
     this._client_secret = client_secret;
   }
 
-  set scopes(scopes: Scopes) {
+  public get scopes(): Scopes {
+    return this._scopes;
+  }
+
+  public set scopes(scopes: Scopes) {
     this._scopes = scopes;
   }
 }

@@ -19,7 +19,7 @@ export class Proposal {
   private _gender: Gender;
   private _nationality: Nationality;
   private _hometownState: State;
-  private _hometown: string; //import json
+  private _hometown: string;
   private _education: Education;
   private _relationshipStatus: RelationshipStatus;
   private _phoneLandline: string;
@@ -32,131 +32,131 @@ export class Proposal {
   private _reference: Reference;
   private _products: Products;
 
-  get mother() {
+  public get mother(): string {
     return this._mother;
   }
 
-  get gender() {
-    return this._gender;
-  }
-
-  get nationality() {
-    return this._nationality;
-  }
-
-  get hometownState() {
-    return this._hometownState;
-  }
-
-  get hometown() {
-    return this._hometown;
-  }
-
-  get education() {
-    return this._education;
-  }
-
-  get relationshipStatus() {
-    return this._relationshipStatus;
-  }
-
-  get phoneLandline() {
-    return this._phoneLandline;
-  }
-
-  get identity() {
-    return this._identity;
-  }
-
-  get address() {
-    return this._address;
-  }
-
-  get vehicle() {
-    return this._vehicle;
-  }
-
-  get consumerUnit() {
-    return this._consumerUnit;
-  }
-
-  get business() {
-    return this._business;
-  }
-
-  get bank() {
-    return this._bank;
-  }
-
-  get reference() {
-    return this._reference;
-  }
-
-  get products() {
-    return this._products;
-  }
-
-  set mother(mother: string) {
+  public set mother(mother: string) {
     this._mother = mother;
   }
 
-  set gender(gender: Gender) {
+  public get gender(): Gender {
+    return this._gender;
+  }
+
+  public set gender(gender: Gender) {
     this._gender = gender;
   }
 
-  set nationality(nationality: Nationality) {
+  public get nationality(): Nationality {
+    return this._nationality;
+  }
+
+  public set nationality(nationality: Nationality) {
     this._nationality = nationality;
   }
 
-  set hometownState(hometownState: State) {
+  public get hometownState(): State {
+    return this._hometownState;
+  }
+
+  public set hometownState(hometownState: State) {
     this._hometownState = hometownState;
   }
 
-  set hometown(hometown: string) {
+  public get hometown(): string {
+    return this._hometown;
+  }
+
+  public set hometown(hometown: string) {
     this._hometown = hometown;
   }
 
-  set education(education: Education) {
+  public get education(): Education {
+    return this._education;
+  }
+
+  public set education(education: Education) {
     this._education = education;
   }
 
-  set relationshipStatus(relationshipStatus: RelationshipStatus) {
+  public get relationshipStatus(): RelationshipStatus {
+    return this._relationshipStatus;
+  }
+
+  public set relationshipStatus(relationshipStatus: RelationshipStatus) {
     this._relationshipStatus = relationshipStatus;
   }
 
-  set phoneLandline(phoneLandline: string) {
+  public get phoneLandline(): string {
+    return this._phoneLandline;
+  }
+
+  public set phoneLandline(phoneLandline: string) {
     this._phoneLandline = phoneLandline;
   }
 
-  set identity(identity: Identity) {
+  public get identity(): Identity {
+    return this._identity;
+  }
+
+  public set identity(identity: Identity) {
     this._identity = identity;
   }
 
-  set address(address: Address) {
+  public get address(): Address {
+    return this._address;
+  }
+
+  public set address(address: Address) {
     this._address = address;
   }
 
-  set vehicle(vehicle: Vehicle) {
+  public get vehicle(): Vehicle {
+    return this._vehicle;
+  }
+
+  public set vehicle(vehicle: Vehicle) {
     this._vehicle = vehicle;
   }
 
-  set consumerUnit(consumerUnit: ConsumerUnit) {
+  public get consumerUnit(): ConsumerUnit {
+    return this._consumerUnit;
+  }
+
+  public set consumerUnit(consumerUnit: ConsumerUnit) {
     this._consumerUnit = consumerUnit;
   }
 
-  set business(business: Business) {
+  public get business(): Business {
+    return this._business;
+  }
+
+  public set business(business: Business) {
     this._business = business;
   }
 
-  set bank(bank: Bank) {
+  public get bank(): Bank {
+    return this._bank;
+  }
+
+  public set bank(bank: Bank) {
     this._bank = bank;
   }
 
-  set reference(reference: Reference) {
+  public get reference(): Reference {
+    return this._reference;
+  }
+
+  public set reference(reference: Reference) {
     this._reference = reference;
   }
 
-  set products(products: Products) {
+  public get products(): Products {
+    return this._products;
+  }
+
+  public set products(products: Products) {
     this._products = products;
   }
 }

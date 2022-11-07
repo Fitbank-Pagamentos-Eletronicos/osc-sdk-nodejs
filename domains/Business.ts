@@ -2,7 +2,7 @@ import { Occupation, EmploymentSince, State } from "./enums";
 
 export class Business {
   private _occupation: Occupation;
-  private _profession: string; //importar json
+  private _profession: string;
   private _companyName: string;
   private _phone: string;
   private _income: string;
@@ -15,118 +15,117 @@ export class Business {
   private _complement: string;
   private _district: string;
   private _state: State;
-  private _city: string; //importar json
+  private _city: string;
 
-  get occupation() {
-    return this._occupation;
-  }
-
-  get profession() {
+  public get profession(): string {
     return this._profession;
   }
 
-  get companyName() {
-    return this._companyName;
-  }
-
-  get phone() {
-    return this._phone;
-  }
-
-  get income() {
-    return this._income;
-  }
-
-  get employmentSince() {
-    return this._employmentSince;
-  }
-
-  get payday() {
-    return this._payday;
-  }
-
-  get benefitNumber() {
-    return this._benefitNumber;
-  }
-  get zipCode() {
-    return this._zipCode;
-  }
-  get address() {
-    return this._address;
-  }
-  get number() {
-    return this._number;
-  }
-  get complement() {
-    return this._complement;
-  }
-  get district() {
-    return this._district;
-  }
-  get state() {
-    return this._state;
-  }
-  get city() {
-    return this._city;
-  }
-
-  set occupation(occupation: Occupation) {
-    this._occupation = occupation;
-  }
-
-  set profession(profession: string) {
+  public set profession(profession: string) {
     this._profession = profession;
   }
 
-  set companyName(companyName: string) {
+  public get companyName(): string {
+    return this._companyName;
+  }
+
+  public set companyName(companyName: string) {
     this._companyName = companyName;
   }
 
-  set phone(phone: string) {
+  public get phone(): string {
+    return this._phone;
+  }
+
+  public set phone(phone: string) {
     this._phone = phone;
   }
 
-  set income(income: string) {
+  public get income(): string {
+    return this._income;
+  }
+
+  public set income(income: string) {
     this._income = income;
   }
 
-  set employmentSince(employmentSince: EmploymentSince) {
+  public get employmentSince(): EmploymentSince {
+    return this._employmentSince;
+  }
+
+  public set employmentSince(employmentSince: EmploymentSince) {
     this._employmentSince = employmentSince;
   }
 
-  set payday(payday: string) {
+  public get payday(): string {
+    return this._payday;
+  }
+
+  public set payday(payday: string) {
     this._payday = payday;
   }
 
-  set benefitNumber(benefitNumber: string) {
+  public get benefitNumber(): string {
+    return this._benefitNumber;
+  }
+
+  public set benefitNumber(benefitNumber: string) {
     this._benefitNumber = benefitNumber;
   }
 
-  set zipCode(zipCode: string) {
+  public get zipCode(): string {
+    return this._zipCode;
+  }
+
+  public set zipCode(zipCode: string) {
     this._zipCode = zipCode;
   }
 
-  set address(address: string) {
+  public get address(): string {
+    return this._address;
+  }
+
+  public set address(address: string) {
     this._address = address;
   }
 
-  set number(number: string) {
+  public get number(): string {
+    return this._number;
+  }
+
+  public set number(number: string) {
     this._number = number;
   }
 
-  set complement(complement: string) {
+  public get complement(): string {
+    return this._complement;
+  }
+
+  public set complement(complement: string) {
     this._complement = complement;
   }
 
-  set district(district: string) {
+  public get district(): string {
+    return this._district;
+  }
+
+  public set district(district: string) {
     this._district = district;
   }
 
-  set state(state: State) {
+  public get state(): State {
+    return this._state;
+  }
+
+  public set state(state: State) {
     this._state = state;
   }
 
-  set city(city: string) {
+  public get city(): string {
+    return this._city;
+  }
+
+  public set city(city: string) {
     this._city = city;
   }
 }

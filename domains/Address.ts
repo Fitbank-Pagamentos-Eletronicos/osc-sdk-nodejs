@@ -11,75 +11,75 @@ export class Address {
   private _homeType: HomeType;
   private _homeSince: HomeSince;
 
-  get zipCode() {
+  public get zipCode(): string {
     return this._zipCode;
   }
 
-  get address() {
-    return this._address;
-  }
-
-  get number() {
-    return this._number;
-  }
-
-  get complement() {
-    return this._complement;
-  }
-
-  get district() {
-    return this._district;
-  }
-
-  get state() {
-    return this._state;
-  }
-
-  get city() {
-    return this._city;
-  }
-
-  get homeType() {
-    return this._homeType;
-  }
-
-  get homeSince() {
-    return this._homeSince;
-  }
-
-  set zipCode(zipCode: string) {
+  public set zipCode(zipCode: string) {
     this._zipCode = zipCode;
   }
 
-  set address(address: string) {
+  public get address(): string {
+    return this._address;
+  }
+
+  public set address(address: string) {
     this._address = address;
   }
 
-  set number(number: string) {
+  public get number(): string {
+    return this._number;
+  }
+
+  public set number(number: string) {
     this._number = number;
   }
 
-  set complement(complement: string) {
+  public get complement(): string {
+    return this._complement;
+  }
+
+  public set complement(complement: string) {
     this._complement = complement;
   }
 
-  set district(district: string) {
+  public get district(): string {
+    return this._district;
+  }
+
+  public set district(district: string) {
     this._district = district;
   }
 
-  set state(state: State) {
+  public get state(): State {
+    return this._state;
+  }
+
+  public set state(state: State) {
     this._state = state;
   }
 
-  set city(city: string) {
+  public get city(): string {
+    return this._city;
+  }
+
+  public set city(city: string) {
     this._city = city;
   }
 
-  set homeType(homeType: HomeType) {
+  public get homeType(): HomeType {
+    return this._homeType;
+  }
+
+  public set homeType(homeType: HomeType) {
     this._homeType = homeType;
   }
 
-  set homeSince(homeSince: HomeSince) {
+  public get homeSince(): HomeSince {
+    return this._homeSince;
+  }
+
+  public set homeSince(homeSince: HomeSince) {
     this._homeSince = homeSince;
   }
 }
