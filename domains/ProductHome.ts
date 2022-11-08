@@ -1,20 +1,12 @@
 import { ProductType, RealEstateType } from "./enums";
+import { Products } from "./Products";
 
-export class ProductHome {
-  private _type: ProductType;
+export class ProductHome extends Products {
   private _value: number;
   private _installments: number;
   private _realEstateType: RealEstateType;
   private _realEstateValue: number;
   private _outstandingBalance: number;
-
-  public get type(): ProductType {
-    return this._type;
-  }
-
-  public set type(type: ProductType) {
-    this._type = type;
-  }
 
   public get value(): number {
     return this._value;

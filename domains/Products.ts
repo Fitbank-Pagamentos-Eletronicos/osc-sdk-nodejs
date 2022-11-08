@@ -1,43 +1,13 @@
-import { ProductLoan } from "./ProductLoan";
-import { ProductCard } from "./ProductCard";
-import { ProductAuto } from "./ProductAuto";
-import { ProductHome } from "./ProductHome";
+import { ProductType } from "./enums";
 
 export class Products {
-  private _productLoan: ProductLoan;
-  private _productCard: ProductCard;
-  private _productAuto: ProductAuto;
-  private _productHome: ProductHome;
+  private _type: ProductType;
 
-  public get productLoan(): ProductLoan {
-    return this._productLoan;
+  public get type(): ProductType {
+    return this._type;
   }
 
-  public set productLoan(productLoan: ProductLoan) {
-    this._productLoan = productLoan;
-  }
-
-  public get productCard(): ProductCard {
-    return this._productCard;
-  }
-
-  public set productCard(productCard: ProductCard) {
-    this._productCard = productCard;
-  }
-
-  public get productAuto(): ProductAuto {
-    return this._productAuto;
-  }
-
-  public set productAuto(productAuto: ProductAuto) {
-    this._productAuto = productAuto;
-  }
-
-  public get productHome(): ProductHome {
-    return this._productHome;
-  }
-
-  public set productHome(productHome: ProductHome) {
-    this._productHome = productHome;
+  public set type(type: ProductType) {
+    this._type = type;
   }
 }

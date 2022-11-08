@@ -16,192 +16,191 @@ export class SignupMatch {
   @Length(3, 11)
   // @Matches(RegExp(/^[0-9]*$/))
   @IsNumberString()
-  private _cpf: string;
+  private cpf: string;
 
   @MaxLength(100)
-  private _name: string;
+  private name: string;
 
   @Length(10, 10)
   // @Matches(/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/i, {
   //   message: "$property must be formatted as yyyy-mm-dd",
   // })
   @IsDateString()
-  private _birthday: string;
+  private birthday: string;
 
   @MaxLength(100)
   @IsEmail()
-  private _email: string;
+  private email: string;
 
   @Length(11, 11)
   @IsNumberString()
   // @Matches(/^\([0-9]{2}\) [0-9]?[0-9]{4}-[0-9]{4}$/, {
   //   message: "$property precisa ser no formato 00000-000",
   // })
-  private _phone: string;
+  private phone: string;
 
   @Length(4, 9)
   @IsNumberString()
   // @Matches(/^[0-9]{5}-[0-9]{3}$/, {
   //   message: "$property precisa ser no formato 00000-000",
   // })
-  private _zipCode: string;
+  private zipCode: string;
 
-  private _education: Education;
+  private education: Education;
 
-  private _banks: string;
+  private banks: string;
 
-  private _occupation: Occupation;
+  private occupation: Occupation;
 
-  @IsNumberString()
-  private _income: string;
+  private income: number;
 
-  private _hasCreditCard: boolean;
+  private hasCreditCard: boolean;
 
-  private _hasRestriction: boolean;
+  private hasRestriction: boolean;
 
-  private _hasOwnHouse: boolean;
+  private hasOwnHouse: boolean;
 
-  private _hasVehicle: boolean;
+  private hasVehicle: boolean;
 
-  private _hasAndroid: boolean;
+  private hasAndroid: boolean;
 
-  private _products: Products;
+  private products: Products[];
 
-  private _logData: LogData;
+  private logData: LogData;
 
-  public get cpf(): string {
-    return this._cpf;
+  public getCpf(): string {
+    return this.cpf;
   }
 
-  public set cpf(cpf: string) {
-    this._cpf = cpf;
+  public setCpf(cpf: string): void {
+    this.cpf = cpf;
   }
 
-  public get name(): string {
-    return this._name;
+  public getName(): string {
+    return this.name;
   }
 
-  public set name(name: string) {
-    this._name = name;
+  public setName(name: string): void {
+    this.name = name;
   }
 
-  public get birthday(): string {
-    return this._birthday;
+  public getBirthday(): string {
+    return this.birthday;
   }
 
-  public set birthday(birthday: string) {
-    this._birthday = birthday;
+  public setBirthday(birthday: string): void {
+    this.birthday = birthday;
   }
 
-  public get email(): string {
-    return this._email;
+  public getEmail(): string {
+    return this.email;
   }
 
-  public set email(email: string) {
-    this._email = email;
+  public setEmail(email: string): void {
+    this.email = email;
   }
 
-  public get phone(): string {
-    return this._phone;
+  public getPhone(): string {
+    return this.phone;
   }
 
-  public set phone(phone: string) {
-    this._phone = phone;
+  public setPhone(phone: string): void {
+    this.phone = phone;
   }
 
-  public get zipCode(): string {
-    return this._zipCode;
+  public getZipCode(): string {
+    return this.zipCode;
   }
 
-  public set zipCode(zipCode: string) {
-    this._zipCode = zipCode;
+  public setZipCode(zipCode: string): void {
+    this.zipCode = zipCode;
   }
 
-  public get education(): Education {
-    return this._education;
+  public getEducation(): Education {
+    return this.education;
   }
 
-  public set education(education: Education) {
-    this._education = education;
+  public setEducation(education: Education): void {
+    this.education = education;
   }
 
-  public get banks(): string {
-    return this._banks;
+  public getBanks(): string {
+    return this.banks;
   }
 
-  public set banks(banks: string) {
-    this._banks = banks;
+  public setBanks(banks: string): void {
+    this.banks = banks;
   }
 
-  public get occupation(): Occupation {
-    return this._occupation;
+  public getOccupation(): Occupation {
+    return this.occupation;
   }
 
-  public set occupation(occupation: Occupation) {
-    this._occupation = occupation;
+  public setOccupation(occupation: Occupation): void {
+    this.occupation = occupation;
   }
 
-  public get income(): string {
-    return this._income;
+  public getIncome(): number {
+    return this.income;
   }
 
-  public set income(income: string) {
-    this._income = income;
+  public setIncome(income: number): void {
+    this.income = income;
   }
 
-  public get hasCreditCard(): boolean {
-    return this._hasCreditCard;
+  public isHasCreditCard(): boolean {
+    return this.hasCreditCard;
   }
 
-  public set hasCreditCard(hasCreditCard: boolean) {
-    this._hasCreditCard = hasCreditCard;
+  public setHasCreditCard(hasCreditCard: boolean): void {
+    this.hasCreditCard = hasCreditCard;
   }
 
-  public get hasRestriction(): boolean {
-    return this._hasRestriction;
+  public isHasRestriction(): boolean {
+    return this.hasRestriction;
   }
 
-  public set hasRestriction(hasRestriction: boolean) {
-    this._hasRestriction = hasRestriction;
+  public setHasRestriction(hasRestriction: boolean): void {
+    this.hasRestriction = hasRestriction;
   }
 
-  public get hasOwnHouse(): boolean {
-    return this._hasOwnHouse;
+  public isHasOwnHouse(): boolean {
+    return this.hasOwnHouse;
   }
 
-  public set hasOwnHouse(hasOwnHouse: boolean) {
-    this._hasOwnHouse = hasOwnHouse;
+  public setHasOwnHouse(hasOwnHouse: boolean): void {
+    this.hasOwnHouse = hasOwnHouse;
   }
 
-  public get hasVehicle(): boolean {
-    return this._hasVehicle;
+  public isHasVehicle(): boolean {
+    return this.hasVehicle;
   }
 
-  public set hasVehicle(hasVehicle: boolean) {
-    this._hasVehicle = hasVehicle;
+  public setHasVehicle(hasVehicle: boolean): void {
+    this.hasVehicle = hasVehicle;
   }
 
-  public get hasAndroid(): boolean {
-    return this._hasAndroid;
+  public isHasAndroid(): boolean {
+    return this.hasAndroid;
   }
 
-  public set hasAndroid(hasAndroid: boolean) {
-    this._hasAndroid = hasAndroid;
+  public setHasAndroid(hasAndroid: boolean): void {
+    this.hasAndroid = hasAndroid;
   }
 
-  public get products(): Products {
-    return this._products;
+  public getProducts(): Products[] {
+    return this.products;
   }
 
-  public set products(products: Products) {
-    this._products = products;
+  public setProducts(products: Products[]): void {
+    this.products = products;
   }
 
-  public get logData(): LogData {
-    return this._logData;
+  public get GetLogData(): LogData {
+    return this.logData;
   }
 
-  public set logData(logData: LogData) {
-    this._logData = logData;
+  public set setLogData(logData: LogData) {
+    this.logData = logData;
   }
 }

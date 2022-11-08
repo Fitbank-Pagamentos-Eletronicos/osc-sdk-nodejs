@@ -1,20 +1,20 @@
 export class ErrorField {
-  private _field: string;
-  private _message: string;
+  private field: string;
+  private message: string;
 
-  public get field(): string {
-    return this._field;
+  public getField(): string {
+    return this.field;
   }
 
-  public set field(field: string) {
-    this._field = field;
+  public setField(field: string): void {
+    this.field = field;
   }
 
-  public get message(): string {
-    return this._message;
+  public getMessage(): string {
+    return this.message;
   }
 
-  public set message(message: string) {
-    this._message = message;
+  public setMessage(message: string): void {
+    this.message = message;
   }
 }

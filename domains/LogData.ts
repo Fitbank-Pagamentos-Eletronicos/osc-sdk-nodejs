@@ -1,56 +1,56 @@
 export class LogData {
-  private _latitude: number;
-  private _longitude: number;
-  private _occurrenceDate: string;
-  private _userAgent: string;
-  private _ip: string;
-  private _mac: string;
+  private latitude: number;
+  private longitude: number;
+  private occurrenceDate: string;
+  private userAgent: string;
+  private ip: string;
+  private mac: string;
 
-  public get latitude(): number {
-    return this._latitude;
+  public getLatitude(): number {
+    return this.latitude;
   }
 
-  public set latitude(latitude: number) {
-    this._latitude = latitude;
+  public setLatitude(latitude: number): void {
+    this.latitude = latitude;
   }
 
-  public get longitude(): number {
-    return this._longitude;
+  public getLongitude(): number {
+    return this.longitude;
   }
 
-  public set longitude(longitude: number) {
-    this._longitude = longitude;
+  public setLongitude(longitude: number): void {
+    this.longitude = longitude;
   }
 
-  public get occurrenceDate(): string {
-    return this._occurrenceDate;
+  public getOccurrenceDate(): string {
+    return this.occurrenceDate;
   }
 
-  public set occurrenceDate(occurrenceDate: string) {
-    this._occurrenceDate = occurrenceDate;
+  public setOccurrenceDate(occurrenceDate: string): void {
+    this.occurrenceDate = occurrenceDate;
   }
 
-  public get userAgent(): string {
-    return this._userAgent;
+  public getUserAgent(): string {
+    return this.userAgent;
   }
 
-  public set userAgent(userAgent: string) {
-    this._userAgent = userAgent;
+  public setUserAgent(userAgent: string): void {
+    this.userAgent = userAgent;
   }
 
-  public get ip(): string {
-    return this._ip;
+  public getIp(): string {
+    return this.ip;
   }
 
-  public set ip(ip: string) {
-    this._ip = ip;
+  public setIp(ip: string): void {
+    this.ip = ip;
   }
 
-  public get mac(): string {
-    return this._mac;
+  public getMac(): string {
+    return this.mac;
   }
 
-  public set mac(mac: string) {
-    this._mac = mac;
+  public setMac(mac: string): void {
+    this.mac = mac;
   }
 }

@@ -1,17 +1,9 @@
 import { ProductType, Network } from "./enums";
+import { Products } from "./Products";
 
-export class ProductCard {
-  private _type: ProductType;
+export class ProductCard extends Products {
   private _network: Network;
   private _payDay: string;
-
-  public get type(): ProductType {
-    return this._type;
-  }
-
-  public set type(type: ProductType) {
-    this._type = type;
-  }
 
   public get network(): Network {
     return this._network;

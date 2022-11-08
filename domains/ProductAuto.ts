@@ -1,7 +1,7 @@
 import { ProductType } from "./enums";
+import { Products } from "./Products";
 
-export class ProductAuto {
-  private _type: ProductType;
+export class ProductAuto extends Products {
   private _value: number;
   private _vehicleBrand: string;
   private _vehicleModel: string;
@@ -9,14 +9,6 @@ export class ProductAuto {
   private _vehicleModelYear: string;
   private _codeFipe: string;
   private _vehicleFipeValue: number;
-
-  public get type(): ProductType {
-    return this._type;
-  }
-
-  public set type(type: ProductType) {
-    this._type = type;
-  }
 
   public get value(): number {
     return this._value;

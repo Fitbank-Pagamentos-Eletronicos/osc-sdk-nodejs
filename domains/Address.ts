@@ -1,85 +1,85 @@
 import { State, HomeType, HomeSince } from "./enums";
 
 export class Address {
-  private _zipCode: string;
-  private _address: string;
-  private _number: string;
-  private _complement: string;
-  private _district: string;
-  private _state: State;
-  private _city: string;
-  private _homeType: HomeType;
-  private _homeSince: HomeSince;
+  private zipCode: string;
+  private address: string;
+  private number: string;
+  private complement: string;
+  private district: string;
+  private state: State;
+  private city: string;
+  private homeType: HomeType;
+  private homeSince: HomeSince;
 
-  public get zipCode(): string {
-    return this._zipCode;
+  public getZipCode(): string {
+    return this.zipCode;
   }
 
-  public set zipCode(zipCode: string) {
-    this._zipCode = zipCode;
+  public setZipCode(zipCode: string): void {
+    this.zipCode = zipCode;
   }
 
-  public get address(): string {
-    return this._address;
+  public getAddress(): string {
+    return this.address;
   }
 
-  public set address(address: string) {
-    this._address = address;
+  public setAddress(address: string): void {
+    this.address = address;
   }
 
-  public get number(): string {
-    return this._number;
+  public getNumber(): string {
+    return this.number;
   }
 
-  public set number(number: string) {
-    this._number = number;
+  public setNumber(number: string): void {
+    this.number = number;
   }
 
-  public get complement(): string {
-    return this._complement;
+  public getComplement(): string {
+    return this.complement;
   }
 
-  public set complement(complement: string) {
-    this._complement = complement;
+  public setComplement(complement: string): void {
+    this.complement = complement;
   }
 
-  public get district(): string {
-    return this._district;
+  public getDistrict(): string {
+    return this.district;
   }
 
-  public set district(district: string) {
-    this._district = district;
+  public setDistrict(district: string): void {
+    this.district = district;
   }
 
-  public get state(): State {
-    return this._state;
+  public getState(): State {
+    return this.state;
   }
 
-  public set state(state: State) {
-    this._state = state;
+  public setState(state: State): void {
+    this.state = state;
   }
 
-  public get city(): string {
-    return this._city;
+  public getCity(): string {
+    return this.city;
   }
 
-  public set city(city: string) {
-    this._city = city;
+  public setCity(city: string): void {
+    this.city = city;
   }
 
-  public get homeType(): HomeType {
-    return this._homeType;
+  public getHomeType(): HomeType {
+    return this.homeType;
   }
 
-  public set homeType(homeType: HomeType) {
-    this._homeType = homeType;
+  public setHomeType(homeType: HomeType): void {
+    this.homeType = homeType;
   }
 
-  public get homeSince(): HomeSince {
-    return this._homeSince;
+  public getHomeSince(): HomeSince {
+    return this.homeSince;
   }
 
-  public set homeSince(homeSince: HomeSince) {
-    this._homeSince = homeSince;
+  public setHomeSince(homeSince: HomeSince): void {
+    this.homeSince = homeSince;
   }
 }

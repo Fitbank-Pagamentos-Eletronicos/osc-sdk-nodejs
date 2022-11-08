@@ -1,31 +1,31 @@
 import { ErrorField } from "./ErrorField";
 
 export class ErrorFields {
-  private _code: string;
-  private _message: string;
-  private _errors: ErrorField;
+  private code: string;
+  private message: string;
+  private errors: ErrorField[];
 
-  public get code(): string {
-    return this._code;
+  public getCode(): string {
+    return this.code;
   }
 
-  public set code(code: string) {
-    this._code = code;
+  public setCode(code: string): void {
+    this.code = code;
   }
 
-  public get message(): string {
-    return this._message;
+  public getMessage(): string {
+    return this.message;
   }
 
-  public set message(message: string) {
-    this._message = message;
+  public setMessage(message: string): void {
+    this.message = message;
   }
 
-  public get errors(): ErrorField {
-    return this._errors;
+  public getErrors(): ErrorField[] {
+    return this.errors;
   }
 
-  public set errors(errors: ErrorField) {
-    this._errors = errors;
+  public setErrors(errors: ErrorField[]): void {
+    this.errors = errors;
   }
 }
