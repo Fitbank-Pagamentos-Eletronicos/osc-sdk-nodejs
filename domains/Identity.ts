@@ -1,55 +1,49 @@
 import { IdentityType, IdentityIssuer, State } from "./enums";
-import { IsDateString } from "class-validator";
 
 export class Identity {
-  private _type: IdentityType;
+  private type: IdentityType;
+  private number: string;
+  private issuer: IdentityIssuer;
+  private state: State;
+  private issuingDate: string;
 
-  private _number: string;
-
-  private _issuer: IdentityIssuer;
-
-  private _state: State;
-
-  @IsDateString()
-  private _issuingDate: string;
-
-  public get type(): IdentityType {
-    return this._type;
+  public getType(): IdentityType {
+    return this.type;
   }
 
-  public set type(type: IdentityType) {
-    this._type = type;
+  public setType(type: IdentityType): void {
+    this.type = type;
   }
 
-  public get number(): string {
-    return this._number;
+  public getNumber(): string {
+    return this.number;
   }
 
-  public set number(number: string) {
-    this._number = number;
+  public setNumber(number: string): void {
+    this.number = number;
   }
 
-  public get issuer(): IdentityIssuer {
-    return this._issuer;
+  public getIssuer(): IdentityIssuer {
+    return this.issuer;
   }
 
-  public set issuer(issuer: IdentityIssuer) {
-    this._issuer = issuer;
+  public setIssuer(issuer: IdentityIssuer): void {
+    this.issuer = issuer;
   }
 
-  public get state(): State {
-    return this._state;
+  public getState(): State {
+    return this.state;
   }
 
-  public set state(state: State) {
-    this._state = state;
+  public setState(state: State): void {
+    this.state = state;
   }
 
-  public get issuingDate(): string {
-    return this._issuingDate;
+  public getIssuingDate(): string {
+    return this.issuingDate;
   }
 
-  public set issuingDate(issuingDate: string) {
-    this._issuingDate = issuingDate;
+  public setIssuingDate(issuingDate: string): void {
+    this.issuingDate = issuingDate;
   }
 }

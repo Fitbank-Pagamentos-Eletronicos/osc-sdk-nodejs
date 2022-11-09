@@ -1,131 +1,139 @@
 import { Occupation, EmploymentSince, State } from "./enums";
 
 export class Business {
-  private _occupation: Occupation;
-  private _profession: string;
-  private _companyName: string;
-  private _phone: string;
-  private _income: string;
-  private _employmentSince: EmploymentSince;
-  private _payday: string;
-  private _benefitNumber: string;
-  private _zipCode: string;
-  private _address: string;
-  private _number: string;
-  private _complement: string;
-  private _district: string;
-  private _state: State;
-  private _city: string;
+  private occupation: Occupation;
+  private profession: string;
+  private companyName: string;
+  private phone: string;
+  private income: string;
+  private employmentSince: EmploymentSince;
+  private payday: string;
+  private benefitNumber: string;
+  private zipCode: string;
+  private address: string;
+  private number: string;
+  private complement: string;
+  private district: string;
+  private state: State;
+  private city: string;
 
-  public get profession(): string {
-    return this._profession;
+  public getOccupation(): Occupation {
+    return this.occupation;
   }
 
-  public set profession(profession: string) {
-    this._profession = profession;
+  public setOccupation(occupation: Occupation): void {
+    this.occupation = occupation;
   }
 
-  public get companyName(): string {
-    return this._companyName;
+  public getProfession(): string {
+    return this.profession;
   }
 
-  public set companyName(companyName: string) {
-    this._companyName = companyName;
+  public setProfession(profession: string): void {
+    this.profession = profession;
   }
 
-  public get phone(): string {
-    return this._phone;
+  public getCompanyName(): string {
+    return this.companyName;
   }
 
-  public set phone(phone: string) {
-    this._phone = phone;
+  public setCompanyName(companyName: string): void {
+    this.companyName = companyName;
   }
 
-  public get income(): string {
-    return this._income;
+  public getPhone(): string {
+    return this.phone;
   }
 
-  public set income(income: string) {
-    this._income = income;
+  public setPhone(phone: string): void {
+    this.phone = phone;
   }
 
-  public get employmentSince(): EmploymentSince {
-    return this._employmentSince;
+  public getIncome(): string {
+    return this.income;
   }
 
-  public set employmentSince(employmentSince: EmploymentSince) {
-    this._employmentSince = employmentSince;
+  public setIncome(income: string): void {
+    this.income = income;
   }
 
-  public get payday(): string {
-    return this._payday;
+  public getEmploymentSince(): EmploymentSince {
+    return this.employmentSince;
   }
 
-  public set payday(payday: string) {
-    this._payday = payday;
+  public setEmploymentSince(employmentSince: EmploymentSince): void {
+    this.employmentSince = employmentSince;
   }
 
-  public get benefitNumber(): string {
-    return this._benefitNumber;
+  public getPayday(): string {
+    return this.payday;
   }
 
-  public set benefitNumber(benefitNumber: string) {
-    this._benefitNumber = benefitNumber;
+  public setPayday(payday: string): void {
+    this.payday = payday;
   }
 
-  public get zipCode(): string {
-    return this._zipCode;
+  public getBenefitNumber(): string {
+    return this.benefitNumber;
   }
 
-  public set zipCode(zipCode: string) {
-    this._zipCode = zipCode;
+  public setBenefitNumber(benefitNumber: string): void {
+    this.benefitNumber = benefitNumber;
   }
 
-  public get address(): string {
-    return this._address;
+  public getZipCode(): string {
+    return this.zipCode;
   }
 
-  public set address(address: string) {
-    this._address = address;
+  public setZipCode(zipCode: string): void {
+    this.zipCode = zipCode;
   }
 
-  public get number(): string {
-    return this._number;
+  public getAddress(): string {
+    return this.address;
   }
 
-  public set number(number: string) {
-    this._number = number;
+  public setAddress(address: string): void {
+    this.address = address;
   }
 
-  public get complement(): string {
-    return this._complement;
+  public getNumber(): string {
+    return this.number;
   }
 
-  public set complement(complement: string) {
-    this._complement = complement;
+  public setNumber(number: string): void {
+    this.number = number;
   }
 
-  public get district(): string {
-    return this._district;
+  public getComplement(): string {
+    return this.complement;
   }
 
-  public set district(district: string) {
-    this._district = district;
+  public setComplement(complement: string): void {
+    this.complement = complement;
   }
 
-  public get state(): State {
-    return this._state;
+  public getDistrict(): string {
+    return this.district;
   }
 
-  public set state(state: State) {
-    this._state = state;
+  public setDistrict(district: string): void {
+    this.district = district;
   }
 
-  public get city(): string {
-    return this._city;
+  public getState(): State {
+    return this.state;
   }
 
-  public set city(city: string) {
-    this._city = city;
+  public setState(state: State): void {
+    this.state = state;
+  }
+
+  public getCity(): string {
+    return this.city;
+  }
+
+  public setCity(city: string): void {
+    this.city = city;
   }
 }

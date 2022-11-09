@@ -1,11 +1,11 @@
 export class ProductBankAccount {
-  private _type: string;
+  private type: string;
 
-  public get type(): string {
-    return this._type;
+  public getType(): string {
+    return this.type;
   }
 
-  public set type(type: string) {
-    this._type = type;
+  public setType(type: string): void {
+    this.type = type;
   }
 }

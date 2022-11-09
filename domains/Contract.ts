@@ -1,22 +1,22 @@
 import { LogData } from "./LogData";
 
 export class Contract {
-  private _aceptedCheckSum: string;
-  private _logData: LogData;
+  private aceptedCheckSum: string;
+  private logData: LogData;
 
-  public get aceptedCheckSum(): string {
-    return this._aceptedCheckSum;
+  public getAceptedCheckSum(): string {
+    return this.aceptedCheckSum;
   }
 
-  public set aceptedCheckSum(aceptedCheckSum: string) {
-    this._aceptedCheckSum = aceptedCheckSum;
+  public setAceptedCheckSum(aceptedCheckSum: string): void {
+    this.aceptedCheckSum = aceptedCheckSum;
   }
 
-  public get logData(): LogData {
-    return this._logData;
+  public getLogData(): LogData {
+    return this.logData;
   }
 
-  public set logData(logData: LogData) {
-    this._logData = logData;
+  public setLogData(logData: LogData): void {
+    this.logData = logData;
   }
 }

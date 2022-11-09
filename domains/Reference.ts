@@ -1,20 +1,20 @@
 export class Reference {
-  private _name: string;
-  private _phone: string;
+  private name: string;
+  private phone: string;
 
-  public get name(): string {
-    return this._name;
+  public getName(): string {
+    return this.name;
   }
 
-  public set name(name: string) {
-    this._name = name;
+  public setName(name: string): void {
+    this.name = name;
   }
 
-  public get phone(): string {
-    return this._phone;
+  public getPhone(): string {
+    return this.phone;
   }
 
-  public set phone(phone: string) {
-    this._phone = phone;
+  public setPhone(phone: string): void {
+    this.phone = phone;
   }
 }

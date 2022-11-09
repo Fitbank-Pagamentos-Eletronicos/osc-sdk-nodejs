@@ -1,11 +1,11 @@
 export class ConsumerUnit {
-  private _number: string;
+  private number: string;
 
-  public get number(): string {
-    return this._number;
+  public getNumber(): string {
+    return this.number;
   }
 
-  public set number(number: string) {
-    this._number = number;
+  public setNumber(number: string): void {
+    this.number = number;
   }
 }

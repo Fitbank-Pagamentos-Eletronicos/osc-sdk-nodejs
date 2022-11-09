@@ -1,11 +1,11 @@
 export class Vehicle {
-  private _licensePlate: string;
+  private licensePlate: string;
 
-  public get licensePlate(): string {
-    return this._licensePlate;
+  public getLicensePlate(): string {
+    return this.licensePlate;
   }
 
-  public set licensePlate(licensePlate: string) {
-    this._licensePlate = licensePlate;
+  public setLicensePlate(licensePlate: string): void {
+    this.licensePlate = licensePlate;
   }
 }

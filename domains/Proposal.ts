@@ -15,148 +15,148 @@ import { Reference } from "./Reference";
 import { Products } from "./Products";
 
 export class Proposal {
-  private _mother: string;
-  private _gender: Gender;
-  private _nationality: Nationality;
-  private _hometownState: State;
-  private _hometown: string;
-  private _education: Education;
-  private _relationshipStatus: RelationshipStatus;
-  private _phoneLandline: string;
-  private _identity: Identity;
-  private _address: Address;
-  private _vehicle: Vehicle;
-  private _consumerUnit: ConsumerUnit;
-  private _business: Business;
-  private _bank: Bank;
-  private _reference: Reference;
-  private _products: Products;
+  private mother: string;
+  private gender: Gender;
+  private nationality: Nationality;
+  private hometownState: State;
+  private hometown: string;
+  private education: Education;
+  private relationshipStatus: RelationshipStatus;
+  private phoneLandline: string;
+  private identity: Identity;
+  private address: Address;
+  private vehicle: Vehicle;
+  private consumerUnit: ConsumerUnit;
+  private business: Business;
+  private bank: Bank;
+  private reference: Reference[];
+  private products: Products[];
 
-  public get mother(): string {
-    return this._mother;
+  public getMother(): string {
+    return this.mother;
   }
 
-  public set mother(mother: string) {
-    this._mother = mother;
+  public setMother(mother: string): void {
+    this.mother = mother;
   }
 
-  public get gender(): Gender {
-    return this._gender;
+  public getGender(): Gender {
+    return this.gender;
   }
 
-  public set gender(gender: Gender) {
-    this._gender = gender;
+  public setGender(gender: Gender): void {
+    this.gender = gender;
   }
 
-  public get nationality(): Nationality {
-    return this._nationality;
+  public getNationality(): Nationality {
+    return this.nationality;
   }
 
-  public set nationality(nationality: Nationality) {
-    this._nationality = nationality;
+  public setNationality(nationality: Nationality): void {
+    this.nationality = nationality;
   }
 
-  public get hometownState(): State {
-    return this._hometownState;
+  public getHometownState(): State {
+    return this.hometownState;
   }
 
-  public set hometownState(hometownState: State) {
-    this._hometownState = hometownState;
+  public setHometownState(hometownState: State): void {
+    this.hometownState = hometownState;
   }
 
-  public get hometown(): string {
-    return this._hometown;
+  public getHometown(): string {
+    return this.hometown;
   }
 
-  public set hometown(hometown: string) {
-    this._hometown = hometown;
+  public setHometown(hometown: string): void {
+    this.hometown = hometown;
   }
 
-  public get education(): Education {
-    return this._education;
+  public getEducation(): Education {
+    return this.education;
   }
 
-  public set education(education: Education) {
-    this._education = education;
+  public setEducation(education: Education): void {
+    this.education = education;
   }
 
-  public get relationshipStatus(): RelationshipStatus {
-    return this._relationshipStatus;
+  public getRelationshipStatus(): RelationshipStatus {
+    return this.relationshipStatus;
   }
 
-  public set relationshipStatus(relationshipStatus: RelationshipStatus) {
-    this._relationshipStatus = relationshipStatus;
+  public setRelationshipStatus(relationshipStatus: RelationshipStatus): void {
+    this.relationshipStatus = relationshipStatus;
   }
 
-  public get phoneLandline(): string {
-    return this._phoneLandline;
+  public getPhoneLandline(): string {
+    return this.phoneLandline;
   }
 
-  public set phoneLandline(phoneLandline: string) {
-    this._phoneLandline = phoneLandline;
+  public setPhoneLandline(phoneLandline: string): void {
+    this.phoneLandline = phoneLandline;
   }
 
-  public get identity(): Identity {
-    return this._identity;
+  public getIdentity(): Identity {
+    return this.identity;
   }
 
-  public set identity(identity: Identity) {
-    this._identity = identity;
+  public setIdentity(identity: Identity): void {
+    this.identity = identity;
   }
 
-  public get address(): Address {
-    return this._address;
+  public getAddress(): Address {
+    return this.address;
   }
 
-  public set address(address: Address) {
-    this._address = address;
+  public setAddress(address: Address): void {
+    this.address = address;
   }
 
-  public get vehicle(): Vehicle {
-    return this._vehicle;
+  public getVehicle(): Vehicle {
+    return this.vehicle;
   }
 
-  public set vehicle(vehicle: Vehicle) {
-    this._vehicle = vehicle;
+  public setVehicle(vehicle: Vehicle): void {
+    this.vehicle = vehicle;
   }
 
-  public get consumerUnit(): ConsumerUnit {
-    return this._consumerUnit;
+  public getConsumerUnit(): ConsumerUnit {
+    return this.consumerUnit;
   }
 
-  public set consumerUnit(consumerUnit: ConsumerUnit) {
-    this._consumerUnit = consumerUnit;
+  public setConsumerUnit(consumerUnit: ConsumerUnit): void {
+    this.consumerUnit = consumerUnit;
   }
 
-  public get business(): Business {
-    return this._business;
+  public getBusiness(): Business {
+    return this.business;
   }
 
-  public set business(business: Business) {
-    this._business = business;
+  public setBusiness(business: Business): void {
+    this.business = business;
   }
 
-  public get bank(): Bank {
-    return this._bank;
+  public getBank(): Bank {
+    return this.bank;
   }
 
-  public set bank(bank: Bank) {
-    this._bank = bank;
+  public setBank(bank: Bank): void {
+    this.bank = bank;
   }
 
-  public get reference(): Reference {
-    return this._reference;
+  public getReference(): Reference[] {
+    return this.reference;
   }
 
-  public set reference(reference: Reference) {
-    this._reference = reference;
+  public setReference(reference: Reference[]): void {
+    this.reference = reference;
   }
 
-  public get products(): Products {
-    return this._products;
+  public getProducts(): Products[] {
+    return this.products;
   }
 
-  public set products(products: Products) {
-    this._products = products;
+  public setProducts(products: Products[]): void {
+    this.products = products;
   }
 }
