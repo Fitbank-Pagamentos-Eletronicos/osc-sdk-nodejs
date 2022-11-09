@@ -2,22 +2,22 @@ import { ProductType } from "./enums";
 import { Products } from "./Products";
 
 export class ProductLoan extends Products {
-  private _number: string;
-  private _installments: number;
+  private number: string;
+  private installments: number;
 
-  public get number(): string {
-    return this._number;
+  public getNumber(): string {
+    return this.number;
   }
 
-  public set number(number: string) {
-    this._number = number;
+  public setNumber(number: string): void {
+    this.number = number;
   }
 
-  public get installments(): number {
-    return this._installments;
+  public getInstallments(): number {
+    return this.installments;
   }
 
-  public set installments(installments: number) {
-    this._installments = installments;
+  public setInstallments(installments: number): void {
+    this.installments = installments;
   }
 }

@@ -7,13 +7,16 @@ import {
   IsEmail,
   IsNumberString,
   IsDateString,
+  length,
 } from "class-validator";
-import { Education, Occupation } from "./enums";
+import { Education, Occupation, Banks } from "./enums";
 import { Products } from "./Products";
 import { LogData } from "./LogData";
 
 export class SignupMatch {
-  @Length(3, 11)
+  @Length(3, 11, {
+    each: true,
+  })
   // @Matches(RegExp(/^[0-9]*$/))
   @IsNumberString()
   private cpf: string;
@@ -48,7 +51,7 @@ export class SignupMatch {
 
   private education: Education;
 
-  private banks: string;
+  private banks: Banks;
 
   private occupation: Occupation;
 
@@ -73,7 +76,8 @@ export class SignupMatch {
   }
 
   public setCpf(cpf: string): void {
-    this.cpf = cpf;
+    if (cpf.length >= 3 && cpf.length <= 11) this.cpf = cpf;
+    else this.cpf = "Cpf inválido";
   }
 
   public getName(): string {
@@ -124,11 +128,11 @@ export class SignupMatch {
     this.education = education;
   }
 
-  public getBanks(): string {
+  public getBanks(): Banks {
     return this.banks;
   }
 
-  public setBanks(banks: string): void {
+  public setBanks(banks: Banks): void {
     this.banks = banks;
   }
 
@@ -196,11 +200,11 @@ export class SignupMatch {
     this.products = products;
   }
 
-  public get GetLogData(): LogData {
+  public getLogData(): LogData {
     return this.logData;
   }
 
-  public set setLogData(logData: LogData) {
+  public setLogData(logData: LogData): void {
     this.logData = logData;
   }
 }

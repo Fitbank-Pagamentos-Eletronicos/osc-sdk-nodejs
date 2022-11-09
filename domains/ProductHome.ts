@@ -2,49 +2,49 @@ import { ProductType, RealEstateType } from "./enums";
 import { Products } from "./Products";
 
 export class ProductHome extends Products {
-  private _value: number;
-  private _installments: number;
-  private _realEstateType: RealEstateType;
-  private _realEstateValue: number;
-  private _outstandingBalance: number;
+  private value: number;
+  private installments: number;
+  private realEstateType: RealEstateType;
+  private realEstateValue: number;
+  private outstandingBalance: number;
 
-  public get value(): number {
-    return this._value;
+  public getValue(): number {
+    return this.value;
   }
 
-  public set value(value: number) {
-    this._value = value;
+  public setValue(value: number): void {
+    this.value = value;
   }
 
-  public get installments(): number {
-    return this._installments;
+  public getInstallments(): number {
+    return this.installments;
   }
 
-  public set installments(installments: number) {
-    this._installments = installments;
+  public setInstallments(installments: number): void {
+    this.installments = installments;
   }
 
-  public get realEstateType(): RealEstateType {
-    return this._realEstateType;
+  public getRealEstateType(): RealEstateType {
+    return this.realEstateType;
   }
 
-  public set realEstateType(realEstateType: RealEstateType) {
-    this._realEstateType = realEstateType;
+  public setRealEstateType(realEstateType: RealEstateType): void {
+    this.realEstateType = realEstateType;
   }
 
-  public get realEstateValue(): number {
-    return this._realEstateValue;
+  public getRealEstateValue(): number {
+    return this.realEstateValue;
   }
 
-  public set realEstateValue(realEstateValue: number) {
-    this._realEstateValue = realEstateValue;
+  public setRealEstateValue(realEstateValue: number): void {
+    this.realEstateValue = realEstateValue;
   }
 
-  public get outstandingBalance(): number {
-    return this._outstandingBalance;
+  public getOutstandingBalance(): number {
+    return this.outstandingBalance;
   }
 
-  public set outstandingBalance(outstandingBalance: number) {
-    this._outstandingBalance = outstandingBalance;
+  public setOutstandingBalance(outstandingBalance: number): void {
+    this.outstandingBalance = outstandingBalance;
   }
 }

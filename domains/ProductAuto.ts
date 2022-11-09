@@ -2,67 +2,67 @@ import { ProductType } from "./enums";
 import { Products } from "./Products";
 
 export class ProductAuto extends Products {
-  private _value: number;
-  private _vehicleBrand: string;
-  private _vehicleModel: string;
-  private _installments: number;
-  private _vehicleModelYear: string;
-  private _codeFipe: string;
-  private _vehicleFipeValue: number;
+  private value: number;
+  private vehicleBrand: string;
+  private vehicleModel: string;
+  private installments: number;
+  private vehicleModelYear: string;
+  private codeFipe: string;
+  private vehicleFipeValue: number;
 
-  public get value(): number {
-    return this._value;
+  public getValue(): number {
+    return this.value;
   }
 
-  public set value(value: number) {
-    this._value = value;
+  public setValue(value: number): void {
+    this.value = value;
   }
 
-  public get vehicleBrand(): string {
-    return this._vehicleBrand;
+  public getVehicleBrand(): string {
+    return this.vehicleBrand;
   }
 
-  public set vehicleBrand(vehicleBrand: string) {
-    this._vehicleBrand = vehicleBrand;
+  public setVehicleBrand(vehicleBrand: string): void {
+    this.vehicleBrand = vehicleBrand;
   }
 
-  public get vehicleModel(): string {
-    return this._vehicleModel;
+  public getVehicleModel(): string {
+    return this.vehicleModel;
   }
 
-  public set vehicleModel(vehicleModel: string) {
-    this._vehicleModel = vehicleModel;
+  public setVehicleModel(vehicleModel: string): void {
+    this.vehicleModel = vehicleModel;
   }
 
-  public get installments(): number {
-    return this._installments;
+  public getInstallments(): number {
+    return this.installments;
   }
 
-  public set installments(installments: number) {
-    this._installments = installments;
+  public setInstallments(installments: number): void {
+    this.installments = installments;
   }
 
-  public get vehicleModelYear(): string {
-    return this._vehicleModelYear;
+  public getVehicleModelYear(): string {
+    return this.vehicleModelYear;
   }
 
-  public set vehicleModelYear(vehicleModelYear: string) {
-    this._vehicleModelYear = vehicleModelYear;
+  public setVehicleModelYear(vehicleModelYear: string): void {
+    this.vehicleModelYear = vehicleModelYear;
   }
 
-  public get codeFipe(): string {
-    return this._codeFipe;
+  public getCodeFipe(): string {
+    return this.codeFipe;
   }
 
-  public set codeFipe(codeFipe: string) {
-    this._codeFipe = codeFipe;
+  public setCodeFipe(codeFipe: string): void {
+    this.codeFipe = codeFipe;
   }
 
-  public get vehicleFipeValue(): number {
-    return this._vehicleFipeValue;
+  public getVehicleFipeValue(): number {
+    return this.vehicleFipeValue;
   }
 
-  public set vehicleFipeValue(vehicleFipeValue: number) {
-    this._vehicleFipeValue = vehicleFipeValue;
+  public setVehicleFipeValue(vehicleFipeValue: number): void {
+    this.vehicleFipeValue = vehicleFipeValue;
   }
 }

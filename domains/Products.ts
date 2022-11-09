@@ -1,13 +1,13 @@
 import { ProductType } from "./enums";
 
 export class Products {
-  private _type: ProductType;
+  private type: ProductType;
 
-  public get type(): ProductType {
-    return this._type;
+  public getType(): ProductType {
+    return this.type;
   }
 
-  public set type(type: ProductType) {
-    this._type = type;
+  public setType(type: ProductType): void {
+    this.type = type;
   }
 }
