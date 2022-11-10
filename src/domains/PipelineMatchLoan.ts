@@ -7,7 +7,7 @@ export class PipelineMatchLoan {
   private name: string;
   private dateCreated: string;
   private lastUpdated: string;
-  private matches: Match;
+  private matches: Match[];
 
   public getId(): string {
     return this.id;
@@ -57,11 +57,11 @@ export class PipelineMatchLoan {
     this.lastUpdated = lastUpdated;
   }
 
-  public getMatches(): Match {
+  public getMatches(): Match[] {
     return this.matches;
   }
 
-  public setMatches(matches: Match): void {
+  public setMatches(matches: Match[]): void {
     this.matches = matches;
   }
 }

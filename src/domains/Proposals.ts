@@ -4,7 +4,7 @@ export class Proposals {
   private customerServiceNumber: string;
   private type: ProductType;
   private product: string;
-  private productId: string;
+  private productId: number;
   private hasDocuments: boolean;
   private hasContracts: boolean;
   private logo: string;
@@ -37,11 +37,11 @@ export class Proposals {
     this.product = product;
   }
 
-  public getProductId(): string {
+  public getProductId(): number {
     return this.productId;
   }
 
-  public setProductId(productId: string): void {
+  public setProductId(productId: number): void {
     this.productId = productId;
   }
 

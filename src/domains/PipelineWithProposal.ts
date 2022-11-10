@@ -7,7 +7,7 @@ export class PipelineWithProposal {
   private name: string;
   private dateCreated: string;
   private lastUpdated: string;
-  private proposals: Proposals;
+  private proposals: Proposals[];
 
   public getId(): string {
     return this.id;
@@ -57,11 +57,11 @@ export class PipelineWithProposal {
     this.lastUpdated = lastUpdated;
   }
 
-  public getProposals(): Proposals {
+  public getProposals(): Proposals[] {
     return this.proposals;
   }
 
-  public setProposals(proposals: Proposals): void {
+  public setProposals(proposals: Proposals[]): void {
     this.proposals = proposals;
   }
 }
