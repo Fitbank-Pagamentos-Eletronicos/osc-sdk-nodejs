@@ -1,74 +1,26 @@
-import {
-  validate,
-  Length,
-  MaxLength,
-  Matches,
-  MinLength,
-  IsEmail,
-  IsNumberString,
-  IsDateString,
-  length,
-} from "class-validator";
 import { Education, Occupation, Banks } from "./enums";
 import { Products } from "./Products";
 import { LogData } from "./LogData";
+import moment from "moment";
+import { validateEmail, validateCellPhone } from "../utils/Validations";
 
 export class SignupMatch {
-  @Length(3, 11, {
-    each: true,
-  })
-  // @Matches(RegExp(/^[0-9]*$/))
-  @IsNumberString()
   private cpf: string;
-
-  @MaxLength(100)
   private name: string;
-
-  @Length(10, 10)
-  // @Matches(/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/i, {
-  //   message: "$property must be formatted as yyyy-mm-dd",
-  // })
-  @IsDateString()
   private birthday: string;
-
-  @MaxLength(100)
-  @IsEmail()
   private email: string;
-
-  @Length(11, 11)
-  @IsNumberString()
-  // @Matches(/^\([0-9]{2}\) [0-9]?[0-9]{4}-[0-9]{4}$/, {
-  //   message: "$property precisa ser no formato 00000-000",
-  // })
   private phone: string;
-
-  @Length(4, 9)
-  @IsNumberString()
-  // @Matches(/^[0-9]{5}-[0-9]{3}$/, {
-  //   message: "$property precisa ser no formato 00000-000",
-  // })
   private zipCode: string;
-
   private education: Education;
-
   private banks: Banks;
-
   private occupation: Occupation;
-
   private income: number;
-
   private hasCreditCard: boolean;
-
   private hasRestriction: boolean;
-
   private hasOwnHouse: boolean;
-
   private hasVehicle: boolean;
-
   private hasAndroid: boolean;
-
   private products: Products[];
-
   private logData: LogData;
 
   public getCpf(): string {
@@ -76,7 +28,8 @@ export class SignupMatch {
   }
 
   public setCpf(cpf: string): void {
-    if (cpf.length >= 3 && cpf.length <= 11) this.cpf = cpf;
+    if (cpf.length >= 3 && cpf.length <= 11 && /^\d+$/.test(cpf))
+      this.cpf = cpf;
     else this.cpf = "Cpf inválido";
   }
 
@@ -85,7 +38,10 @@ export class SignupMatch {
   }
 
   public setName(name: string): void {
-    this.name = name;
+    if (name.length <= 100) this.name = name;
+    else
+      this.name =
+        "O nome precisa ser menor que 100 caracteres e estar no formato.";
   }
 
   public getBirthday(): string {
@@ -93,7 +49,13 @@ export class SignupMatch {
   }
 
   public setBirthday(birthday: string): void {
-    this.birthday = birthday;
+    if (
+      birthday.length >= 10 &&
+      birthday.length <= 10 &&
+      moment(birthday, "YYYY-MM-DD", true).isValid()
+    )
+      this.birthday = birthday;
+    else this.birthday = "Data de nascimento, formato (aaaa-mm-dd)";
   }
 
   public getEmail(): string {
@@ -101,7 +63,8 @@ export class SignupMatch {
   }
 
   public setEmail(email: string): void {
-    this.email = email;
+    if (email.length <= 100 && validateEmail(email)) this.email = email;
+    else this.email = "E-mail inválido";
   }
 
   public getPhone(): string {
@@ -109,7 +72,9 @@ export class SignupMatch {
   }
 
   public setPhone(phone: string): void {
-    this.phone = phone;
+    if (phone.length >= 11 && phone.length <= 11 && validateCellPhone(phone))
+      this.phone = phone;
+    else this.phone = "Telefone inválido.";
   }
 
   public getZipCode(): string {
@@ -117,7 +82,8 @@ export class SignupMatch {
   }
 
   public setZipCode(zipCode: string): void {
-    this.zipCode = zipCode;
+    if (/^\d+$/.test(zipCode)) this.zipCode = zipCode;
+    else this.zipCode = "CEP inválido.";
   }
 
   public getEducation(): Education {

@@ -21,7 +21,7 @@ simpleSignup.setLogData(
 
     logData.setLatitude(38.895);
     logData.setLongitude(-77.0364);
-    logData.setOccurrenceDate("2022-10-22");
+    logData.setOccurrenceDate("2022-10-22 14:10:20");
     logData.setUserAgent("Test Agent");
     logData.setIp("192.158.1.38");
     logData.setMac("00:00:5e:00:53:af");
@@ -29,7 +29,7 @@ simpleSignup.setLogData(
   })()
 );
 
-const json = `{"cpf":"60343933373","name":"Teste","birthday":"1990-11-08","email":"email@gmail.com","phone":"85912345678","zipCode":"60177240","hasCreditCard":true,"hasRestriction":false,"hasOwnHouse":false,"hasVehicle":false,"hasAndroid":true,"logData":{"latitude":38.895,"longitude":-77.0364,"occurrenceDate":"2022-10-22","userAgent":"Test Agent","ip":"192.158.1.38","mac":"00:00:5e:00:53:af"}}`;
+const json = `{"cpf":"60343933373","name":"Teste","birthday":"1990-11-08","email":"email@gmail.com","phone":"85912345678","zipCode":"60177240","hasCreditCard":true,"hasRestriction":false,"hasOwnHouse":false,"hasVehicle":false,"hasAndroid":true,"logData":{"latitude":38.895,"longitude":-77.0364,"occurrenceDate":"2022-10-22 14:10:20","userAgent":"Test Agent","ip":"192.158.1.38","mac":"00:00:5e:00:53:af"}}`;
 const serialized = JSON.stringify(simpleSignup);
 console.log("=====Serialize=====");
 console.log(serialized);

@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export class LogData {
   private latitude: number;
   private longitude: number;
@@ -27,7 +29,9 @@ export class LogData {
   }
 
   public setOccurrenceDate(occurrenceDate: string): void {
-    this.occurrenceDate = occurrenceDate;
+    if (moment(occurrenceDate, "YYYY-MM-DD HH:mm:ss", true).isValid())
+      this.occurrenceDate = occurrenceDate;
+    else this.occurrenceDate = "Data da ocorrência inválida.";
   }
 
   public getUserAgent(): string {
