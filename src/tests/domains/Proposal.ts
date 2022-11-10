@@ -9,6 +9,8 @@ import { ProductAuto } from "../../domains/ProductAuto";
 import { ProductCard } from "../../domains/ProductCard";
 import { ProductLoan } from "../../domains/ProductLoan";
 import { ProductHome } from "../../domains/ProductHome";
+import { Business } from "../../domains/Business";
+import { ConsumerUnit } from "../../domains/ConsumerUnit";
 
 let proposal = new Proposal();
 
@@ -57,6 +59,38 @@ proposal.setVehicle(
 
     vehicle.setLicensePlate("HUZ-8518");
     return vehicle;
+  })()
+);
+
+proposal.setConsumerUnit(
+  (() => {
+    const consumerUnit = new ConsumerUnit();
+
+    consumerUnit.setNumber("1914");
+    return consumerUnit;
+  })()
+);
+
+proposal.setBusiness(
+  (() => {
+    const business = new Business();
+
+    business.setOccupation(2);
+    business.setProfession("Desenvolvedor");
+    business.setCompanyName("FitBank 450");
+    business.setPhone("85912345678");
+    business.setIncome("1000");
+    business.setEmploymentSince(1);
+    business.setPayday("05");
+    business.setBenefitNumber("10");
+    business.setZipCode("60177240");
+    business.setAddress("Rua do Feijão");
+    business.setNumber("2022");
+    business.setComplement("Casa");
+    business.setDistrict("Bairro do Arroz");
+    business.setState(State.CE);
+    business.setCity("Macarrão");
+    return business;
   })()
 );
 
@@ -119,7 +153,7 @@ proposal.setProducts(
   })()
 );
 
-const json = `{"mother":"Maria","gender":1,"nationality":0,"hometownState":"CE","education":5,"relationshipStatus":0,"phoneLandline":"85985123456","identity":{"type":0,"number":"400946750","issuer":0,"state":"CE","issuingDate":"2009-08-08"},"address":{"zipCode":"60177240","address":"Rua do Feijão","number":"2022","complement":"Casa","district":"Bairro do Arroz","state":"CE","city":"Macarrão","homeType":4,"homeSince":0},"vehicle":{"licensePlate":"HUZ-8518"},"bank":{"bank":{"code":"450","desc":"FITBANK PAGAMENTOS ELETRONICOS S.A."},"type":0,"agency":"2093","account":"1018548-8"},"reference":[{"name":"João","phone":"85985456789"}],"products":[{"type":5,"value":20000,"vehicleBrand":"Fiat","vehicleFipeValue":20,"vehicleModel":"Uno","vehicleModelYear":"2022"},{"type":6,"payDay":"ProductCard","network":6},{"installments":1,"number":"2022","type":3},{"installments":5,"outstandingBalance":88,"realEstateType":4,"realEstateValue":6,"type":10,"value":4555}]}`;
+const json = `{"mother":"Maria","gender":1,"nationality":0,"hometownState":"CE","education":5,"relationshipStatus":0,"phoneLandline":"85985123456","identity":{"type":0,"number":"400946750","issuer":0,"state":"CE","issuingDate":"2009-08-08"},"address":{"zipCode":"60177240","address":"Rua do Feijão","number":"2022","complement":"Casa","district":"Bairro do Arroz","state":"CE","city":"Macarrão","homeType":4,"homeSince":0},"vehicle":{"licensePlate":"HUZ-8518"},"consumerUnit":{"number":"1914"},"business":{"occupation":2,"profession":"Desenvolvedor","companyName":"FitBank 450","phone":"85912345678","income":"1000","employmentSince":1,"payday":"05","benefitNumber":"10","zipCode":"60177240","address":"Rua do Feijão","number":"2022","complement":"Casa","district":"Bairro do Arroz","state":"CE","city":"Macarrão"},"bank":{"bank":{"code":"450","desc":"FITBANK PAGAMENTOS ELETRONICOS S.A."},"type":0,"agency":"2093","account":"1018548-8"},"reference":[{"name":"João","phone":"85985456789"}],"products":[{"type":5,"value":20000,"vehicleBrand":"Fiat","vehicleFipeValue":20,"vehicleModel":"Uno","vehicleModelYear":"2022"},{"type":6,"payDay":"ProductCard","network":6},{"installments":1,"number":"2022","type":3},{"installments":5,"outstandingBalance":88,"realEstateType":4,"realEstateValue":6,"type":10,"value":4555}]}`;
 const serialized = JSON.stringify(proposal);
 console.log("=====Serialize=====");
 console.log(serialized);
