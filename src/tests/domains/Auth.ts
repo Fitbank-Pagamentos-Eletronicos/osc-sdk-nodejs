@@ -1,9 +1,10 @@
 import { Auth } from "../../domains/Auth";
-let auth = new Auth();
+import { Scopes } from "../../domains/enums";
 
+let auth = new Auth();
 auth.setClient_id("4");
 auth.setClient_secret("password");
-auth.setScopes(1);
+auth.setScopes(Scopes.api_external);
 
 const json = `{"client_id":"4","client_secret":"password","scopes":1}`;
 const serialized = JSON.stringify(auth);
