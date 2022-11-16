@@ -15,19 +15,20 @@ export const OAuth = (auth: Auth) => {
   myHeaders.append("Content-Type", "application/json");
 
   const raw = JSON.stringify({
-    auth,
-    // scopes: [auth.getScopes()],
+    scopes: [auth.getScopes()],
   });
 
   const requestOptions: RequestInit = {
     method: "POST",
     headers: myHeaders,
-    // body: JSON.stringify(raw),
     body: raw,
     redirect: "follow",
   };
-  fetch("https://auth.easycredito.com.br/client/auth", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
+
+  return fetch("https://auth.easycredito.com.br/client/auth", requestOptions)
+    .then(async (response) => await response.json())
+    .then((result: any) => {
+      return result;
+    })
     .catch((error) => console.log("error", error));
 };
