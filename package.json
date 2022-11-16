@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs.git"
