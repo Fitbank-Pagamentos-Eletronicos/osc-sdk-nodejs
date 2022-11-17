@@ -1,3 +1,3 @@
 export enum Scopes {
-  api_external = 0,
+  api_external = "api-external",
 }
