@@ -2,7 +2,7 @@ import fetch, { RequestInit, Headers } from 'node-fetch';
 import { Auth } from '../domains/Auth';
 import { Scopes } from '../domains/enums';
 
-export const OAuth = (auth: Auth) => {
+export const OAuth = async (auth: Auth) => {
   const myHeaders = new Headers();
 
   auth.setScopes(Scopes.api_external);
@@ -25,10 +25,13 @@ export const OAuth = (auth: Auth) => {
     redirect: 'follow'
   };
 
-  return fetch('https://auth.easycredito.com.br/client/auth', requestOptions)
-    .then(async (response) => await response.json())
-    .then((result: any) => {
-      return result;
-    })
-    .catch((error) => console.log('error', error));
+  const response = await fetch(
+    'https://auth.easycredito.com.br/client/auth',
+    requestOptions
+  );
+  return response.text();
+  // .then((result: any) => {
+  //   return result;
+  // })
+  // .catch((error) => console.log('error', error));
 };
