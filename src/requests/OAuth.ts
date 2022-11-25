@@ -30,8 +30,4 @@ export const OAuth = async (auth: Auth) => {
     requestOptions
   );
   return response.text();
-  // .then((result: any) => {
-  //   return result;
-  // })
-  // .catch((error) => console.log('error', error));
 };

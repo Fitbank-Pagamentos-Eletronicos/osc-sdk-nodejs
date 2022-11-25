@@ -6,11 +6,11 @@ import { AuthSucess } from './src/domains/AuthSucess';
 import * as Collections from 'typescript-collections';
 
 export class OSC {
-  static #instances = new Collections.Dictionary<String, any>();
+  static #instances = new Collections.Dictionary<String, OSC>();
   static #default_instance_name = 'default';
-  static #default_scopes = ['api-external'];
+  static #default_scopes = Scopes.api_external;
 
-  #auth_response = ['api-external'];
+  #auth_response = ['api-external']; //Scopes.api_external
 
   name: string;
   client_id: string;
@@ -21,16 +21,15 @@ export class OSC {
   #expire_at: string;
 
   constructor(
-    name: string,
     client_id: string,
     client_secret: string,
-    scopes: Scopes
+    scopes: Scopes,
+    name: string
   ) {
-    this.name = name;
     this.client_id = client_id;
     this.client_secret = client_secret;
     this.scopes = scopes;
-    /* storage */
+    this.name = name;
   }
 
   static #normalize(name: string) {
@@ -50,12 +49,14 @@ export class OSC {
   //   }
   // }
 
-  static getInstance(name?: string) {
+  static getInstance(name?: string): OSC {
     if (name) {
       const osc = this.#instances.getValue(this.#normalize(name));
-      if (osc !== null) return osc;
-      else {
-        console.error('Instância inexistente!');
+      if (osc !== null) {
+        if (osc !== undefined) return osc;
+        else throw 'Instance not found!';
+      } else {
+        throw 'Instance not found!';
       }
       const availableNames = this.#instances.keys();
       let availableNamesMsg;
@@ -67,36 +68,40 @@ export class OSC {
         )}`;
       }
     } else {
-      this.getInstance(this.#default_instance_name);
+      return this.getInstance(this.#default_instance_name);
     }
   }
 
   public static createInstance(
     client_id: string,
     client_secret: string,
-    name?: string,
-    scopes?: Scopes
+    scopes?: Scopes,
+    name?: string
   ) {
     if (name) {
       const normalizedName = this.#normalize(name);
       if (this.#instances.getValue(normalizedName)) {
-        console.log(`Já existe uma instância com nome ${normalizedName}`);
+        throw `Já existe uma instância com nome ${normalizedName}`;
       }
-      const osc = new OSC(name, client_id, client_secret, scopes!);
+      const osc = new OSC(
+        client_id,
+        client_secret,
+        scopes!,
+        this.#normalize(name)
+      );
       this.#instances.setValue(normalizedName, osc);
       return osc;
+    } else {
+      this.createInstance(
+        client_id,
+        client_secret,
+        scopes,
+        this.#default_instance_name
+      );
     }
-
-    this.createInstance(
-      this.#default_instance_name,
-      client_id,
-      client_secret,
-      scopes
-    );
   }
 
   async auth() {
-    /* requisição de autenticação */
     const auth = new Auth();
     auth.setClient_id(this.client_id);
     auth.setClient_secret(this.client_secret);
@@ -107,6 +112,7 @@ export class OSC {
 
   async getToken() {
     await this.auth();
+    const authSuccess = new AuthSucess();
     if (
       this.#access_token === null ||
       this.#expire_at === null ||
@@ -115,7 +121,9 @@ export class OSC {
     ) {
       return await this.auth();
     } else {
-      return this.#access_token;
+      authSuccess.setAccess_token(this.#access_token);
+      authSuccess.setExpire_at(this.#expire_at);
+      return authSuccess;
     }
   }
 
