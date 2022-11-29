@@ -1,6 +1,6 @@
-import { LogData } from "./LogData";
-import moment from "moment";
-import { validateEmail, validateCellPhone } from "../utils/Validations";
+import { LogData } from './LogData';
+import moment from 'moment';
+import { validateEmail, validateCellPhone } from '../utils/Validations';
 
 export class SimpleSignup {
   private cpf: string;
@@ -23,7 +23,7 @@ export class SimpleSignup {
   public setCpf(cpf: string): void {
     if (cpf.length >= 3 && cpf.length <= 11 && /^\d+$/.test(cpf))
       this.cpf = cpf;
-    else this.cpf = "Cpf inválido";
+    else throw 'Cpf inválido';
   }
 
   public getName(): string {
@@ -32,9 +32,9 @@ export class SimpleSignup {
 
   public setName(name: string): void {
     if (name.length <= 100) this.name = name;
-    else
-      this.name =
-        "O nome precisa ser menor que 100 caracteres e estar no formato.";
+    else {
+      throw 'O nome precisa ser menor que 100 caracteres e estar no formato.';
+    }
   }
 
   public getBirthday(): string {
@@ -45,10 +45,10 @@ export class SimpleSignup {
     if (
       birthday.length >= 10 &&
       birthday.length <= 10 &&
-      moment(birthday, "YYYY-MM-DD", true).isValid()
+      moment(birthday, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]', true).isValid()
     )
       this.birthday = birthday;
-    else this.birthday = "Data de nascimento, formato (aaaa-mm-dd)";
+    else throw 'Data de nascimento, formato (aaaa-mm-dd)';
   }
 
   public getEmail(): string {
@@ -57,7 +57,7 @@ export class SimpleSignup {
 
   public setEmail(email: string): void {
     if (email.length <= 100 && validateEmail(email)) this.email = email;
-    else this.email = "E-mail inválido";
+    else this.email = 'E-mail inválido';
   }
 
   public getPhone(): string {
@@ -67,7 +67,7 @@ export class SimpleSignup {
   public setPhone(phone: string): void {
     if (phone.length >= 11 && phone.length <= 11 && validateCellPhone(phone))
       this.phone = phone;
-    else this.phone = "Telefone inválido.";
+    else throw 'Telefone inválido.';
   }
 
   public getZipCode(): string {
@@ -76,7 +76,7 @@ export class SimpleSignup {
 
   public setZipCode(zipCode: string): void {
     if (/^\d+$/.test(zipCode)) this.zipCode = zipCode;
-    else this.zipCode = "CEP inválido.";
+    else throw 'CEP inválido.';
   }
 
   public isHasCreditCard(): boolean {

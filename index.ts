@@ -123,7 +123,8 @@ export class OSC {
     } else {
       authSuccess.setAccess_token(this.#access_token);
       authSuccess.setExpire_at(this.#expire_at);
-      return authSuccess;
+      // return authSuccess;
+      return this.#access_token;
     }
   }
 

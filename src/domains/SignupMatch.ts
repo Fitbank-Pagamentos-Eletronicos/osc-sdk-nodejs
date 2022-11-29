@@ -1,8 +1,8 @@
-import { Education, Occupation, Banks } from "./enums";
-import { Products } from "./Products";
-import { LogData } from "./LogData";
-import moment from "moment";
-import { validateEmail, validateCellPhone } from "../utils/Validations";
+import { Education, Occupation, Banks } from './enums';
+import { Products } from './Products';
+import { LogData } from './LogData';
+import moment from 'moment';
+import { validateEmail, validateCellPhone } from '../utils/Validations';
 
 export class SignupMatch {
   private cpf: string;
@@ -11,9 +11,9 @@ export class SignupMatch {
   private email: string;
   private phone: string;
   private zipCode: string;
-  private education: Education;
+  private education: string;
   private banks: Banks;
-  private occupation: Occupation;
+  private occupation: string;
   private income: number;
   private hasCreditCard: boolean;
   private hasRestriction: boolean;
@@ -30,7 +30,7 @@ export class SignupMatch {
   public setCpf(cpf: string): void {
     if (cpf.length >= 3 && cpf.length <= 11 && /^\d+$/.test(cpf))
       this.cpf = cpf;
-    else this.cpf = "Cpf inválido";
+    else throw `CPF ${cpf} inválido`;
   }
 
   public getName(): string {
@@ -39,9 +39,9 @@ export class SignupMatch {
 
   public setName(name: string): void {
     if (name.length <= 100) this.name = name;
-    else
-      this.name =
-        "O nome precisa ser menor que 100 caracteres e estar no formato.";
+    else {
+      throw 'O nome precisa ser menor que 100 caracteres e estar no formato.';
+    }
   }
 
   public getBirthday(): string {
@@ -52,10 +52,10 @@ export class SignupMatch {
     if (
       birthday.length >= 10 &&
       birthday.length <= 10 &&
-      moment(birthday, "YYYY-MM-DD", true).isValid()
+      moment(birthday, 'YYYY-MM-DD', true).isValid()
     )
       this.birthday = birthday;
-    else this.birthday = "Data de nascimento, formato (aaaa-mm-dd)";
+    else throw 'Data de nascimento, formato (aaaa-mm-dd)';
   }
 
   public getEmail(): string {
@@ -64,7 +64,7 @@ export class SignupMatch {
 
   public setEmail(email: string): void {
     if (email.length <= 100 && validateEmail(email)) this.email = email;
-    else this.email = "E-mail inválido";
+    else throw 'E-mail inválido';
   }
 
   public getPhone(): string {
@@ -74,7 +74,7 @@ export class SignupMatch {
   public setPhone(phone: string): void {
     if (phone.length >= 11 && phone.length <= 11 && validateCellPhone(phone))
       this.phone = phone;
-    else this.phone = "Telefone inválido.";
+    else throw 'Telefone inválido.';
   }
 
   public getZipCode(): string {
@@ -83,14 +83,14 @@ export class SignupMatch {
 
   public setZipCode(zipCode: string): void {
     if (/^\d+$/.test(zipCode)) this.zipCode = zipCode;
-    else this.zipCode = "CEP inválido.";
+    else throw 'CEP inválido.';
   }
 
-  public getEducation(): Education {
+  public getEducation(): string {
     return this.education;
   }
 
-  public setEducation(education: Education): void {
+  public setEducation(education: string): void {
     this.education = education;
   }
 
@@ -102,11 +102,11 @@ export class SignupMatch {
     this.banks = banks;
   }
 
-  public getOccupation(): Occupation {
+  public getOccupation(): string {
     return this.occupation;
   }
 
-  public setOccupation(occupation: Occupation): void {
+  public setOccupation(occupation: string): void {
     this.occupation = occupation;
   }
 
@@ -115,7 +115,9 @@ export class SignupMatch {
   }
 
   public setIncome(income: number): void {
-    this.income = income;
+    if (income >= 1039 && 50000 >= income) this.income = income;
+    else
+      throw `O campo income com o valor ${income} precisa estar entre 1.039 e 50.000`;
   }
 
   public isHasCreditCard(): boolean {

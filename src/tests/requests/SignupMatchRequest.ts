@@ -1,15 +1,17 @@
+import { SignupMatchRequest } from '../../requests/SignupMatchRequest';
 import { SignupMatch } from '../../domains/SignupMatch';
 import { ProductAuto } from '../../domains/ProductAuto';
 import { ProductLoan } from '../../domains/ProductLoan';
 import { ProductCard } from '../../domains/ProductCard';
 import { ProductHome } from '../../domains/ProductHome';
 import { LogData } from '../../domains/LogData';
-import { Banks, Education, Occupation } from '../../domains/enums';
+import { Banks, Education, Occupation, Scopes } from '../../domains/enums';
+import { Auth } from '../../domains/Auth';
 
 const signupMatch = new SignupMatch();
 
 signupMatch.setCpf('60343933373');
-signupMatch.setName('Teste');
+signupMatch.setName('John Doe');
 signupMatch.setBirthday('1990-11-08');
 signupMatch.setEmail('email@gmail.com');
 signupMatch.setPhone('85912345678');
@@ -25,8 +27,7 @@ signupMatch.setHasVehicle(false);
 
 signupMatch.setProducts(
   (() => {
-    //test ProductAuto
-    const productAuto = new ProductAuto();
+    let productAuto = new ProductAuto();
     productAuto.setType(5);
     productAuto.setValue(20000);
     productAuto.setVehicleBrand('Fiat');
@@ -34,20 +35,17 @@ signupMatch.setProducts(
     productAuto.setVehicleModel('Uno');
     productAuto.setVehicleModelYear('2022');
 
-    //test ProductCard
-    const productCard = new ProductCard();
+    let productCard = new ProductCard();
     productCard.setType(6);
     productCard.setPayDay('ProductCard');
     productCard.setNetwork(6);
 
-    //test ProductLoan
-    const productLoan = new ProductLoan();
+    let productLoan = new ProductLoan();
     productLoan.setInstallments(1);
     productLoan.setNumber('2022');
     productLoan.setType(3);
 
-    //test ProductHome
-    const productHome = new ProductHome();
+    let productHome = new ProductHome();
     productHome.setInstallments(5);
     productHome.setOutstandingBalance(88);
     productHome.setRealEstateType(4);
@@ -59,26 +57,27 @@ signupMatch.setProducts(
   })()
 );
 
-//LogData
 signupMatch.setLogData(
   (() => {
-    const logData = new LogData();
+    let logData = new LogData();
 
     logData.setIp('192.158.1.38');
     logData.setLatitude(38.895);
     logData.setLongitude(-77.0364);
     logData.setMac('00:00:5e:00:53:af');
-    logData.setOccurrenceDate('2022-10-22T14:10:20.123Z');
+    logData.setOccurrenceDate('2019-08-21T14:31:17.459Z');
     logData.setUserAgent('Test Agent');
     return logData;
   })()
 );
 
-const json = `{"cpf":"60343933373","name":"Teste","birthday":"1990-11-08","email":"email@gmail.com","phone":"85912345678","zipCode":"60177240","education":"POS_GRADUACAO","banks":{"code":"450","desc":"FITBANK PAGAMENTOS ELETRONICOS S.A."},"occupation":"ASSALARIADO","income":2000,"hasCreditCard":true,"hasRestriction":false,"hasOwnHouse":false,"hasVehicle":false,"products":[{"type":5,"value":20000,"vehicleBrand":"Fiat","vehicleFipeValue":20,"vehicleModel":"Uno","vehicleModelYear":"2022"},{"type":6,"payDay":"ProductCard","network":6},{"installments":1,"number":"2022","type":3},{"installments":5,"outstandingBalance":88,"realEstateType":4,"realEstateValue":6,"type":10,"value":4555}],"logData":{"ip":"192.158.1.38","latitude":38.895,"longitude":-77.0364,"mac":"00:00:5e:00:53:af","occurrenceDate":"2022-10-22T14:10:20.123Z","userAgent":"Test Agent"}}`;
-const serialized = JSON.stringify(signupMatch);
-console.log('=====Serialize=====');
-console.log(serialized);
-console.log('=====Deserialize=====');
-const deserialized = JSON.parse(serialized);
-console.log(deserialized);
-console.log(`\nIs serialized? ${json === serialized}`);
+const auth = new Auth();
+auth.setClient_id('4dbe3aa7-8ce9-43a4-9298-73b700e712bb');
+auth.setClient_secret(
+  '1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8'
+);
+auth.setScopes(Scopes.api_external);
+
+SignupMatchRequest(signupMatch, auth).then((res) => {
+  console.log(res);
+});
