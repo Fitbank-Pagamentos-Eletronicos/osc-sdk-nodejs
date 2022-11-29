@@ -1,5 +1,5 @@
-import moment from "moment";
-import { IdentityType, IdentityIssuer, State } from "./enums";
+import moment from 'moment';
+import { IdentityType, IdentityIssuer, State } from './enums';
 
 export class Identity {
   private type: IdentityType;
@@ -45,8 +45,8 @@ export class Identity {
   }
 
   public setIssuingDate(issuingDate: string): void {
-    if (moment(issuingDate, "YYYY-MM-DD", true).isValid())
+    if (moment(issuingDate, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]', true).isValid())
       this.issuingDate = issuingDate;
-    else this.issuingDate = "Data de emissão inválida";
+    else this.issuingDate = 'Data de emissão inválida';
   }
 }

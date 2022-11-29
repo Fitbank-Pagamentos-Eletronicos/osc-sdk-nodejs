@@ -15,7 +15,7 @@ export const OAuth = async (auth: Auth) => {
   myHeaders.append('Content-Type', 'application/json');
 
   const raw = JSON.stringify({
-    scopes: [auth.getScopes()]
+    scopes: auth.getScopes()
   });
 
   const requestOptions: RequestInit = {
