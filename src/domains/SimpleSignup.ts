@@ -2,7 +2,7 @@ import { LogData } from './LogData';
 import moment from 'moment';
 import { validateEmail, validateCellPhone } from '../utils/Validations';
 
-export class SimpleSignup {
+export class SimpleSignUp {
   private cpf: string;
   private name: string;
   private birthday: string;
@@ -45,7 +45,7 @@ export class SimpleSignup {
     if (
       birthday.length >= 10 &&
       birthday.length <= 10 &&
-      moment(birthday, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]', true).isValid()
+      moment(birthday, 'YYYY-MM-DD', true).isValid()
     )
       this.birthday = birthday;
     else throw 'Data de nascimento, formato (aaaa-mm-dd)';
