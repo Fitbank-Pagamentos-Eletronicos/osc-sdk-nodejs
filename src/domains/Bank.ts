@@ -1,5 +1,4 @@
-import { AccountType } from "./enums";
-import { Banks } from "./enums";
+import { Banks, AccountType } from './enums';
 
 export class Bank {
   private bank: Banks;

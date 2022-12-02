@@ -5,7 +5,15 @@ import { ProductLoan } from '../../domains/ProductLoan';
 import { ProductCard } from '../../domains/ProductCard';
 import { ProductHome } from '../../domains/ProductHome';
 import { LogData } from '../../domains/LogData';
-import { Banks, Education, Occupation, Scopes } from '../../domains/enums';
+import {
+  Banks,
+  Education,
+  Network,
+  Occupation,
+  ProductType,
+  RealEstateType,
+  Scopes
+} from '../../domains/enums';
 import { Auth } from '../../domains/Auth';
 
 const signupMatch = new SignupMatch();
@@ -27,31 +35,33 @@ signupMatch.setHasVehicle(false);
 
 signupMatch.setProducts(
   (() => {
-    let productAuto = new ProductAuto();
-    productAuto.setType(5);
-    productAuto.setValue(20000);
+    const productLoan = new ProductLoan();
+    productLoan.setInstallments(12);
+    productLoan.setValue(7000);
+    productLoan.setType(ProductType.LOAN);
+
+    const productCard = new ProductCard();
+    productCard.setType(ProductType.CARD);
+    productCard.setPayDay('12');
+    productCard.setNetwork(Network.MASTERCARD);
+
+    const productAuto = new ProductAuto();
+    productAuto.setType(ProductType.REFINANCING_AUTO);
+    productAuto.setValue(30000);
     productAuto.setVehicleBrand('Fiat');
     productAuto.setVehicleFipeValue(20);
     productAuto.setVehicleModel('Uno');
     productAuto.setVehicleModelYear('2022');
+    productAuto.setCodeFipe('038003-2');
+    productAuto.setInstallments(12);
 
-    let productCard = new ProductCard();
-    productCard.setType(6);
-    productCard.setPayDay('ProductCard');
-    productCard.setNetwork(6);
-
-    let productLoan = new ProductLoan();
-    productLoan.setInstallments(1);
-    productLoan.setNumber('2022');
-    productLoan.setType(3);
-
-    let productHome = new ProductHome();
-    productHome.setInstallments(5);
-    productHome.setOutstandingBalance(88);
-    productHome.setRealEstateType(4);
-    productHome.setRealEstateValue(6);
-    productHome.setType(10);
+    const productHome = new ProductHome();
+    productHome.setType(ProductType.REFINANCING_HOME);
     productHome.setValue(4555);
+    productHome.setInstallments(5);
+    productHome.setRealEstateType(RealEstateType.house);
+    productHome.setRealEstateValue(6);
+    productHome.setOutstandingBalance(88);
 
     return [productAuto, productCard, productLoan, productHome];
   })()

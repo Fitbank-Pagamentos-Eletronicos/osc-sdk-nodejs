@@ -1,16 +1,15 @@
-import { ProductType } from "./enums";
-import { Products } from "./Products";
+import { Products } from './Products';
 
 export class ProductLoan extends Products {
-  private number: string;
+  private value: number;
   private installments: number;
 
-  public getNumber(): string {
-    return this.number;
+  public getValue(): number {
+    return this.value;
   }
 
-  public setNumber(number: string): void {
-    this.number = number;
+  public setValue(value: number): void {
+    this.value = value;
   }
 
   public getInstallments(): number {

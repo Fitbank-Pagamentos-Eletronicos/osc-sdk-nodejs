@@ -3,16 +3,16 @@ import {
   Nationality,
   State,
   Education,
-  RelationshipStatus,
-} from "./enums";
-import { Identity } from "./Identity";
-import { Address } from "./Address";
-import { Vehicle } from "./Vehicle";
-import { ConsumerUnit } from "./ConsumerUnit";
-import { Business } from "./Business";
-import { Bank } from "./Bank";
-import { Reference } from "./Reference";
-import { Products } from "./Products";
+  RelationshipStatus
+} from './enums';
+import { Identity } from './Identity';
+import { Address } from './Address';
+import { Vehicle } from './Vehicle';
+import { ConsumerUnit } from './ConsumerUnit';
+import { Business } from './Business';
+import { Bank } from './Bank';
+import { Reference } from './Reference';
+import { Products } from './Products';
 
 export class Proposal {
   private mother: string;
