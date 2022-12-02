@@ -12,7 +12,6 @@ import {
   HomeType,
   HomeSince,
   Occupation,
-  EmploymentSince,
   AccountType,
   ProductType,
   Network,
@@ -250,7 +249,6 @@ const testingProposalRequest = async () => {
     await SignupMatchRequest(signupMatch, auth)
   );
   const id = signUpMatchRequest.id;
-  // console.log(id);
 
   setTimeout(() => {
     ProposalsRequest(proposal, id, auth).then((res) => {
@@ -258,6 +256,5 @@ const testingProposalRequest = async () => {
     });
   }, 10000);
 };
-//tentar juntar todos em um arquivo
 
 testingProposalRequest();
