@@ -1,7 +1,7 @@
 export enum RealEstateType {
-  house = 0,
-  apartment = 1,
-  commercial = 2,
-  land = 3,
-  others = 4,
+  house = 'house',
+  apartment = 'apartment',
+  commercial = 'commercial',
+  land = 'land',
+  others = 'others'
 }

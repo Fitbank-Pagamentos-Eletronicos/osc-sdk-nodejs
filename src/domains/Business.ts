@@ -1,4 +1,4 @@
-import { Occupation, EmploymentSince, State } from "./enums";
+import { State, Occupation, EmploymentSince } from './enums';
 
 export class Business {
   private occupation: Occupation;

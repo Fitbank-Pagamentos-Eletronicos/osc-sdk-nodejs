@@ -1,4 +1,4 @@
-import { State, HomeType, HomeSince } from "./enums";
+import { State, HomeType, HomeSince } from './enums';
 
 export class Address {
   private zipCode: string;

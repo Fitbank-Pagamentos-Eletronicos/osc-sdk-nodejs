@@ -1,7 +1,6 @@
 import fetch, { RequestInit, Headers } from 'node-fetch';
 import { SignupMatch } from '../domains/SignupMatch';
 import { Auth } from '../domains/Auth';
-import { OAuth } from './OAuth';
 import { OSC } from '../../index';
 
 export const SignupMatchRequest = async (signUp: SignupMatch, auth: Auth) => {
@@ -20,9 +19,6 @@ export const SignupMatchRequest = async (signUp: SignupMatch, auth: Auth) => {
     auth.getScopes(),
     signUp.getName()
   );
-  const oAuth = JSON.parse(await OAuth(auth));
-  // this.#expire_at = await oAuth.expire_at;
-  // const access_token = await oAuth.access_token;
   const access_token = await osc.getToken();
 
   myHeaders.append('Content-Type', 'application/json');

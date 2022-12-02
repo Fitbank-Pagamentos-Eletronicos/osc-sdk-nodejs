@@ -1,4 +1,4 @@
 export enum Nationality {
-  BRASILEIRO = 0,
-  ESTRANGEIRO = 1,
+  BRASILEIRO = 'BRASILEIRO',
+  ESTRANGEIRO = 'ESTRANGEIRO'
 }
