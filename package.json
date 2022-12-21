@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs#readme",
   "dependencies": {
     "@google-cloud/pubsub": "^3.2.1",
+    "@google-cloud/storage": "^6.8.0",
     "@types/node": "^18.11.9",
     "axios": "^1.1.3",
     "moment": "^2.29.4",
