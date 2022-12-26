@@ -1,3 +1,4 @@
+// @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
 import { Auth } from '../domains/Auth';
 import { Scopes } from '../domains/enums';
