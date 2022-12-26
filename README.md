@@ -8,6 +8,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### Folder Structure
 
+```
 📦osc-sdk-nodejs
 ┣ 📂.vscode
 ┃ ┗ 📜settings.json
@@ -36,3 +37,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ┣ 📜README.md
 ┣ 📜tsconfig.json
 ┗ 📜yarn.lock
+```
