@@ -56,4 +56,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ### 💯 How to run the tests
 
-Some of the tests are named `Name.test.ts` with the connotation `.test`, to test those files you will have to run with `yarn test NAME_OF_THE_FILE`. The others you can test with `ts-node NAME_OF_THE_FILE`.
+Some of the tests are named `NAME_OF_THE_FILE.test.ts` with the connotation `.test`, to test those files, you'll have to run with `yarn test NAME_OF_THE_FILE`. The others you can test with `ts-node NAME_OF_THE_FILE`.
+
+### 🧾 Methods
+
+The methods are on requests folder on the path `src/requests`. Are them:
+
+- `DocumentAnalysis`: Send a document to analysis. The result is the `DocumentResponse` domain.
+
+- `GetContracts`: Get the contracts for a proposal to be signed. The result is the `GetContract` domain.
+
+- `oAuth`: Authentication token creation for use by endpoints. The result is the `AuthSucess` domain.
+
+- `oAuth`: Authentication token creation for use by endpoints. The result is the `AuthSucess` domain.
+
+- `ProposalsRequest`: Collects and validates the necessary data for the creation of proposals according to the types of products selected. The result is the `PipelineProposal` domain.
+
+- `Pubsub`: Gets the project id, topic id and other things. The result is the `PubSubRequest` domain.
+
+- `PubsubSubscribe`: Uses the data returned from the Pubsub endpoint and create a listener.
+
+- `SignContracts`: Sends data for signing a proposal contract. The result is the `Contract` domain.
+
+- `SignupMatchRequest`: Collects and validates the necessary data for the creation of proposals according to the types of products selected. The result is the `Pipeline` domain.
+
+- `SimpleProposalRequest`: Collects and validates the data necessary for the creation of digital account proposals. The result is the `PipelineProposal` domain.
+
+- `SimpleSignUpRequest`: Make sign up of users (can return error if user already registered). The result is the `PipelineProposal` domain.
