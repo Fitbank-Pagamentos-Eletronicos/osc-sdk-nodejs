@@ -82,7 +82,7 @@ The methods are on requests folder on the path `src/requests`. Are them:
 
 - `SimpleSignUpRequest`: Make sign up of users (can return error if user already registered). The result is the `PipelineProposal` domain.
 
-## ☕ How to use
+## 🛠️ How it works
 
 - `DocumentAnalysis` - Endpoint: `/v2/process/document/${id}`: First of all you've to instance the `Auth` object and pass it as a parameter to the `SignUpMatchRequest` and you've to instance the `SignUpMatch` object too and pass it as a parameter to `SignUpMatchRequest`. After that, you've the `signUpId` from `SignUpMatchRequest`, this id is the parameter of the request. Instantiate the `Document` object and pass it as a parameter to the `DocumentAnalysis` with the `SignUpId` and `Auth` too. You can check an example on `src/tests/requests/DocumentAnalysis.ts`
 
@@ -103,3 +103,35 @@ The methods are on requests folder on the path `src/requests`. Are them:
 - `SignUpMatchRequest` - Endpoint: `/v2.1/process/simple_proposal/${id}`: First of all you've to instance the `Auth` object. You've to instance the `simpleSignUp` object too and pass it as a parameter to `SimpleSignUpRequest` with the `Auth` as the second parameter. After that, you've the `simpleSignUpRequest.id` from `SimpleSignUpRequest`, this id is the parameter of the request. Now you've to instance the `proposal` object and pass it as the first parameter to the `SimpleProposalRequest`, the second is the id(`simpleSignUpRequest.id`) and the third is `Auth` object.
 
 - `SignUpMatchRequest` - Endpoint: `/v2.1/process/simple_signup`: First of all you've to instance the `Auth` object and pass it as a parameter to the `SimpleSignUpRequest` and you've to instance the `SignUpMatch` object too and pass it as a parameter to `SimpleSignUp`. The first parameter is the `SimpleSignUp` and the second is the `Auth`.
+
+## ☕ How to use
+
+### SignUp
+
+#### Flowchart
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant SDK
+    participant Auth
+    participant API
+
+    Client->>+SDK: OSC.createInstance(client_id, client_secret)
+    SDK-->>-Client: instancia osc
+
+    Client->>+SDK: osc.signup(signupObject)
+        opt Não autorizado
+            SDK->>+Auth: auth(client_id, client_secret, scope)
+            Auth-->>-SDK: access_token
+        end
+        SDK->>+API: signup(signupJson, access_token)
+        API-->>-SDK: pipelineJson
+    SDK-->>-Client: pipeline instance
+```
+
+#### Codification
+
+```
+console.log('test)
+```
