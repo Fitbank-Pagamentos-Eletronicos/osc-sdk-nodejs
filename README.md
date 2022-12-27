@@ -68,8 +68,6 @@ The methods are on requests folder on the path `src/requests`. Are them:
 
 - `oAuth`: Authentication token creation for use by endpoints. The result is the `AuthSucess` domain.
 
-- `oAuth`: Authentication token creation for use by endpoints. The result is the `AuthSucess` domain.
-
 - `ProposalsRequest`: Collects and validates the necessary data for the creation of proposals according to the types of products selected. The result is the `PipelineProposal` domain.
 
 - `Pubsub`: Gets the project id, topic id and other things. The result is the `PubSubRequest` domain.
@@ -86,4 +84,8 @@ The methods are on requests folder on the path `src/requests`. Are them:
 
 ### ☕ How to use
 
-- `DocumentAnalysis` - Endpoint: `v2/process/document/${id}`: First of all you've to instance the `Auth` object and pass it as a parameter to the `signUpMatchRequest` and you've to instance the `SignUpMatch` object too and pass it as a parameter to `SignUpMatchRequest`. After that, you've the `signUpId` from `signUpMatchRequest`. Instantiate the `document` object and pass it as a parameter to the `DocumentAnalysis` with the `signUpId` and `Auth` too. You can check an example on `src/tests/requests/DocumentAnalysis.ts`
+- `DocumentAnalysis` - Endpoint: `/v2/process/document/${id}`: First of all you've to instance the `Auth` object and pass it as a parameter to the `SignUpMatchRequest` and you've to instance the `SignUpMatch` object too and pass it as a parameter to `SignUpMatchRequest`. After that, you've the `signUpId` from `SignUpMatchRequest`, this id is the parameter of the request. Instantiate the `Document` object and pass it as a parameter to the `DocumentAnalysis` with the `SignUpId` and `Auth` too. You can check an example on `src/tests/requests/DocumentAnalysis.ts`
+
+- `GetContracts` - Endpoint `GET`: `/v2.1/contract/${customerServiceNumber}`: First of all you've to instance the `Auth` object and pass it as a parameter to the `GetContracts`, the first parameter is the `customerServiceNumber`. This number you get from the callback of `ProposalsRequest`.
+
+- `oAuth` - Endpoint: `/auth`: You've to instance the `Auth` object and pass it as a parameter to the `OAuth`.
