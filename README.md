@@ -132,7 +132,7 @@ sequenceDiagram
 
 #### Codification
 
-```
+```typescript
 const testingSignUP = async () => {
   const auth = new Auth();
   auth.setClient_id('iuri.mendes--------bde4-84fb8eb9865e');
@@ -163,5 +163,4 @@ const testingSignUP = async () => {
   console.log(await osc.getToken());
 };
 testingSignUP();
-
 ```
