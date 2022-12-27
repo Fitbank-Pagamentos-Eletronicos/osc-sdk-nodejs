@@ -2,7 +2,7 @@
 
 #### A SDK made in Node for the Open Source Credit project
 
-### 🚀 Installing
+## 🚀 Installing
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. After that, install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable). From your command line:
 
@@ -17,11 +17,11 @@ $ cd osc-sdk-nodejs
 $ yarn install
 ```
 
-### 🔐 Credentials
+## 🔐 Credentials
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-### 🗂️ Folder Structure
+## 🗂️ Folder Structure
 
 ```
 📦osc-sdk-nodejs
@@ -54,11 +54,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ┗ 📜yarn.lock
 ```
 
-### 💯 How to run the tests
+## 💯 How to run the tests
 
 Some of the tests are named `NAME_OF_THE_FILE.test.ts` with the connotation `.test`, to test those files, you'll have to run with `yarn test NAME_OF_THE_FILE`. The others you can test with `ts-node NAME_OF_THE_FILE`.
 
-### 🧾 Methods
+## 🧾 Methods
 
 The methods are on requests folder on the path `src/requests`. Are them:
 
@@ -82,7 +82,7 @@ The methods are on requests folder on the path `src/requests`. Are them:
 
 - `SimpleSignUpRequest`: Make sign up of users (can return error if user already registered). The result is the `PipelineProposal` domain.
 
-### ☕ How to use
+## ☕ How to use
 
 - `DocumentAnalysis` - Endpoint: `/v2/process/document/${id}`: First of all you've to instance the `Auth` object and pass it as a parameter to the `SignUpMatchRequest` and you've to instance the `SignUpMatch` object too and pass it as a parameter to `SignUpMatchRequest`. After that, you've the `signUpId` from `SignUpMatchRequest`, this id is the parameter of the request. Instantiate the `Document` object and pass it as a parameter to the `DocumentAnalysis` with the `SignUpId` and `Auth` too. You can check an example on `src/tests/requests/DocumentAnalysis.ts`
 
