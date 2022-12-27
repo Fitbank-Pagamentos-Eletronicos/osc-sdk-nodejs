@@ -135,15 +135,8 @@ sequenceDiagram
 ```typescript
 const testingSignUP = async () => {
   const auth = new Auth();
-  auth.setClient_id('iuri.mendes--------bde4-84fb8eb9865e');
-  auth.setClient_secret(
-    '2e1995260d53d2b028a2a47553bd823042c589226e15d4994a466a97ce692271'
-  );
-  auth.setScopes(Scopes.api_external);
 
   const signUP = new SignupMatch();
-  signUP.setCpf('60343933373');
-  signUP.setName('John Doe');
 
   const osc = new OSC(
     auth.getClient_id(),
@@ -158,9 +151,8 @@ const testingSignUP = async () => {
     auth.getScopes(),
     signUP.getName()
   );
-  console.log(OSC.getInstance(signUP.getName()));
+
   osc.auth();
-  console.log(await osc.getToken());
 };
 testingSignUP();
 ```
