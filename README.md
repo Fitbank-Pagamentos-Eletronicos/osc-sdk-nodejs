@@ -118,10 +118,10 @@ sequenceDiagram
     participant API
 
     Client->>+SDK: OSC.createInstance(client_id, client_secret)
-    SDK-->>-Client: instancia osc
+    SDK-->>-Client: instance osc
 
     Client->>+SDK: osc.signup(signupObject)
-        opt Não autorizado
+        opt Not authorized
             SDK->>+Auth: auth(client_id, client_secret, scope)
             Auth-->>-SDK: access_token
         end
