@@ -86,4 +86,4 @@ The methods are on requests folder on the path `src/requests`. Are them:
 
 ### ☕ How to use
 
-- `DocumentAnalysis` - Endpoint: `v2/process/document/${id}`:
+- `DocumentAnalysis` - Endpoint: `v2/process/document/${id}`: First of all you've to instance the `Auth` object and pass it as a parameter to the `signUpMatchRequest` and you've to instance the `SignUpMatch` object too and pass it as a parameter to `SignUpMatchRequest`. After that, you've the `signUpId` from `signUpMatchRequest`. Instantiate the `document` object and pass it as a parameter to the `DocumentAnalysis` with the `signUpId` and `Auth` too. You can check an example on `src/tests/requests/DocumentAnalysis.ts`
