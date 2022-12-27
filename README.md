@@ -83,3 +83,7 @@ The methods are on requests folder on the path `src/requests`. Are them:
 - `SimpleProposalRequest`: Collects and validates the data necessary for the creation of digital account proposals. The result is the `PipelineProposal` domain.
 
 - `SimpleSignUpRequest`: Make sign up of users (can return error if user already registered). The result is the `PipelineProposal` domain.
+
+### ☕ How to use
+
+- `DocumentAnalysis` - Endpoint: `v2/process/document/${id}`:
