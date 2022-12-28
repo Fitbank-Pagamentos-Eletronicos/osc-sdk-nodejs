@@ -236,39 +236,17 @@ const testingSignUP = async () => {
 
   osc.auth();
 
-  const pubsubRequest = JSON.parse(await Pubsub(auth));
-
-  const pubsubConfig = {
-    topicId: 'callback-NAME',
-    subscriptionId: 'callback-NAME-sub',
-    projectId: 'project-'.toString(),
-    serviceAccount:
-      '{\n  "type": "",\n  "project_id": "",\n  "private_key_id": "",\n  "private_key": "-----BEGIN PRIVATE"\n}'
-  };
-
-  const pubsub = new PubSub({
-    projectId: pubsubConfig.projectId,
-    credentials: JSON.parse(pubsubConfig.serviceAccount)
-  } as ClientConfig);
-
-  const subscription = await pubsub.subscription(pubsubConfig.subscriptionId);
-
-  subscription.on('message', (message: any) => {
-    console.log('Received message:', message.data.toString());
-    message.ack();
-    process.exit(0);
-  });
+  //Pubsub and PubsubSubscribe
+  osc.setResponseListening(listeningFunction);
 
   const proposal = new Proposal();
 
   const signUpRequest = JSON.parse(await SignupMatchRequest(signupMatch, auth));
   const signUpId = signUpRequest.id;
 
-  setTimeout(() => {
-    ProposalsRequest(proposal, signUpId, auth).then((res) => {
-      console.log(res);
-    });
-  }, 10000);
+  const proposalRequest = JSON.parse(
+    await ProposalsRequest(proposal, signUpId, auth)
+  );
 };
 testingSignUP();
 ```
