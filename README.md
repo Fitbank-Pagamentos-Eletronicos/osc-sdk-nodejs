@@ -156,3 +156,62 @@ const testingSignUP = async () => {
 };
 testingSignUP();
 ```
+
+- ### SignUp and Proposal
+
+#### Flowchart
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant SDK
+    participant Auth
+    participant API
+    participant PubSub
+
+    Client->>+SDK: OSC.createInstance(client_id, client_secret)
+    SDK-->>-Client: instancia osc
+
+    Client->>+SDK: osc.setResponseListening(listeningFunction)
+        opt Não autorizado
+            SDK->>+Auth: auth(client_id, client_secret, scope)
+            Auth-->>-SDK: access_token
+        end
+        SDK->>+API: pubsub(access_token)
+        API-->>-SDK: pubsubConfig
+        par Abre socket
+            SDK->>PubSub: subscription(pubsubConfig)
+        end
+    SDK-->>-Client: pipeline instance
+
+    Client->>+SDK: osc.signup(signupObject)
+        opt Não autorizado
+            SDK->>+Auth: auth(client_id, client_secret, scope)
+            Auth-->>-SDK: access_token
+        end
+        SDK->>+API: signup(signupJson, access_token)
+        API-->>-SDK: pipelineJson
+    SDK-->>-Client: pipeline instance
+    API->>PubSub: publica(signupResponse)
+    PubSub-->>SDK: subscriptionSocket(signupResponse)
+    SDK-->>Client: listeningFunction(signupResponse)
+
+    Client->>+SDK: osc.proposal(pipeline_id, proposalObject)
+        opt Não autorizado
+            SDK->>+Auth: auth(client_id, client_secret, scope)
+            Auth-->>-SDK: access_token
+        end
+        SDK->>+API: proposal(pipeline_id, proposalJson, access_token)
+        API-->>-SDK: pipelineJson
+    SDK-->>-Client: pipeline instance
+    API->>PubSub: publica(proposalResponse)
+    PubSub-->>SDK: subscriptionSocket(proposalResponse)
+    SDK-->>Client: listeningFunction(proposalResponse)
+
+```
+
+### Codification
+
+```typescript
+console.log('Hello World!');
+```
