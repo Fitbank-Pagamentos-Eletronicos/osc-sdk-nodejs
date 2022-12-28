@@ -136,14 +136,7 @@ sequenceDiagram
 const testingSignUP = async () => {
   const auth = new Auth();
 
-  const signUP = new SignupMatch();
-
-  const osc = new OSC(
-    auth.getClient_id(),
-    auth.getClient_secret(),
-    auth.getScopes(),
-    signUP.getName()
-  );
+  const signUP = new SignUpMatch();
 
   OSC.createInstance(
     auth.getClient_id(),
@@ -216,16 +209,7 @@ sequenceDiagram
 const testingSignUP = async () => {
   const auth = new Auth();
 
-  const signUP = new SignupMatch();
-  signUP.setCpf('77381303345');
-  signUP.setName('Michael Scofield');
-
-  const osc = new OSC(
-    auth.getClient_id(),
-    auth.getClient_secret(),
-    auth.getScopes(),
-    signUP.getName()
-  );
+  const signUP = new SignUpMatch();
 
   OSC.createInstance(
     auth.getClient_id(),
@@ -241,7 +225,7 @@ const testingSignUP = async () => {
 
   const proposal = new Proposal();
 
-  const signUpRequest = JSON.parse(await SignupMatchRequest(signupMatch, auth));
+  const signUpRequest = JSON.parse(await SignUpMatchRequest(signupMatch, auth));
   const signUpId = signUpRequest.id;
 
   const proposalRequest = JSON.parse(
