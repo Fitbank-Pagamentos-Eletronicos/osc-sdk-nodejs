@@ -118,10 +118,10 @@ sequenceDiagram
     participant API
 
     Client->>+SDK: OSC.createInstance(client_id, client_secret)
-    SDK-->>-Client: instance osc
+    SDK-->>-Client: osc instance
 
     Client->>+SDK: osc.signup(signupObject)
-        opt Not authorized
+        opt Not Authorized
             SDK->>+Auth: auth(client_id, client_secret, scope)
             Auth-->>-SDK: access_token
         end
@@ -170,22 +170,22 @@ sequenceDiagram
     participant PubSub
 
     Client->>+SDK: OSC.createInstance(client_id, client_secret)
-    SDK-->>-Client: instancia osc
+    SDK-->>-Client: osc instance
 
     Client->>+SDK: osc.setResponseListening(listeningFunction)
-        opt Não autorizado
+        opt Not Authorized
             SDK->>+Auth: auth(client_id, client_secret, scope)
             Auth-->>-SDK: access_token
         end
         SDK->>+API: pubsub(access_token)
         API-->>-SDK: pubsubConfig
-        par Abre socket
+        par Open socket
             SDK->>PubSub: subscription(pubsubConfig)
         end
     SDK-->>-Client: pipeline instance
 
     Client->>+SDK: osc.signup(signupObject)
-        opt Não autorizado
+        opt Not Authorized
             SDK->>+Auth: auth(client_id, client_secret, scope)
             Auth-->>-SDK: access_token
         end
@@ -197,7 +197,7 @@ sequenceDiagram
     SDK-->>Client: listeningFunction(signupResponse)
 
     Client->>+SDK: osc.proposal(pipeline_id, proposalObject)
-        opt Não autorizado
+        opt Not Authorized
             SDK->>+Auth: auth(client_id, client_secret, scope)
             Auth-->>-SDK: access_token
         end
@@ -213,5 +213,62 @@ sequenceDiagram
 ### Codification
 
 ```typescript
-console.log('Hello World!');
+const testingSignUP = async () => {
+  const auth = new Auth();
+
+  const signUP = new SignupMatch();
+  signUP.setCpf('77381303345');
+  signUP.setName('Michael Scofield');
+
+  const osc = new OSC(
+    auth.getClient_id(),
+    auth.getClient_secret(),
+    auth.getScopes(),
+    signUP.getName()
+  );
+
+  OSC.createInstance(
+    auth.getClient_id(),
+    auth.getClient_secret(),
+    auth.getScopes(),
+    signUP.getName()
+  );
+
+  osc.auth();
+
+  const pubsubRequest = JSON.parse(await Pubsub(auth));
+
+  const pubsubConfig = {
+    topicId: 'callback-NAME',
+    subscriptionId: 'callback-NAME-sub',
+    projectId: 'project-'.toString(),
+    serviceAccount:
+      '{\n  "type": "",\n  "project_id": "",\n  "private_key_id": "",\n  "private_key": "-----BEGIN PRIVATE"\n}'
+  };
+
+  const pubsub = new PubSub({
+    projectId: pubsubConfig.projectId,
+    credentials: JSON.parse(pubsubConfig.serviceAccount)
+  } as ClientConfig);
+
+  const subscription = await pubsub.subscription(pubsubConfig.subscriptionId);
+
+  subscription.on('message', (message: any) => {
+    console.log('Received message:', message.data.toString());
+    message.ack();
+    process.exit(0);
+  });
+
+  const proposal = new Proposal();
+
+  const signUpRequest = JSON.parse(await SignupMatchRequest(signupMatch, auth));
+  const signUpId = signUpRequest.id;
+
+  setTimeout(() => {
+    ProposalsRequest(proposal, signUpId, auth).then((res) => {
+      console.log(res);
+    });
+  }, 10000);
+};
+testingSignUP();
 ```
