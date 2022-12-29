@@ -138,7 +138,7 @@ const testingSignUP = async () => {
 
   const signUP = new SignUpMatch();
 
-  OSC.createInstance(
+  osc.createInstance(
     auth.getClient_id(),
     auth.getClient_secret(),
     auth.getScopes(),
@@ -185,7 +185,7 @@ sequenceDiagram
         SDK->>+API: signup(signupJson, access_token)
         API-->>-SDK: pipelineJson
     SDK-->>-Client: pipeline instance
-    API->>PubSub: publica(signupResponse)
+    API->>PubSub: public(signupResponse)
     PubSub-->>SDK: subscriptionSocket(signupResponse)
     SDK-->>Client: listeningFunction(signupResponse)
 
@@ -197,7 +197,7 @@ sequenceDiagram
         SDK->>+API: proposal(pipeline_id, proposalJson, access_token)
         API-->>-SDK: pipelineJson
     SDK-->>-Client: pipeline instance
-    API->>PubSub: publica(proposalResponse)
+    API->>PubSub: public(proposalResponse)
     PubSub-->>SDK: subscriptionSocket(proposalResponse)
     SDK-->>Client: listeningFunction(proposalResponse)
 
@@ -206,12 +206,12 @@ sequenceDiagram
 ### Codification
 
 ```typescript
-const testingSignUP = async () => {
+const testingProposal = async () => {
   const auth = new Auth();
 
   const signUP = new SignUpMatch();
 
-  OSC.createInstance(
+  osc.createInstance(
     auth.getClient_id(),
     auth.getClient_secret(),
     auth.getScopes(),
@@ -232,5 +232,47 @@ const testingSignUP = async () => {
     await ProposalsRequest(proposal, signUpId, auth)
   );
 };
-testingSignUP();
+testingProposal();
+```
+
+- ### Pubsub
+
+#### Flowchart
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant SDK
+    participant Auth
+    participant API
+    participant PubSub
+
+    Client->>+SDK: OSC.createInstance(client_id, client_secret)
+    SDK-->>-Client: osc instance
+
+    Client->>+SDK: osc.setResponseListening(listeningFunction)
+        opt Not Authorized
+            SDK->>+Auth: auth(client_id, client_secret, scope)
+            Auth-->>-SDK: access_token
+        end
+        SDK->>+API: pubsub(access_token)
+        API-->>-SDK: pubsubConfig
+        par Open socket
+            SDK->>PubSub: subscription(pubsubConfig)
+        end
+    SDK-->>-Client: pipeline instance
+```
+
+### Codification
+
+```typescript
+const testingPubsub = async () => {
+  const auth = new Auth();
+
+  OSC.createInstance(auth.getClient_id(), auth.getClient_secret());
+
+  //Pubsub and PubsubSubscribe
+  osc.setResponseListening(listeningFunction);
+};
+testingPubsub();
 ```
