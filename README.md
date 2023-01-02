@@ -368,5 +368,45 @@ sequenceDiagram
 ### Codification
 
 ```typescript
-console.log('Hello World!');
+const testingFullFlow = async () => {
+  const auth = new Auth();
+
+  const signUP = new SignUpMatch();
+
+  osc.createInstance(
+    auth.getClient_id(),
+    auth.getClient_secret(),
+    auth.getScopes(),
+    signUP.getName()
+  );
+
+  osc.auth();
+
+  //Pubsub and PubsubSubscribe
+  osc.setResponseListening(listeningFunction);
+
+  const proposal = new Proposal();
+
+  const signUpRequest = JSON.parse(await SignUpMatchRequest(signupMatch, auth));
+  const signUpId = signUpRequest.id;
+
+  const proposalRequest = JSON.parse(
+    await ProposalsRequest(proposal, signUpId, auth)
+  );
+
+  const document = new Document();
+
+  const documentRequest = JSON.parse(
+    await DocumentAnalysis(document, signUpId, auth)
+  );
+
+  const getContractsRequest = JSON.parse(
+    await GetContracts('20221213170333387004500', auth)
+  );
+
+  const signContractsRequest = JSON.parse(
+    await SignContracts('20221213170333387004500', auth)
+  );
+};
+testingFullFlow();
 ```
