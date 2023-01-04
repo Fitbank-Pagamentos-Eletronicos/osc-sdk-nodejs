@@ -1,8 +1,8 @@
-import { Contracts } from "./Contracts";
+import { ContractBody } from './ContractBody';
 
 export class GetContract {
   private customerServiceNumber: string;
-  private contracts: Contracts[];
+  private contracts: ContractBody[];
 
   public getCustomerServiceNumber(): string {
     return this.customerServiceNumber;
@@ -12,11 +12,11 @@ export class GetContract {
     this.customerServiceNumber = customerServiceNumber;
   }
 
-  public getContracts(): Contracts[] {
+  public getContracts(): ContractBody[] {
     return this.contracts;
   }
 
-  public setContracts(contracts: Contracts[]): void {
+  public setContracts(contracts: ContractBody[]): void {
     this.contracts = contracts;
   }
 }
