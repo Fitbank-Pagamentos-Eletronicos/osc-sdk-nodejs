@@ -33,8 +33,10 @@ import { ProposalsRequest } from '../../requests/ProposalsRequest';
 import { SignupMatchRequest } from '../../requests/SignupMatchRequest';
 import { LogData } from '../../domains/LogData';
 import { SignupMatch } from '../../domains/SignupMatch';
+import { Pipeline } from '../../domains/Pipeline';
+import moment from 'moment';
 
-const testingProposalRequest = async () => {
+test('the data is equal to GetContracts', async () => {
   const proposal = new Proposal();
 
   proposal.setMother('Fulana Mãe');
@@ -250,11 +252,23 @@ const testingProposalRequest = async () => {
   );
   const id = signUpMatchRequest.id;
 
-  setTimeout(() => {
-    ProposalsRequest(proposal, id, auth).then((res) => {
-      console.log(res);
+  const pipeline = new Pipeline();
+  pipeline.setId('id');
+  pipeline.setName('Michael Scott');
+  pipeline.setStatus('PROPOSAL_ANALISIS');
+  pipeline.setCpf(12557128309);
+  pipeline.setDateCreated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
+  pipeline.setLastUpdated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
+
+  return setTimeout(() => {
+    ProposalsRequest(proposal, id, auth).then(async (data) => {
+      await expect(JSON.parse(await data)).toMatchObject({
+        cpf: pipeline.getCpf(),
+        name: pipeline.getName(),
+        status: pipeline.getStatus(),
+        dateCreated: expect.any(String),
+        lastUpdated: expect.any(String)
+      });
     });
   }, 10000);
-};
-
-testingProposalRequest();
+});
