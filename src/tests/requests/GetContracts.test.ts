@@ -13,14 +13,11 @@ test('the data is equal to GetContracts', async () => {
 
   const getContract = new GetContract();
   getContract.setCustomerServiceNumber('20221213170333387004500');
-  const customerServiceNumber = JSON.stringify(
-    getContract.getCustomerServiceNumber()
-  );
 
   return setTimeout(() => {
     GetContracts('20221213170333387004500', auth).then((data) => {
       expect(JSON.parse(data)).toMatchObject({
-        customerServiceNumber: expect.any(String),
+        customerServiceNumber: getContract.getCustomerServiceNumber(),
         contracts: expect.any(Array)
       });
     });
