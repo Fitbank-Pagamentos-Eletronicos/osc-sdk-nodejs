@@ -1,3 +1,4 @@
+// @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
 import { SimpleSignUp } from '../domains/SimpleSignUp';
 import { Auth } from '../domains/Auth';
