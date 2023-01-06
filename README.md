@@ -106,7 +106,7 @@ The methods are on requests folder on the path `src/requests`. Are them:
 
 ## ☕ How to use
 
-- ### SignUp
+### :bookmark: SignUp
 
 #### Flowchart
 
@@ -150,7 +150,7 @@ const testingSignUP = async () => {
 testingSignUP();
 ```
 
-- ### SignUp and Proposal
+### :bookmark: SignUp and Proposal
 
 #### Flowchart
 
@@ -235,7 +235,7 @@ const testingProposal = async () => {
 testingProposal();
 ```
 
-- ### Pubsub
+### :bookmark: Pubsub
 
 #### Flowchart
 
@@ -277,7 +277,7 @@ const testingPubsub = async () => {
 testingPubsub();
 ```
 
-- ### Full Flow
+### :bookmark: Full Flow
 
 #### Flowchart
 
