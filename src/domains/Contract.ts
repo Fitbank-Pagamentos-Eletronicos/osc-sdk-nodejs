@@ -1,15 +1,15 @@
-import { LogData } from "./LogData";
+import { LogData } from './LogData';
 
 export class Contract {
-  private aceptedCheckSum: string[];
+  private acceptedCheckSum: string[];
   private logData: LogData;
 
-  public getAceptedCheckSum(): string[] {
-    return this.aceptedCheckSum;
+  public getAcceptedCheckSum(): string[] {
+    return this.acceptedCheckSum;
   }
 
-  public setAceptedCheckSum(aceptedCheckSum: string[]): void {
-    this.aceptedCheckSum = aceptedCheckSum;
+  public setAcceptedCheckSum(acceptedCheckSum: string[]): void {
+    this.acceptedCheckSum = acceptedCheckSum;
   }
 
   public getLogData(): LogData {

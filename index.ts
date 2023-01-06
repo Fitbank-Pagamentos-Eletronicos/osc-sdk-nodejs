@@ -2,7 +2,7 @@ import { OAuth } from './src/requests/OAuth';
 import { Scopes } from './src/domains/enums';
 import { Auth } from './src/domains/Auth';
 import moment from 'moment';
-import { AuthSucess } from './src/domains/AuthSucess';
+import { AuthSuccess } from './src/domains/AuthSuccess';
 import * as Collections from 'typescript-collections';
 
 export class OSC {
@@ -112,7 +112,7 @@ export class OSC {
 
   async getToken() {
     await this.auth();
-    const authSuccess = new AuthSucess();
+    const authSuccess = new AuthSuccess();
     if (
       this.#access_token === null ||
       this.#expire_at === null ||
@@ -130,7 +130,7 @@ export class OSC {
 
   // async newToken() {
   //   await this.auth();
-  //   const authSuccess = new AuthSucess();
+  //   const authSuccess = new AuthSuccess();
   //   if (authSuccess && authSuccess.getAccess_token()) {
   //     this.#expire_at = authSuccess.getExpire_at()
   //       ? authSuccess.getExpire_at()

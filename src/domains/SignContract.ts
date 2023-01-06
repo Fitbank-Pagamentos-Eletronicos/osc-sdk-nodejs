@@ -1,11 +1,11 @@
 export class SignContract {
-  private aceptedCheckSum: string[];
+  private acceptedCheckSum: string[];
 
-  public getAceptedCheckSum(): string[] {
-    return this.aceptedCheckSum;
+  public getAcceptedCheckSum(): string[] {
+    return this.acceptedCheckSum;
   }
 
-  public setAceptedCheckSum(aceptedCheckSum: string[]): void {
-    this.aceptedCheckSum = aceptedCheckSum;
+  public setAcceptedCheckSum(acceptedCheckSum: string[]): void {
+    this.acceptedCheckSum = acceptedCheckSum;
   }
 }

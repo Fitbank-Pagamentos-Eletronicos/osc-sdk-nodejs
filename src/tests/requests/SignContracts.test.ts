@@ -40,13 +40,13 @@ test('the data is equal to SignContracts', async () => {
   const checksum = getContractsRequest.contracts.map(
     (checksum: any) => checksum.checksum
   );
-  contract.setAceptedCheckSum(checksum);
+  contract.setAcceptedCheckSum(checksum);
 
   return setTimeout(() => {
     SignContracts(contract, '20221215124755537004100', auth).then(
       async (data) => {
         await expect(JSON.parse(await data)).toMatchObject({
-          aceptedCheckSum: expect.any(String)
+          acceptedCheckSum: expect.any(String)
         });
       }
     );
@@ -88,7 +88,7 @@ test('the data is already assigned', async () => {
   const checksum = getContractsRequest.contracts.map(
     (checksum: any) => checksum.checksum
   );
-  contract.setAceptedCheckSum(checksum);
+  contract.setAcceptedCheckSum(checksum);
 
   return setTimeout(() => {
     SignContracts(contract, '20221215124755537004100', auth).then(

@@ -1,4 +1,4 @@
-export class AuthSucess {
+export class AuthSuccess {
   private access_token: string;
   private expire_at: string;
 

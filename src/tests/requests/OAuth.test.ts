@@ -1,7 +1,7 @@
 import { OAuth } from '../../requests/OAuth';
 import { Auth } from '../../domains/Auth';
 import { Scopes } from '../../domains/enums';
-import { AuthSucess } from '../../domains/AuthSucess';
+import { AuthSuccess } from '../../domains/AuthSuccess';
 
 test('the data is equal to Auth', () => {
   const auth = new Auth();
@@ -11,7 +11,7 @@ test('the data is equal to Auth', () => {
   );
   auth.setScopes(Scopes.api_external);
 
-  const authSuccess = new AuthSucess();
+  const authSuccess = new AuthSuccess();
   authSuccess.setExpire_at(new Date().toString());
   authSuccess.setAccess_token('token');
 
