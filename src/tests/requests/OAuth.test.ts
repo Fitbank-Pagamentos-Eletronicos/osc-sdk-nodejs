@@ -15,11 +15,7 @@ test('the data is equal to Auth', () => {
   authSuccess.setExpire_at(new Date().toString());
   authSuccess.setAccess_token('token');
 
-  const serialized = JSON.stringify(authSuccess);
-  //expect(authSuccess.getAccess_token())
-  // expect(state.active.ID).toEqual(expect.any(String))
   return OAuth(auth).then((data) => {
-    console.log(JSON.parse(data));
     expect(JSON.parse(data)).toMatchObject({
       access_token: expect.any(String),
       expire_at: expect.any(String)
