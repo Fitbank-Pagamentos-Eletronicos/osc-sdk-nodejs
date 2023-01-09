@@ -43,10 +43,8 @@ import { DocumentResponse } from '../../domains/DocumentResponse';
 
 test('the data is equal to DocumentAnalysisRequest', async () => {
   const auth = new Auth();
-  auth.setClient_id('iuri.mendes--------bde4-84fb8eb9865e');
-  auth.setClient_secret(
-    '2e1995260d53d2b028a2a47553bd823042c589226e15d4994a466a97ce692271'
-  );
+  auth.setClient_id(process.env.client_id);
+  auth.setClient_secret(process.env.client_secret);
   auth.setScopes(Scopes.api_external);
 
   const proposal = new Proposal();
