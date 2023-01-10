@@ -10,6 +10,7 @@ declare global {
     interface ProcessEnv {
       auth_server_url: string;
       server_url: string;
+      pubsub_url: string;
       client_id: string;
       client_secret: string;
     }

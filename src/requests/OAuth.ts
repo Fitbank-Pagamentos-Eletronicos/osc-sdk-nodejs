@@ -2,6 +2,10 @@
 import fetch, { RequestInit, Headers } from 'node-fetch';
 import { Auth } from '../domains/Auth';
 import { Scopes } from '../domains/enums';
+import { resolve } from 'path';
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 export const OAuth = async (auth: Auth) => {
   const myHeaders = new Headers();
@@ -27,7 +31,7 @@ export const OAuth = async (auth: Auth) => {
   };
 
   const response = await fetch(
-    'https://auth.easycredito.com.br/client/auth',
+    `${process.env.auth_server_url}/auth`,
     requestOptions
   );
   return response.text();

@@ -40,7 +40,7 @@ export const SimpleSignUpRequest = async (
   };
 
   const response = await fetch(
-    'https://demo-api.easycredito.com.br/api/external//v2.1/process/simple_signup',
+    `${process.env.server_url}/v2.1/process/simple_signup`,
     requestOptions
   );
   return response.text();

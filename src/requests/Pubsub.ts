@@ -2,6 +2,10 @@
 import fetch, { RequestInit, Headers } from 'node-fetch';
 import { Auth } from '../domains/Auth';
 import { OAuth } from './OAuth';
+import { resolve } from 'path';
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 export const Pubsub = async (auth: Auth) => {
   const myHeaders = new Headers();
@@ -17,9 +21,8 @@ export const Pubsub = async (auth: Auth) => {
     headers: myHeaders,
     redirect: 'follow'
   };
-
   const response = await fetch(
-    'https://staging-api.easycredito.com.br/api/external/v2.1/pubsub',
+    `${process.env.pubsub_url}/pubsub`,
     requestOptions
   );
   return response.text();

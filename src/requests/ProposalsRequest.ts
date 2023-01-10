@@ -28,7 +28,7 @@ export const ProposalsRequest = async (
   };
 
   const response = await fetch(
-    `https://demo-api.easycredito.com.br/api/external/v2.1/process/proposal/${id}`,
+    `${process.env.server_url}/v2.1/process/proposal/${id}`,
     requestOptions
   );
   return response.text();

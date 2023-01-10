@@ -36,7 +36,7 @@ export const SignupMatchRequest = async (signUp: SignupMatch, auth: Auth) => {
   };
 
   const response = await fetch(
-    'https://demo-api.easycredito.com.br/api/external/v2.1/process/signup',
+    `${process.env.server_url}/v2.1/process/signup`,
     requestOptions
   );
   return response.text();
