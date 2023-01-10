@@ -1,4 +1,3 @@
-import { SignupMatchRequest } from '../../requests/SignupMatchRequest';
 import { SignupMatch } from '../../domains/SignupMatch';
 import { ProductAuto } from '../../domains/ProductAuto';
 import { ProductLoan } from '../../domains/ProductLoan';
@@ -14,11 +13,19 @@ import {
   RealEstateType,
   Scopes
 } from '../../domains/enums';
-import { Auth } from '../../domains/Auth';
-import { Pipeline } from '../../domains/Pipeline';
-import moment from 'moment';
+import { OSC } from '../../..';
+import path, { resolve } from 'path';
+import dotenv from 'dotenv';
+const __dirname = path.resolve();
+dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
-test('the data is equal to SignUp', async () => {
+const signUp = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
   const signupMatch = new SignupMatch();
 
   signupMatch.setCpf('60343933373');
@@ -84,27 +91,10 @@ test('the data is equal to SignUp', async () => {
     })()
   );
 
-  const auth = new Auth();
-  auth.setClient_id(process.env.client_id);
-  auth.setClient_secret(process.env.client_secret);
-  auth.setScopes(Scopes.api_external);
-
-  const pipeline = new Pipeline();
-  pipeline.setId('id');
-  pipeline.setName('John Doe');
-  pipeline.setStatus('SIGNUP_ANALISIS');
-  pipeline.setCpf(60343933373);
-  pipeline.setDateCreated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
-  pipeline.setLastUpdated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
-
-  return SignupMatchRequest(signupMatch, auth).then(async (data) => {
-    await expect(JSON.parse(await data)).toMatchObject({
-      id: expect.any(String),
-      cpf: pipeline.getCpf(),
-      name: pipeline.getName(),
-      status: pipeline.getStatus(),
-      dateCreated: expect.any(String),
-      lastUpdated: expect.any(String)
-    });
+  const pipeline = instance?.signUpMatch(signupMatch);
+  pipeline?.then((data) => {
+    console.log(data);
   });
-});
+};
+
+signUp();

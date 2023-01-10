@@ -133,21 +133,21 @@ sequenceDiagram
 #### Codification
 
 ```typescript
-const testingSignUP = async () => {
-  const auth = new Auth();
-
-  const signUP = new SignUpMatch();
-
-  osc.createInstance(
-    auth.getClient_id(),
-    auth.getClient_secret(),
-    auth.getScopes(),
-    signUP.getName()
+const testingSignUp = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
   );
-
-  osc.auth();
+  const signupMatch = new SignupMatch();
+  const pipeline = instance?.signUpMatch(signupMatch);
+  pipeline?.then((data) => {
+    console.log(data);
+  });
 };
-testingSignUP();
+
+testingSignUp();
 ```
 
 ### :bookmark: SignUp and Proposal

@@ -2,9 +2,11 @@
 import fetch, { RequestInit, Headers } from 'node-fetch';
 import { Auth } from '../domains/Auth';
 import { Scopes } from '../domains/enums';
-import { resolve } from 'path';
+import path, { resolve } from 'path';
 import dotenv from 'dotenv';
-import path from 'path';
+
+const __dirname = path.resolve();
+
 dotenv.config({ path: resolve(__dirname, '../../.env') });
 
 export const OAuth = async (auth: Auth) => {

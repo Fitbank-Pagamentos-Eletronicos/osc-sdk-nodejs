@@ -4,6 +4,13 @@ import { Auth } from './src/domains/Auth';
 import moment from 'moment';
 import { AuthSuccess } from './src/domains/AuthSuccess';
 import * as Collections from 'typescript-collections';
+import { SignupMatch } from './src/domains/SignupMatch';
+import { SignupMatchRequest } from './src/requests/SignupMatchRequest';
+import { resolve } from 'path';
+import dotenv from 'dotenv';
+import path from 'path';
+const __dirname = path.resolve();
+dotenv.config({ path: resolve(__dirname, '.env') });
 
 export class OSC {
   static #instances = new Collections.Dictionary<String, OSC>();
@@ -126,6 +133,15 @@ export class OSC {
       // return authSuccess;
       return this.#access_token;
     }
+  }
+
+  async signUpMatch(signUp: SignupMatch) {
+    const auth = new Auth();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+    const signupMatchRequest = await SignupMatchRequest(signUp, auth);
+    return signupMatchRequest;
   }
 
   // async newToken() {
