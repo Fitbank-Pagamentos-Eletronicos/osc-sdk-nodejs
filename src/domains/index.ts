@@ -1,7 +1,11 @@
+export { AddressSimpleBody } from './AddressSimpleBody';
 export { Authorization } from './Authorization';
 export { Bank } from './Bank';
+export { BusinessSimpleBody } from './BusinessSimpleBody';
+export { IdentifySimpleBody } from './IdentifySimpleBody';
 export { LogData } from './LogData';
 export { ProductAuto } from './ProductAuto';
+export { ProductBankAccount } from './ProductBankAccount';
 export { ProductCaas } from './ProductCaas';
 export { ProductCard } from './ProductCard';
 export { ProductHome } from './ProductHome';
@@ -9,5 +13,6 @@ export { ProductLoan } from './ProductLoan';
 export { Products } from './Products';
 export { ProductWorkingCapital } from './ProductWorkingCapital';
 export { Proposal } from './Proposal';
+export { ProposalBankAccount } from './ProposalBankAccount';
 export { SignupMatch } from './SignupMatch';
 export { SimpleSignUp } from './SimpleSignUp';

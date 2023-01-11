@@ -1,8 +1,10 @@
 import { Gender, Nationality, State, RelationshipStatus } from './enums';
-import { Identity } from './Identity';
-import { Address } from './Address';
-import { Business } from './Business';
-import { ProductBankAccount } from './ProductBankAccount';
+import {
+  IdentifySimpleBody,
+  AddressSimpleBody,
+  BusinessSimpleBody,
+  ProductBankAccount
+} from './';
 
 export class ProposalBankAccount {
   private mother: string;
@@ -10,9 +12,9 @@ export class ProposalBankAccount {
   private nationality: Nationality;
   private hometownState: State;
   private relationshipStatus: RelationshipStatus;
-  private identity: Identity;
-  private address: Address;
-  private business: Business;
+  private identity: IdentifySimpleBody;
+  private address: AddressSimpleBody;
+  private business: BusinessSimpleBody;
   private products: ProductBankAccount[];
 
   public getMother(): string {
@@ -55,27 +57,27 @@ export class ProposalBankAccount {
     this.relationshipStatus = relationshipStatus;
   }
 
-  public getIdentity(): Identity {
+  public getIdentity(): IdentifySimpleBody {
     return this.identity;
   }
 
-  public setIdentity(identity: Identity): void {
+  public setIdentity(identity: IdentifySimpleBody): void {
     this.identity = identity;
   }
 
-  public getAddress(): Address {
+  public getAddress(): AddressSimpleBody {
     return this.address;
   }
 
-  public setAddress(address: Address): void {
+  public setAddress(address: AddressSimpleBody): void {
     this.address = address;
   }
 
-  public getBusiness(): Business {
+  public getBusiness(): BusinessSimpleBody {
     return this.business;
   }
 
-  public setBusiness(business: Business): void {
+  public setBusiness(business: BusinessSimpleBody): void {
     this.business = business;
   }
 
