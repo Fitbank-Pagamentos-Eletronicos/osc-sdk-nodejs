@@ -1,6 +1,6 @@
-import { Scopes } from "./enums";
+import { Scopes } from './enums';
 
-export class Auth {
+export class Authorization {
   private client_id: string;
   private client_secret: string;
   private scopes: Scopes;

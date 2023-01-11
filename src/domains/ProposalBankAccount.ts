@@ -1,11 +1,8 @@
-import { Gender, Nationality, State, RelationshipStatus } from "./enums";
-import { Identity } from "./Identity";
-import { Address } from "./Address";
-import { Vehicle } from "./Vehicle";
-import { ConsumerUnit } from "./ConsumerUnit";
-import { Business } from "./Business";
-import { Bank } from "./Bank";
-import { ProductBankAccount } from "./ProductBankAccount";
+import { Gender, Nationality, State, RelationshipStatus } from './enums';
+import { Identity } from './Identity';
+import { Address } from './Address';
+import { Business } from './Business';
+import { ProductBankAccount } from './ProductBankAccount';
 
 export class ProposalBankAccount {
   private mother: string;
@@ -16,7 +13,7 @@ export class ProposalBankAccount {
   private identity: Identity;
   private address: Address;
   private business: Business;
-  private products: ProductBankAccount;
+  private products: ProductBankAccount[];
 
   public getMother(): string {
     return this.mother;
@@ -82,11 +79,11 @@ export class ProposalBankAccount {
     this.business = business;
   }
 
-  public getProducts(): ProductBankAccount {
+  public getProducts(): ProductBankAccount[] {
     return this.products;
   }
 
-  public setProducts(products: ProductBankAccount): void {
+  public setProducts(products: ProductBankAccount[]): void {
     this.products = products;
   }
 }

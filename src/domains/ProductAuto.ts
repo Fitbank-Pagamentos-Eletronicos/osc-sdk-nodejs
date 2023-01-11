@@ -1,5 +1,4 @@
-import { ProductType } from "./enums";
-import { Products } from "./Products";
+import { Products } from './Products';
 
 export class ProductAuto extends Products {
   private value: number;

@@ -1,6 +1,5 @@
-import { Education, Occupation, Banks } from './enums';
-import { Products } from './Products';
-import { LogData } from './LogData';
+import { Banks } from './enums';
+import { LogData, Products } from './';
 import moment from 'moment';
 import { validateEmail, validateCellPhone } from '../utils/Validations';
 
