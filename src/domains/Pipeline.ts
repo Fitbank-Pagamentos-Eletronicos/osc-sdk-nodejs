@@ -1,3 +1,6 @@
+import { Matches } from './Matches';
+import { Proposals } from './Proposals';
+
 export class Pipeline {
   private id: string;
   private status: string;
@@ -5,6 +8,8 @@ export class Pipeline {
   private name: string;
   private dateCreated: string;
   private lastUpdated: string;
+  private matches: Matches[];
+  private proposals: [Proposals];
 
   public getId(): string {
     return this.id;
@@ -52,5 +57,21 @@ export class Pipeline {
 
   public setLastUpdated(lastUpdated: string): void {
     this.lastUpdated = lastUpdated;
+  }
+
+  public getMatches(): Matches[] {
+    return this.matches;
+  }
+
+  public setMatches(matches: Matches[]): void {
+    this.matches = matches;
+  }
+
+  public getProposals(): [Proposals] {
+    return this.proposals;
+  }
+
+  public setProposals(proposals: [Proposals]): void {
+    this.proposals = proposals;
   }
 }
