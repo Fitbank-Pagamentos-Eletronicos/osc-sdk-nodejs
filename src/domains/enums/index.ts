@@ -19,6 +19,7 @@ export { Nationality } from './Nationality';
 export { Network } from './Network';
 export { Occupation } from './Occupation';
 export { PendentDocuments } from './PendentDocuments';
+export { PipelineStatus } from './PipelineStatus';
 export { ProductType } from './ProductType';
 export { Profession } from './Profession';
 export { RealEstateType } from './RealEstateType';

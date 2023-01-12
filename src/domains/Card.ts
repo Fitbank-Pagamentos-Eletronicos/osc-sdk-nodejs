@@ -1,5 +1,5 @@
-import { CreditStatus, Network, PendentDocuments, ProductType } from "./enums";
-import { Proposals } from "./Proposals";
+import { Network } from './enums';
+import { Proposals } from './';
 
 export class Card extends Proposals {
   private international: boolean;

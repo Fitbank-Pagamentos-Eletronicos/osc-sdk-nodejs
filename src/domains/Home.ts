@@ -1,5 +1,4 @@
-import { CreditStatus, PendentDocuments, ProductType } from "./enums";
-import { Proposals } from "./Proposals";
+import { Proposals } from './';
 
 export class Home extends Proposals {
   private value: number;

@@ -1,53 +1,103 @@
-import { Auto } from './Auto';
-import { BankAccount } from './BankAccount';
-import { Card } from './Card';
-import { Home } from './Home';
-import { Loan } from './Loan';
+import { ProductType, CreditStatus, PendentDocuments } from './enums';
 
 export class Proposals {
-  private loan: Loan;
-  private card: Card;
-  private auto: Auto;
-  private home: Home;
-  private bankAccount: BankAccount;
+  private customerServiceNumber: string;
+  private type: ProductType;
+  private product: string;
+  private productId: string;
+  private hasDocuments: boolean;
+  private hasContracts: boolean;
+  private logo: string;
+  private lastStatus: CreditStatus;
+  private pendentDocuments: PendentDocuments;
+  private dateCreated: string;
+  private lastUpdated: string;
 
-  public getLoan(): Loan {
-    return this.loan;
+  public getCustomerServiceNumber(): string {
+    return this.customerServiceNumber;
   }
 
-  public setLoan(loan: Loan): void {
-    this.loan = loan;
+  public setCustomerServiceNumber(customerServiceNumber: string): void {
+    this.customerServiceNumber = customerServiceNumber;
   }
 
-  public getCard(): Card {
-    return this.card;
+  public getType(): ProductType {
+    return this.type;
   }
 
-  public setCard(card: Card): void {
-    this.card = card;
+  public setType(type: ProductType): void {
+    this.type = type;
   }
 
-  public getAuto(): Auto {
-    return this.auto;
+  public getProduct(): string {
+    return this.product;
   }
 
-  public setAuto(auto: Auto): void {
-    this.auto = auto;
+  public setProduct(product: string): void {
+    this.product = product;
   }
 
-  public getHome(): Home {
-    return this.home;
+  public getProductId(): string {
+    return this.productId;
   }
 
-  public setHome(home: Home): void {
-    this.home = home;
+  public setProductId(productId: string): void {
+    this.productId = productId;
   }
 
-  public getBankAccount(): BankAccount {
-    return this.bankAccount;
+  public isHasDocuments(): boolean {
+    return this.hasDocuments;
   }
 
-  public setBankAccount(bankAccount: BankAccount): void {
-    this.bankAccount = bankAccount;
+  public setHasDocuments(hasDocuments: boolean): void {
+    this.hasDocuments = hasDocuments;
+  }
+
+  public isHasContracts(): boolean {
+    return this.hasContracts;
+  }
+
+  public setHasContracts(hasContracts: boolean): void {
+    this.hasContracts = hasContracts;
+  }
+
+  public getLogo(): string {
+    return this.logo;
+  }
+
+  public setLogo(logo: string): void {
+    this.logo = logo;
+  }
+
+  public getLastStatus(): CreditStatus {
+    return this.lastStatus;
+  }
+
+  public setLastStatus(lastStatus: CreditStatus): void {
+    this.lastStatus = lastStatus;
+  }
+
+  public getPendentDocuments(): PendentDocuments {
+    return this.pendentDocuments;
+  }
+
+  public setPendentDocuments(pendentDocuments: PendentDocuments): void {
+    this.pendentDocuments = pendentDocuments;
+  }
+
+  public getDateCreated(): string {
+    return this.dateCreated;
+  }
+
+  public setDateCreated(dateCreated: string): void {
+    this.dateCreated = dateCreated;
+  }
+
+  public getLastUpdated(): string {
+    return this.lastUpdated;
+  }
+
+  public setLastUpdated(lastUpdated: string): void {
+    this.lastUpdated = lastUpdated;
   }
 }

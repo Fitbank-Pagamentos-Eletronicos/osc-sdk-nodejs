@@ -1,8 +1,8 @@
-import { Vehicle } from "./Vehicle";
+import { VehicleBody } from './';
 
 export class Fipe {
   private lastUpdate: string;
-  private vehicle: Vehicle;
+  private vehicle: VehicleBody[];
 
   public getLastUpdate(): string {
     return this.lastUpdate;
@@ -12,11 +12,11 @@ export class Fipe {
     this.lastUpdate = lastUpdate;
   }
 
-  public getVehicle(): Vehicle {
+  public getVehicle(): VehicleBody[] {
     return this.vehicle;
   }
 
-  public setVehicle(vehicle: Vehicle): void {
+  public setVehicle(vehicle: VehicleBody[]): void {
     this.vehicle = vehicle;
   }
 }
