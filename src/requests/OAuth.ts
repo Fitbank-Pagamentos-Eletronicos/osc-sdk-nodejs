@@ -1,6 +1,6 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { Auth } from '../domains/Auth';
+import { Authorization } from '../domains/Authorization';
 import { Scopes } from '../domains/enums';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
@@ -9,7 +9,7 @@ const __dirname = path.resolve();
 
 dotenv.config({ path: resolve(__dirname, '../../.env') });
 
-export const OAuth = async (auth: Auth) => {
+export const OAuth = async (auth: Authorization) => {
   const myHeaders = new Headers();
 
   auth.setScopes(Scopes.api_external);

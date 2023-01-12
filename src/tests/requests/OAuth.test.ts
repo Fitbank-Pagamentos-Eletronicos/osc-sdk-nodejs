@@ -1,10 +1,10 @@
 import { OAuth } from '../../requests/OAuth';
-import { Auth } from '../../domains/Auth';
+import { Authorization } from '../../domains/Authorization';
 import { Scopes } from '../../domains/enums';
 import { AuthSuccess } from '../../domains/AuthSuccess';
 
 test('the data is equal to Auth', () => {
-  const auth = new Auth();
+  const auth = new Authorization();
   auth.setClient_id(process.env.client_id);
   auth.setClient_secret(process.env.client_secret);
   auth.setScopes(Scopes.api_external);
