@@ -1,4 +1,4 @@
-import { Products } from './Products';
+import { Products } from './';
 
 export class ProductLoan extends Products {
   private value: number;

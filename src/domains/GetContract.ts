@@ -1,4 +1,4 @@
-import { ContractBody } from './ContractBody';
+import { ContractBody } from './';
 
 export class GetContract {
   private customerServiceNumber: string;

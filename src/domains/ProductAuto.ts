@@ -1,4 +1,4 @@
-import { Products } from './Products';
+import { Products } from './';
 
 export class ProductAuto extends Products {
   private value: number;

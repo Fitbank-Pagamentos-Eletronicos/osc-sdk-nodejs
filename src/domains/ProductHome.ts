@@ -1,5 +1,5 @@
-import { ProductType, RealEstateType } from "./enums";
-import { Products } from "./Products";
+import { ProductType, RealEstateType } from './enums';
+import { Products } from './';
 
 export class ProductHome extends Products {
   private value: number;

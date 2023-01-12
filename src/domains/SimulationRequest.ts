@@ -1,19 +1,28 @@
-import { Products } from './';
+import { ProductType } from './enums';
 
-export class ProductCaas extends Products {
-  private releaseDate: string;
+export class SimulationRequest {
+  private type: ProductType;
+  private releasedDate: string;
   private dueDate: string;
   private installments: number;
-  private monthly_tax: number;
+  private monthly_Tax: number;
   private cadValue: number;
   private value: number;
 
-  public getReleaseDate(): string {
-    return this.releaseDate;
+  public getType(): ProductType {
+    return this.type;
   }
 
-  public setReleaseDate(releaseDate: string): void {
-    this.releaseDate = releaseDate;
+  public setType(type: ProductType): void {
+    this.type = type;
+  }
+
+  public getReleasedDate(): string {
+    return this.releasedDate;
+  }
+
+  public setReleasedDate(releasedDate: string): void {
+    this.releasedDate = releasedDate;
   }
 
   public getDueDate(): string {
@@ -32,12 +41,12 @@ export class ProductCaas extends Products {
     this.installments = installments;
   }
 
-  public getMonthly_tax(): number {
-    return this.monthly_tax;
+  public getMonthly_Tax(): number {
+    return this.monthly_Tax;
   }
 
-  public setMonthly_tax(monthly_tax: number): void {
-    this.monthly_tax = monthly_tax;
+  public setMonthly_Tax(monthly_Tax: number): void {
+    this.monthly_Tax = monthly_Tax;
   }
 
   public getCadValue(): number {
