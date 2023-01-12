@@ -1,4 +1,4 @@
-import { ErrorField } from "./ErrorField";
+import { ErrorField } from './';
 
 export class ErrorFields {
   private code: string;

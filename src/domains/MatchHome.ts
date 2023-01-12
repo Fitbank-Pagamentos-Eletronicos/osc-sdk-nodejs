@@ -1,6 +1,6 @@
-import { Match } from "./Match";
+import { Matches } from './';
 
-export class MatchHome extends Match {
+export class MatchHome extends Matches {
   private minValue: number;
   private maxValue: number;
   private minInstallment: number;

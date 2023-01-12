@@ -1,5 +1,4 @@
-import { PrevisaoDeParcela } from "./PrevisaoDeParcela";
-import { DetalhamentoDaCET } from "./DetalhamentoDaCET";
+import { DetalhamentoDaCET } from './DetalhamentoDaCET';
 
 export class InstallmentsSimulation {
   private xmlnsd5p1: string;
@@ -17,7 +16,6 @@ export class InstallmentsSimulation {
   private dataDeVencimentoInicial: string;
   private dataDeVencimentoFinal: string;
   private numeroDeParcelas: string;
-  private parcelas: PrevisaoDeParcela;
   private totalDeAmortizacao: string;
   private totalDaTaxaDeServico: string;
   private totalDoSeguro: string;
@@ -144,14 +142,6 @@ export class InstallmentsSimulation {
 
   public setNumeroDeParcelas(numeroDeParcelas: string): void {
     this.numeroDeParcelas = numeroDeParcelas;
-  }
-
-  public getParcelas(): PrevisaoDeParcela {
-    return this.parcelas;
-  }
-
-  public setParcelas(parcelas: PrevisaoDeParcela): void {
-    this.parcelas = parcelas;
   }
 
   public getTotalDeAmortizacao(): string {

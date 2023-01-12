@@ -1,4 +1,4 @@
-import { LogData } from './LogData';
+import { LogData } from './';
 import moment from 'moment';
 import { validateEmail, validateCellPhone } from '../utils/Validations';
 

@@ -5,14 +5,16 @@ import {
   Education,
   RelationshipStatus
 } from './enums';
-import { Identity } from './Identity';
-import { Address } from './Address';
-import { Vehicle } from './Vehicle';
-import { ConsumerUnit } from './ConsumerUnit';
-import { Business } from './Business';
-import { Bank } from './Bank';
-import { Reference } from './Reference';
-import { Products } from './Products';
+import {
+  Products,
+  Identity,
+  Address,
+  Vehicle,
+  ConsumerUnit,
+  Business,
+  Bank,
+  Reference
+} from './';
 
 export class Proposal {
   private mother: string;

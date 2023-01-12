@@ -1,11 +1,13 @@
-export class ProductBankAccount {
-  private type: string;
+import { ProductType } from './enums';
 
-  public getType(): string {
+export class ProductBankAccount {
+  private type: ProductType;
+
+  public getType(): ProductType {
     return this.type;
   }
 
-  public setType(type: string): void {
+  public setType(type: ProductType): void {
     this.type = type;
   }
 }

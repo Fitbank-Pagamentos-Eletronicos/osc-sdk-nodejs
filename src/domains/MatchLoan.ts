@@ -1,6 +1,6 @@
-import { Match } from "./Match";
+import { Matches } from './';
 
-export class MatchLoan extends Match {
+export class MatchLoan extends Matches {
   private minValue: number;
   private maxValue: number;
   private minInstallment: number;

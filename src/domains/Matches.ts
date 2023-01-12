@@ -1,43 +1,29 @@
-import { MatchAuto } from './MatchAuto';
-import { MatchCard } from './MatchCard';
-import { MatchHome } from './MatchHome';
-import { MatchLoan } from './MatchLoan';
-
 export class Matches {
-  private matchLoan: MatchLoan;
-  private matchCard: MatchCard;
-  private matchAuto: MatchAuto;
-  private matchHome: MatchHome;
+  private productId: number;
+  private name: string;
+  private logo: string;
 
-  public getMatchLoan(): MatchLoan {
-    return this.matchLoan;
+  public getProductId(): number {
+    return this.productId;
   }
 
-  public setMatchLoan(matchLoan: MatchLoan): void {
-    this.matchLoan = matchLoan;
+  public setProductId(productId: number): void {
+    this.productId = productId;
   }
 
-  public getMatchCard(): MatchCard {
-    return this.matchCard;
+  public getName(): string {
+    return this.name;
   }
 
-  public setMatchCard(matchCard: MatchCard): void {
-    this.matchCard = matchCard;
+  public setName(name: string): void {
+    this.name = name;
   }
 
-  public getMatchAuto(): MatchAuto {
-    return this.matchAuto;
+  public getLogo(): string {
+    return this.logo;
   }
 
-  public setMatchAuto(matchAuto: MatchAuto): void {
-    this.matchAuto = matchAuto;
-  }
-
-  public getMatchHome(): MatchHome {
-    return this.matchHome;
-  }
-
-  public setMatchHome(matchHome: MatchHome): void {
-    this.matchHome = matchHome;
+  public setLogo(logo: string): void {
+    this.logo = logo;
   }
 }

@@ -1,7 +1,7 @@
-import { Network } from "./enums";
-import { Match } from "./Match";
+import { Network } from './enums';
+import { Matches } from './';
 
-export class MatchCard extends Match {
+export class MatchCard extends Matches {
   private annuity: number;
   private network: Network;
 

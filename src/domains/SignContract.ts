@@ -1,11 +1,12 @@
+import { AcceptedCheckSumBody } from './';
 export class SignContract {
-  private acceptedCheckSum: string[];
+  private acceptedCheckSum: AcceptedCheckSumBody[];
 
-  public getAcceptedCheckSum(): string[] {
+  public getAcceptedCheckSum(): AcceptedCheckSumBody[] {
     return this.acceptedCheckSum;
   }
 
-  public setAcceptedCheckSum(acceptedCheckSum: string[]): void {
+  public setAcceptedCheckSum(acceptedCheckSum: AcceptedCheckSumBody[]): void {
     this.acceptedCheckSum = acceptedCheckSum;
   }
 }

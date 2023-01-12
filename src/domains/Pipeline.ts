@@ -9,7 +9,7 @@ export class Pipeline {
   private dateCreated: string;
   private lastUpdated: string;
   private matches: Matches[];
-  private proposals: [Proposals];
+  private proposals: Proposals[];
 
   public getId(): string {
     return this.id;
@@ -67,11 +67,11 @@ export class Pipeline {
     this.matches = matches;
   }
 
-  public getProposals(): [Proposals] {
+  public getProposals(): Proposals[] {
     return this.proposals;
   }
 
-  public setProposals(proposals: [Proposals]): void {
+  public setProposals(proposals: Proposals[]): void {
     this.proposals = proposals;
   }
 }
