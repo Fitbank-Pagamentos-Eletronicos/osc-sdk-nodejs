@@ -1,7 +1,7 @@
 import { Authorization } from '../../domains/Authorization';
 import { Scopes } from '../../domains/enums';
 
-test('Auth Serialize + Deserialize', () => {
+test('Authorization Serialize + Deserialize', () => {
   const authTest = new Authorization();
   authTest.setClient_id('4');
   authTest.setClient_secret('password');

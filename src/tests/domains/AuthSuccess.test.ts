@@ -1,6 +1,6 @@
 import { AuthSuccess } from '../../domains';
 
-test('Auth Serialize + Deserialize', () => {
+test('AuthSuccess Serialize + Deserialize', () => {
   const authSuccess = new AuthSuccess();
   authSuccess.setAccess_token('token');
   authSuccess.setExpire_at('2022-10-22T14:10:20.123Z');
