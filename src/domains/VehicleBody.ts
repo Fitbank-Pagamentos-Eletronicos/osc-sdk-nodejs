@@ -2,7 +2,7 @@ export class VehicleBody {
   private vehicleBrand: string;
   private vehicleModel: string;
   private codeFipe: string;
-  private vehicleFipeValeu: string;
+  private vehicleFipeValue: string;
   private vehicleType: string;
   private vehicleYear: string;
 
@@ -30,12 +30,12 @@ export class VehicleBody {
     this.codeFipe = codeFipe;
   }
 
-  public getVehicleFipeValeu(): string {
-    return this.vehicleFipeValeu;
+  public getVehicleFipeValue(): string {
+    return this.vehicleFipeValue;
   }
 
-  public setVehicleFipeValeu(vehicleFipeValeu: string): void {
-    this.vehicleFipeValeu = vehicleFipeValeu;
+  public setVehicleFipeValue(vehicleFipeValue: string): void {
+    this.vehicleFipeValue = vehicleFipeValue;
   }
 
   public getVehicleType(): string {

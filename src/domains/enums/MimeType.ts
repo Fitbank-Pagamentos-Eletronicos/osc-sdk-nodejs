@@ -1,5 +1,5 @@
 export enum MimeType {
-  IMAGE_JPEG = 'image/jpeg',
-  IMAGE_PNG = 'image/png',
-  APPLICATION_PDF = 'application/pdf'
+  'image/jpeg' = 'image/jpeg',
+  'image/png' = 'image/png',
+  'application/pdf' = 'application/pdf'
 }

@@ -1,6 +1,6 @@
 import { OAuth } from './src/requests/OAuth';
 import { Scopes } from './src/domains/enums';
-import { Auth } from './src/domains/Auth';
+import { Authorization } from './src/domains/';
 import moment from 'moment';
 import { AuthSuccess } from './src/domains/AuthSuccess';
 import * as Collections from 'typescript-collections';
@@ -109,7 +109,7 @@ export class OSC {
   }
 
   async auth() {
-    const auth = new Auth();
+    const auth = new Authorization();
     auth.setClient_id(this.client_id);
     auth.setClient_secret(this.client_secret);
     const oAuth = JSON.parse(await OAuth(auth));
@@ -136,7 +136,7 @@ export class OSC {
   }
 
   async signUpMatch(signUp: SignupMatch) {
-    const auth = new Auth();
+    const auth = new Authorization();
     auth.setClient_id(this.client_id);
     auth.setClient_secret(this.client_secret);
     auth.setScopes(Scopes.api_external);
