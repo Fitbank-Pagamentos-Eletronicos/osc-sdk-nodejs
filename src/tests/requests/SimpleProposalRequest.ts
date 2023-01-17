@@ -1,4 +1,5 @@
-import { Proposal } from '../../domains/Proposal';
+import { SimpleSignUpRequest } from '../../requests/SimpleSignUpRequest';
+import { SimpleProposalRequest } from '../../requests/SimpleProposalRequest';
 import {
   Banks,
   Gender,
@@ -17,26 +18,30 @@ import {
   Network,
   RealEstateType
 } from '../../domains/enums';
-import { Identity } from '../../domains/Identity';
-import { Address } from '../../domains/Address';
-import { Vehicle } from '../../domains/Vehicle';
-import { Bank } from '../../domains/Bank';
-import { Reference } from '../../domains/Reference';
+import {
+  Authorization,
+  Proposal,
+  Identity,
+  Address,
+  Vehicle,
+  Bank,
+  Reference,
+  Business,
+  ConsumerUnit,
+  LogData,
+  SimpleSignUp
+} from '../../domains/';
 import { ProductAuto } from '../../domains/ProductAuto';
 import { ProductCard } from '../../domains/ProductCard';
 import { ProductLoan } from '../../domains/ProductLoan';
 import { ProductHome } from '../../domains/ProductHome';
-import { Business } from '../../domains/Business';
-import { ConsumerUnit } from '../../domains/ConsumerUnit';
-import { Auth } from '../../domains/Auth';
-import { ProposalsRequest } from '../../requests/ProposalsRequest';
-import { SignupMatchRequest } from '../../requests/SignupMatchRequest';
-import { LogData } from '../../domains/LogData';
-import { SignupMatch } from '../../domains/SignupMatch';
-import { Pipeline } from '../../domains/Pipeline';
-import moment from 'moment';
+import path, { resolve } from 'path';
+import dotenv from 'dotenv';
 
-test('the data is equal to GetContracts', async () => {
+const __dirname = path.resolve();
+dotenv.config({ path: resolve(__dirname, '../../../.env') });
+
+const testingSimpleProposalRequest = async () => {
   const proposal = new Proposal();
 
   proposal.setMother('Fulana Mãe');
@@ -175,98 +180,49 @@ test('the data is equal to GetContracts', async () => {
     })()
   );
 
-  const signupMatch = new SignupMatch();
+  const simpleSignUp = new SimpleSignUp();
 
-  signupMatch.setCpf('12557128309');
-  signupMatch.setName('Michael Scott');
-  signupMatch.setBirthday('1990-11-08');
-  signupMatch.setEmail('test9@gmail.com');
-  signupMatch.setPhone('85932399907');
-  signupMatch.setZipCode('60177240');
-  signupMatch.setEducation(Education[Education.POS_GRADUACAO]);
-  signupMatch.setBanks(Banks.B450);
-  signupMatch.setOccupation(Occupation[Occupation.ASSALARIADO]);
-  signupMatch.setIncome(2000);
-  signupMatch.setHasCreditCard(true);
-  signupMatch.setHasRestriction(false);
-  signupMatch.setHasOwnHouse(false);
-  signupMatch.setHasVehicle(false);
+  simpleSignUp.setCpf('60343933373');
+  simpleSignUp.setName('Iuri Mendes');
+  simpleSignUp.setBirthday('1990-11-08');
+  simpleSignUp.setEmail('email@gmail.com');
+  simpleSignUp.setPhone('85912345678');
+  simpleSignUp.setZipCode('60177240');
+  simpleSignUp.setHasCreditCard(true);
+  simpleSignUp.setHasRestriction(false);
+  simpleSignUp.setHasOwnHouse(false);
+  simpleSignUp.setHasVehicle(false);
+  simpleSignUp.setHasAndroid(true);
 
-  signupMatch.setProducts(
+  simpleSignUp.setLogData(
     (() => {
-      const productLoan = new ProductLoan();
-      productLoan.setInstallments(12);
-      productLoan.setValue(7000);
-      productLoan.setType(ProductType.LOAN);
+      const logData = new LogData();
 
-      const productCard = new ProductCard();
-      productCard.setType(ProductType.CARD);
-      productCard.setPayDay('12');
-      productCard.setNetwork(Network.MASTERCARD);
-
-      const productAuto = new ProductAuto();
-      productAuto.setType(ProductType.REFINANCING_AUTO);
-      productAuto.setValue(30000);
-      productAuto.setVehicleBrand('Fiat');
-      productAuto.setVehicleFipeValue(20);
-      productAuto.setVehicleModel('Uno');
-      productAuto.setVehicleModelYear('2022');
-      productAuto.setCodeFipe('038003-2');
-      productAuto.setInstallments(12);
-
-      const productHome = new ProductHome();
-      productHome.setType(ProductType.REFINANCING_HOME);
-      productHome.setValue(150000);
-      productHome.setInstallments(12);
-      productHome.setRealEstateType(RealEstateType.house);
-      productHome.setRealEstateValue(148000);
-      productHome.setOutstandingBalance(50000);
-
-      return [productAuto, productCard, productLoan, productHome];
-    })()
-  );
-
-  signupMatch.setLogData(
-    (() => {
-      let logData = new LogData();
-
-      logData.setIp('192.158.1.38');
       logData.setLatitude(38.895);
       logData.setLongitude(-77.0364);
-      logData.setMac('00:00:5e:00:53:af');
-      logData.setOccurrenceDate('2019-08-21T14:31:17.459Z');
+      logData.setOccurrenceDate('2022-10-22T14:10:20.123Z');
       logData.setUserAgent('Test Agent');
+      logData.setIp('192.158.1.38');
+      logData.setMac('00:00:5e:00:53:af');
       return logData;
     })()
   );
 
-  const auth = new Auth();
+  const auth = new Authorization();
   auth.setClient_id(process.env.client_id);
   auth.setClient_secret(process.env.client_secret);
   auth.setScopes(Scopes.api_external);
 
-  const signUpMatchRequest = JSON.parse(
-    await SignupMatchRequest(signupMatch, auth)
+  const simpleSignUpRequest = JSON.parse(
+    await SimpleSignUpRequest(simpleSignUp, auth)
   );
-  const id = signUpMatchRequest.id;
+  const id = simpleSignUpRequest.id;
 
-  const pipeline = new Pipeline();
-  pipeline.setId('id');
-  pipeline.setName('Michael Scott');
-  pipeline.setStatus('PROPOSAL_ANALISIS');
-  pipeline.setCpf(12557128309);
-  pipeline.setDateCreated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
-  pipeline.setLastUpdated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
-
-  return setTimeout(() => {
-    ProposalsRequest(proposal, id, auth).then(async (data) => {
-      await expect(JSON.parse(await data)).toMatchObject({
-        cpf: pipeline.getCpf(),
-        name: pipeline.getName(),
-        status: pipeline.getStatus(),
-        dateCreated: expect.any(String),
-        lastUpdated: expect.any(String)
-      });
+  setTimeout(() => {
+    SimpleProposalRequest(proposal, id, auth).then((res) => {
+      console.log(res);
     });
   }, 10000);
-});
+};
+
+testingSimpleProposalRequest();

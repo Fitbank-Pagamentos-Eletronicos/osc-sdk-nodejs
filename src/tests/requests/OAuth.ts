@@ -3,6 +3,7 @@ import { Authorization } from '../../domains/';
 import { Scopes } from '../../domains/enums';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
+
 const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
