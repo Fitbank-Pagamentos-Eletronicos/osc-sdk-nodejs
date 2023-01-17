@@ -1,13 +1,9 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { Auth } from '../domains/Auth';
+import { Authorization } from '../domains/';
 import { OAuth } from './OAuth';
-import { resolve } from 'path';
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: resolve(__dirname, '../../.env') });
 
-export const Pubsub = async (auth: Auth) => {
+export const Pubsub = async (auth: Authorization) => {
   const myHeaders = new Headers();
 
   const oAuth = JSON.parse(await OAuth(auth));

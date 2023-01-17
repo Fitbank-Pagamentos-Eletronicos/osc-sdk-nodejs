@@ -1,10 +1,12 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { SignupMatch } from '../domains/SignupMatch';
-import { Auth } from '../domains/Auth';
+import { Authorization, SignupMatch } from '../domains/';
 import { OSC } from '../../index';
 
-export const SignupMatchRequest = async (signUp: SignupMatch, auth: Auth) => {
+export const SignupMatchRequest = async (
+  signUp: SignupMatch,
+  auth: Authorization
+) => {
   const myHeaders = new Headers();
 
   const osc = new OSC(

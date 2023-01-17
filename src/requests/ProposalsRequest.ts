@@ -1,13 +1,12 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { Auth } from '../domains/Auth';
+import { Authorization, Proposal } from '../domains/';
 import { OAuth } from './OAuth';
-import { Proposal } from '../domains/Proposal';
 
 export const ProposalsRequest = async (
   proposal: Proposal,
   id: string,
-  auth: Auth
+  auth: Authorization
 ) => {
   const myHeaders = new Headers();
 

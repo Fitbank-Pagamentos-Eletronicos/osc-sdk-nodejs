@@ -1,12 +1,11 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { Contract } from '../domains/Contract';
-import { Auth } from '../domains/Auth';
+import { Authorization } from '../domains/';
 import { OAuth } from './OAuth';
 
 export const GetContracts = async (
   customerServiceNumber: string,
-  auth: Auth
+  auth: Authorization
 ) => {
   const myHeaders = new Headers();
 

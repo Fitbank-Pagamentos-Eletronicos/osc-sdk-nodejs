@@ -1,13 +1,12 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { Auth } from '../domains/Auth';
+import { Authorization, Document } from '../domains/';
 import { OAuth } from './OAuth';
-import { Document } from '../domains/Document';
 
 export const DocumentAnalysis = async (
   document: Document,
   id: string,
-  auth: Auth
+  auth: Authorization
 ) => {
   const myHeaders = new Headers();
 
