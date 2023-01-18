@@ -2,24 +2,53 @@
 
 #### A SDK made in Node for the Open Source Credit project
 
-## 🚀 Installing
-
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. After that, install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable). From your command line:
-
-```bash
-# Clone this repository
-$ git clone https://github.com/Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs
-
-# Go into the repository
-$ cd osc-sdk-nodejs
-
-# Install dependencies
-$ yarn install
-```
-
 ## 🔐 Credentials
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+First of all you need an access token. Head over to your github page go to Settings -> Developer Settings -> Personal Access Tokens -> Generate new token. You should click the following permissions:
+
+- workflow;
+- write: packages;
+- delete: packages.
+
+Now, head over to the repository osc-sdk-nodejs go to Settings -> Secrets -> New repository secret. Name the secret `COMPANY_NAME_TOKEN`. This token will be needed in the next step.
+
+## 🚀 Installing
+
+To run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. After that, install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable). From your command line:
+
+```bash
+# Create a repository
+$ yarn init
+
+# Go into the repository
+$ cd REPOSITORY_NAME
+```
+
+Now you need to create a file called `.npmrc` and paste the following code:
+
+```npmrc
+@@Fitbank-Pagamentos-Eletronicos:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=COMPANY_NAME_TOKEN
+```
+
+Now you can install the package by running:
+
+```bash
+yarn add @Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs
+```
+
+Now you can use the SDK for example:
+
+```typescript
+import { OSC } from '@Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs';
+
+const instance = OSC.createInstance(
+  process.env.client_id,
+  process.env.client_secret,
+  Scopes.api_external,
+  'default'
+);
+```
 
 ## 🗂️ Folder Structure
 
@@ -207,31 +236,27 @@ sequenceDiagram
 
 ```typescript
 const testingProposal = async () => {
-  const auth = new Auth();
-
-  const signUP = new SignUpMatch();
-
-  osc.createInstance(
-    auth.getClient_id(),
-    auth.getClient_secret(),
-    auth.getScopes(),
-    signUP.getName()
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
   );
-
-  osc.auth();
-
-  //Pubsub and PubsubSubscribe
-  osc.setResponseListening(listeningFunction);
-
   const proposal = new Proposal();
 
-  const signUpRequest = JSON.parse(await SignUpMatchRequest(signupMatch, auth));
-  const signUpId = signUpRequest.id;
+  const signupMatch = new SignupMatch();
 
-  const proposalRequest = JSON.parse(
-    await ProposalsRequest(proposal, signUpId, auth)
-  );
+  const pipelineSignUp = JSON.parse(await instance?.signUpMatch(signupMatch));
+  const id = pipelineSignUp.id;
+
+  setTimeout(() => {
+    const pipeline = instance?.proposal(id, proposal);
+    pipeline?.then((data) => {
+      console.log(data);
+    });
+  }, 10000);
 };
+
 testingProposal();
 ```
 
@@ -266,15 +291,21 @@ sequenceDiagram
 ### Codification
 
 ```typescript
-const testingPubsub = async () => {
-  const auth = new Auth();
+const testingPubSubRequest = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
 
-  OSC.createInstance(auth.getClient_id(), auth.getClient_secret());
-
-  //Pubsub and PubsubSubscribe
-  osc.setResponseListening(listeningFunction);
+  const pipeline = instance?.pubsub();
+  pipeline?.then((data) => {
+    console.log(data);
+  });
 };
-testingPubsub();
+
+testingPubSubRequest();
 ```
 
 ### :bookmark: Full Flow

@@ -27,7 +27,7 @@ export const SignContracts = async (
   };
 
   const response = await fetch(
-    `${process.env.server_url}/v2.1/contract/${customerServiceNumber}`,
+    `https://demo-api.easycredito.com.br/api/external/v2.1/contract/${customerServiceNumber}`,
     requestOptions
   );
   return response.text();

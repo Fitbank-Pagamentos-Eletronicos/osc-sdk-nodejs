@@ -27,7 +27,7 @@ export const DocumentAnalysis = async (
   };
 
   const response = await fetch(
-    `${process.env.server_url}/v2/process/document/${id}`,
+    `https://demo-api.easycredito.com.br/api/external/v2/process/document/${id}`,
     requestOptions
   );
 

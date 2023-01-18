@@ -1,23 +1,23 @@
-import { GetContracts } from '../../requests/GetContracts';
 import { Authorization } from '../../domains/';
 import { Scopes } from '../../domains/enums';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
+import { OSC } from '../../..';
 const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
 const testingGetContracts = async () => {
-  const auth = new Authorization();
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
 
-  auth.setClient_id(process.env.client_id);
-  auth.setClient_secret(process.env.client_secret);
-  auth.setScopes(Scopes.api_external);
-
-  setTimeout(() => {
-    GetContracts('20221213170333387004500', auth).then((res) => {
-      console.log(res);
-    });
-  }, 10000);
+  const pipeline = instance?.getContract('20221213170333387004500');
+  pipeline?.then((data) => {
+    console.log(data);
+  });
 };
 
 testingGetContracts();

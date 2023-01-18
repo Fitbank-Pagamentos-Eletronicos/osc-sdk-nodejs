@@ -1,5 +1,4 @@
 import {
-  Authorization,
   Proposal,
   Identity,
   Address,
@@ -36,8 +35,7 @@ import { ProductAuto } from '../../domains/ProductAuto';
 import { ProductCard } from '../../domains/ProductCard';
 import { ProductLoan } from '../../domains/ProductLoan';
 import { ProductHome } from '../../domains/ProductHome';
-import { DocumentAnalysis } from '../../requests/DocumentAnalysis';
-import { SignupMatchRequest } from '../../requests/SignupMatchRequest';
+import { OSC } from '../../..';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
 
@@ -45,6 +43,13 @@ const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
 const documentAnalysis = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
+
   const proposal = new Proposal();
 
   proposal.setMother('Fulana Mãe');
@@ -248,17 +253,8 @@ const documentAnalysis = async () => {
     })()
   );
 
-  const auth = new Authorization();
-  auth.setClient_id('4dbe3aa7-8ce9-43a4-9298-73b700e712bb');
-  auth.setClient_secret(
-    '1b364af124250aa09461f33161c3d96e551d822080fe1bd977aa66d7ec9378c8'
-  );
-  auth.setScopes(Scopes.api_external);
-
-  const signUpMatchRequest = JSON.parse(
-    await SignupMatchRequest(signupMatch, auth)
-  );
-  const signUpId = signUpMatchRequest.id;
+  const pipelineSignUp = JSON.parse(await instance?.signUpMatch(signupMatch));
+  const signUpId = pipelineSignUp.id;
 
   const document = new Document();
 
@@ -270,8 +266,9 @@ const documentAnalysis = async () => {
   );
 
   setTimeout(() => {
-    DocumentAnalysis(document, signUpId, auth).then((res) => {
-      console.log(res);
+    const pipeline = instance?.sendDocument(document, signUpId);
+    pipeline?.then((data) => {
+      console.log(data);
     });
   }, 10000);
 };

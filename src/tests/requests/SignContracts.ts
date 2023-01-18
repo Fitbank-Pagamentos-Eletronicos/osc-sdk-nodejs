@@ -1,19 +1,20 @@
-import { SignContracts } from '../../requests/SignContracts';
-import {
-  Authorization,
-  Contract,
-  LogData,
-  AcceptedCheckSumBody
-} from '../../domains';
+import { Contract, LogData, AcceptedCheckSumBody } from '../../domains';
 import { Scopes } from '../../domains/enums';
 import { GetContracts } from '../../requests/GetContracts';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
+import { OSC } from '../../..';
 
 const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
 const testingSignContracts = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
   const contract = new Contract();
 
   contract.setLogData(
@@ -30,21 +31,11 @@ const testingSignContracts = async () => {
     })()
   );
 
-  const auth = new Authorization();
-
-  auth.setClient_id(process.env.client_id);
-  auth.setClient_secret(process.env.client_secret);
-  auth.setScopes(Scopes.api_external);
-
-  const getContractsRequest = JSON.parse(
-    await GetContracts('20221215124755537004100', auth).then(
-      (contracts: string) => {
-        return contracts;
-      }
-    )
+  const pipelineGetContracts = JSON.parse(
+    await instance?.getContract('20221215124755537004100')
   );
 
-  const checksum = getContractsRequest.contracts.map(
+  const checksum = pipelineGetContracts.contracts.map(
     (checksum: any) => checksum.checksum
   );
 
@@ -57,8 +48,12 @@ const testingSignContracts = async () => {
   );
 
   setTimeout(() => {
-    SignContracts(contract, '20221215124755537004100', auth).then((res) => {
-      console.log(res);
+    const pipeline = instance?.postContract(
+      contract,
+      '20221215124755537004100'
+    );
+    pipeline?.then((data) => {
+      console.log(data);
     });
   }, 10000);
 };

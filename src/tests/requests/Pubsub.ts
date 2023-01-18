@@ -1,20 +1,22 @@
-import { Pubsub } from '../../requests/Pubsub';
-import { Authorization } from '../../domains/';
 import { Scopes } from '../../domains/enums';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
+import { OSC } from '../../..';
 
 const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
 const testingPubSubRequest = async () => {
-  const auth = new Authorization();
-  auth.setClient_id(process.env.client_id);
-  auth.setClient_secret(process.env.client_secret);
-  auth.setScopes(Scopes.api_external);
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
 
-  Pubsub(auth).then((res) => {
-    console.log(res);
+  const pipeline = instance?.pubsub();
+  pipeline?.then((data) => {
+    console.log(data);
   });
 };
 

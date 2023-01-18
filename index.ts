@@ -1,19 +1,27 @@
-import { OAuth } from './src/requests/OAuth';
 import { Scopes } from './src/domains/enums';
 import {
   Authorization,
   AuthSuccess,
   SignupMatch,
   SimpleSignUp,
-  Proposal
+  Proposal,
+  Contract,
+  Document
 } from './src/domains/';
+import {
+  OAuth,
+  SignupMatchRequest,
+  SimpleSignUpRequest,
+  ProposalsRequest,
+  PubsubSubscribe,
+  Pubsub,
+  GetContracts,
+  SignContracts,
+  DocumentAnalysis,
+  SimpleProposalRequest
+} from './src/requests/';
 import moment from 'moment';
 import * as Collections from 'typescript-collections';
-import { SignupMatchRequest } from './src/requests/SignupMatchRequest';
-import { SimpleSignUpRequest } from './src/requests/SimpleSignUpRequest';
-import { ProposalsRequest } from './src/requests/ProposalsRequest';
-import { PubsubSubscribe } from './src/requests/PubsubSubscribe';
-import { Pubsub } from './src/requests/Pubsub';
 import { resolve } from 'path';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -159,7 +167,35 @@ export class OSC {
     auth.setClient_id(this.client_id);
     auth.setClient_secret(this.client_secret);
     auth.setScopes(Scopes.api_external);
+
     return await SignupMatchRequest(signUp, auth);
+  }
+
+  async getContract(customerServiceNumber: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await GetContracts(customerServiceNumber, auth);
+  }
+
+  async postContract(contract: Contract, customerServiceNumber: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await SignContracts(contract, customerServiceNumber, auth);
+  }
+
+  async pubsub() {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await Pubsub(auth);
   }
 
   async simpleSignUp(simpleSignUp: SimpleSignUp) {
@@ -171,6 +207,15 @@ export class OSC {
     return await SimpleSignUpRequest(simpleSignUp, auth);
   }
 
+  async sendDocument(document: Document, id: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await DocumentAnalysis(document, id, auth);
+  }
+
   async proposal(pipelineId: string, proposal: Proposal) {
     const auth = new Authorization();
     auth.setClient_id(this.client_id);
@@ -178,5 +223,14 @@ export class OSC {
     auth.setScopes(Scopes.api_external);
 
     return await ProposalsRequest(proposal, pipelineId, auth);
+  }
+
+  async simpleProposal(simpleProposal: Proposal, id: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await SimpleProposalRequest(simpleProposal, id, auth);
   }
 }

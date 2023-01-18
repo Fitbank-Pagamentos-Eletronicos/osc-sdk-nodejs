@@ -1,11 +1,19 @@
 {
-  "name": "osc-sdk-nodejs",
+  "name": "@Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs",
   "version": "1.0.0",
   "description": "sdk on node for osc project",
-  "main": "index.js",
+  "main": "index.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@Fitbank-Pagamentos-Eletronicos"
+  },
   "scripts": {
     "test": "jest"
   },
+  "keywords": [
+    "osc",
+    "sdk",
+    "FitBank"
+  ],
   "type": "module",
   "repository": {
     "type": "git",

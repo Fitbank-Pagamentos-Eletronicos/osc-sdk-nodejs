@@ -1,5 +1,3 @@
-import { SimpleSignUpRequest } from '../../requests/SimpleSignUpRequest';
-import { SimpleProposalRequest } from '../../requests/SimpleProposalRequest';
 import {
   Banks,
   Gender,
@@ -19,7 +17,6 @@ import {
   RealEstateType
 } from '../../domains/enums';
 import {
-  Authorization,
   Proposal,
   Identity,
   Address,
@@ -37,11 +34,18 @@ import { ProductLoan } from '../../domains/ProductLoan';
 import { ProductHome } from '../../domains/ProductHome';
 import path, { resolve } from 'path';
 import dotenv from 'dotenv';
+import { OSC } from '../../..';
 
 const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '../../../.env') });
 
 const testingSimpleProposalRequest = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
   const proposal = new Proposal();
 
   proposal.setMother('Fulana Mãe');
@@ -208,19 +212,15 @@ const testingSimpleProposalRequest = async () => {
     })()
   );
 
-  const auth = new Authorization();
-  auth.setClient_id(process.env.client_id);
-  auth.setClient_secret(process.env.client_secret);
-  auth.setScopes(Scopes.api_external);
-
-  const simpleSignUpRequest = JSON.parse(
-    await SimpleSignUpRequest(simpleSignUp, auth)
+  const pipelineSimpleSignUp = JSON.parse(
+    await instance?.simpleSignUp(simpleSignUp)
   );
-  const id = simpleSignUpRequest.id;
+  const id = pipelineSimpleSignUp.id;
 
   setTimeout(() => {
-    SimpleProposalRequest(proposal, id, auth).then((res) => {
-      console.log(res);
+    const pipeline = instance?.simpleProposal(proposal, id);
+    pipeline?.then((data) => {
+      console.log(data);
     });
   }, 10000);
 };

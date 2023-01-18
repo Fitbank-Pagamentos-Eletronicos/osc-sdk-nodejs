@@ -17,8 +17,9 @@ export const Pubsub = async (auth: Authorization) => {
     headers: myHeaders,
     redirect: 'follow'
   };
+
   const response = await fetch(
-    `${process.env.pubsub_url}/pubsub`,
+    'https://staging-api.easycredito.com.br/api/external/v2.1/pubsub',
     requestOptions
   );
   return response.text();
