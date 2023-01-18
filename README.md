@@ -4,13 +4,26 @@
 
 ## 🔐 Credentials
 
-First of all you need an access token. Head over to your github page go to Settings -> Developer Settings -> Personal Access Tokens -> Generate new token. You should click the following permissions:
+First of all you need an access token. Head over to your github page go to:
 
-- workflow;
-- write: packages;
-- delete: packages.
+1.Settings;
+2.Developer Settings;
+3.Personal Access Tokens;
+4.Generate new token.
 
-Now, head over to the repository osc-sdk-nodejs go to Settings -> Secrets -> New repository secret. Name the secret `COMPANY_NAME_TOKEN`. This token will be needed in the next step.
+You should click the following permissions:
+
+- [x] workflow
+- [x] write: packages
+- [x] delete: packages
+
+Now, head over to the repository osc-sdk-nodejs go to:
+
+1.Settings
+2.Secrets
+3.New repository secret
+
+Name the secret `COMPANY_NAME_TOKEN`. This token will be needed in the next step.
 
 ## 🚀 Installing
 
@@ -27,7 +40,7 @@ $ cd REPOSITORY_NAME
 Now you need to create a file called `.npmrc` and paste the following code:
 
 ```npmrc
-@@Fitbank-Pagamentos-Eletronicos:registry=https://npm.pkg.github.com/
+@Fitbank-Pagamentos-Eletronicos:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=COMPANY_NAME_TOKEN
 ```
 
@@ -85,7 +98,10 @@ const instance = OSC.createInstance(
 
 ## 💯 How to run the tests
 
-Some of the tests are named `NAME_OF_THE_FILE.test.ts` with the connotation `.test`, to test those files, you'll have to run with `yarn test NAME_OF_THE_FILE`. The others you can test with `ts-node NAME_OF_THE_FILE`.
+- Domains:
+  To test you'll have to run on bash command line with `yarn test NAME_OF_THE_FILE`. If you want to test all at once, use `yarn test`.
+- Requests:
+  You can test with `ts-node NAME_OF_THE_FILE`.
 
 ## 🧾 Methods
 
