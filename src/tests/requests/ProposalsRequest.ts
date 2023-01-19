@@ -1,6 +1,3 @@
-import { SimpleSignUpRequest } from '../../requests/SimpleSignUpRequest';
-import { SimpleProposalRequest } from '../../requests/SimpleProposalRequest';
-import { Proposal } from '../../domains/Proposal';
 import {
   Banks,
   Gender,
@@ -19,24 +16,37 @@ import {
   Network,
   RealEstateType
 } from '../../domains/enums';
-import { Identity } from '../../domains/Identity';
-import { Address } from '../../domains/Address';
-import { Vehicle } from '../../domains/Vehicle';
-import { Bank } from '../../domains/Bank';
-import { Reference } from '../../domains/Reference';
+import {
+  Proposal,
+  Identity,
+  Address,
+  Vehicle,
+  Bank,
+  Reference,
+  Business,
+  ConsumerUnit,
+  LogData,
+  SignupMatch,
+  Products
+} from '../../domains';
+import path, { resolve } from 'path';
+import dotenv from 'dotenv';
+import { OSC } from '../../..';
 import { ProductAuto } from '../../domains/ProductAuto';
-import { ProductCard } from '../../domains/ProductCard';
 import { ProductLoan } from '../../domains/ProductLoan';
+import { ProductCard } from '../../domains/ProductCard';
 import { ProductHome } from '../../domains/ProductHome';
-import { Business } from '../../domains/Business';
-import { ConsumerUnit } from '../../domains/ConsumerUnit';
-import { Auth } from '../../domains/Auth';
-import { LogData } from '../../domains/LogData';
-import { SimpleSignUp } from '../../domains/SimpleSignUp';
-import { Pipeline } from '../../domains/Pipeline';
-import moment from 'moment';
 
-test('the data is equal to Simple Proposal', async () => {
+const __dirname = path.resolve();
+dotenv.config({ path: resolve(__dirname, '../../../.env') });
+
+const testingProposal = async () => {
+  const instance = OSC.createInstance(
+    process.env.client_id,
+    process.env.client_secret,
+    Scopes.api_external,
+    'default'
+  );
   const proposal = new Proposal();
 
   proposal.setMother('Fulana Mãe');
@@ -175,61 +185,79 @@ test('the data is equal to Simple Proposal', async () => {
     })()
   );
 
-  const simpleSignUp = new SimpleSignUp();
+  const signupMatch = new SignupMatch();
 
-  simpleSignUp.setCpf('60343933373');
-  simpleSignUp.setName('Iuri Mendes');
-  simpleSignUp.setBirthday('1990-11-08');
-  simpleSignUp.setEmail('email@gmail.com');
-  simpleSignUp.setPhone('85912345678');
-  simpleSignUp.setZipCode('60177240');
-  simpleSignUp.setHasCreditCard(true);
-  simpleSignUp.setHasRestriction(false);
-  simpleSignUp.setHasOwnHouse(false);
-  simpleSignUp.setHasVehicle(false);
-  simpleSignUp.setHasAndroid(true);
+  signupMatch.setCpf('60343933373');
+  signupMatch.setName('John Doe');
+  signupMatch.setBirthday('1990-11-08');
+  signupMatch.setEmail('email@gmail.com');
+  signupMatch.setPhone('85912345678');
+  signupMatch.setZipCode('60177240');
+  signupMatch.setEducation(Education[Education.POS_GRADUACAO]);
+  signupMatch.setBanks(Banks.B450);
+  signupMatch.setOccupation(Occupation[Occupation.ASSALARIADO]);
+  signupMatch.setIncome(2000);
+  signupMatch.setHasCreditCard(true);
+  signupMatch.setHasRestriction(false);
+  signupMatch.setHasOwnHouse(false);
+  signupMatch.setHasVehicle(false);
 
-  simpleSignUp.setLogData(
+  signupMatch.setProducts(
     (() => {
-      const logData = new LogData();
+      const productLoan = new ProductLoan();
+      productLoan.setInstallments(12);
+      productLoan.setValue(7000);
+      productLoan.setType(ProductType.LOAN);
 
-      logData.setLatitude(38.895);
-      logData.setLongitude(-77.0364);
-      logData.setOccurrenceDate('2022-10-22T14:10:20.123Z');
-      logData.setUserAgent('Test Agent');
-      logData.setIp('192.158.1.38');
-      logData.setMac('00:00:5e:00:53:af');
-      return logData;
+      const productCard = new ProductCard();
+      productCard.setType(ProductType.CARD);
+      productCard.setPayDay('12');
+      productCard.setNetwork(Network.MASTERCARD);
+
+      const productAuto = new ProductAuto();
+      productAuto.setType(ProductType.REFINANCING_AUTO);
+      productAuto.setValue(30000);
+      productAuto.setVehicleBrand('Fiat');
+      productAuto.setVehicleFipeValue(20);
+      productAuto.setVehicleModel('Uno');
+      productAuto.setVehicleModelYear('2022');
+      productAuto.setCodeFipe('038003-2');
+      productAuto.setInstallments(12);
+
+      const productHome = new ProductHome();
+      productHome.setType(ProductType.REFINANCING_HOME);
+      productHome.setValue(4555);
+      productHome.setInstallments(5);
+      productHome.setRealEstateType(RealEstateType.house);
+      productHome.setRealEstateValue(6);
+      productHome.setOutstandingBalance(88);
+
+      return [productAuto, productCard, productLoan, productHome];
     })()
   );
 
-  const auth = new Auth();
-  auth.setClient_id(process.env.client_id);
-  auth.setClient_secret(process.env.client_secret);
-  auth.setScopes(Scopes.api_external);
+  signupMatch.setLogData(
+    (() => {
+      let logData = new LogData();
 
-  const simpleSignUpRequest = JSON.parse(
-    await SimpleSignUpRequest(simpleSignUp, auth)
+      logData.setIp('192.158.1.38');
+      logData.setLatitude(38.895);
+      logData.setLongitude(-77.0364);
+      logData.setMac('00:00:5e:00:53:af');
+      logData.setOccurrenceDate('2019-08-21T14:31:17.459Z');
+      logData.setUserAgent('Test Agent');
+      return logData;
+    })()
   );
-  const id = simpleSignUpRequest.id;
+  const pipelineSignUp = JSON.parse(await instance?.signUpMatch(signupMatch));
+  const id = pipelineSignUp.id;
 
-  const pipeline = new Pipeline();
-  pipeline.setId('id');
-  pipeline.setName('Iuri Mendes');
-  pipeline.setStatus('PROPOSAL_ANALISIS');
-  pipeline.setCpf(60343933373);
-  pipeline.setDateCreated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
-  pipeline.setLastUpdated(moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]'));
-  return setTimeout(() => {
-    SimpleProposalRequest(proposal, id, auth).then(async (data) => {
-      await expect(JSON.parse(await data)).toMatchObject({
-        id: expect.any(String),
-        cpf: pipeline.getCpf(),
-        name: pipeline.getName(),
-        status: pipeline.getStatus(),
-        dateCreated: expect.any(String),
-        lastUpdated: expect.any(String)
-      });
+  setTimeout(() => {
+    const pipeline = instance?.proposal(id, proposal);
+    pipeline?.then((data) => {
+      console.log(data);
     });
   }, 10000);
-});
+};
+
+testingProposal();

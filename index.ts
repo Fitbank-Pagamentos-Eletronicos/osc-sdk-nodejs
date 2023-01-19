@@ -1,14 +1,31 @@
-import { OAuth } from './src/requests/OAuth';
 import { Scopes } from './src/domains/enums';
-import { Authorization } from './src/domains/';
+import {
+  Authorization,
+  AuthSuccess,
+  SignupMatch,
+  SimpleSignUp,
+  Proposal,
+  Contract,
+  Document
+} from './src/domains/';
+import {
+  OAuth,
+  SignupMatchRequest,
+  SimpleSignUpRequest,
+  ProposalsRequest,
+  PubsubSubscribe,
+  Pubsub,
+  GetContracts,
+  SignContracts,
+  DocumentAnalysis,
+  SimpleProposalRequest
+} from './src/requests/';
 import moment from 'moment';
-import { AuthSuccess } from './src/domains/AuthSuccess';
 import * as Collections from 'typescript-collections';
-import { SignupMatch } from './src/domains/SignupMatch';
-import { SignupMatchRequest } from './src/requests/SignupMatchRequest';
 import { resolve } from 'path';
 import dotenv from 'dotenv';
 import path from 'path';
+
 const __dirname = path.resolve();
 dotenv.config({ path: resolve(__dirname, '.env') });
 
@@ -16,8 +33,6 @@ export class OSC {
   static #instances = new Collections.Dictionary<String, OSC>();
   static #default_instance_name = 'default';
   static #default_scopes = Scopes.api_external;
-
-  #auth_response = ['api-external']; //Scopes.api_external
 
   name: string;
   client_id: string;
@@ -47,14 +62,6 @@ export class OSC {
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/[^\w\s]/gi, '-');
   }
-
-  // static exist(name?: string) {
-  //   if (name!) {
-  //     Object.values(this.#instances).includes(this.#normalize(name)!);
-  //   } else {
-  //     this.exist(this.#default_instance_name);
-  //   }
-  // }
 
   static getInstance(name?: string): OSC {
     if (name) {
@@ -130,9 +137,29 @@ export class OSC {
     } else {
       authSuccess.setAccess_token(this.#access_token);
       authSuccess.setExpire_at(this.#expire_at);
-      // return authSuccess;
       return this.#access_token;
     }
+  }
+
+  async setResponseListening(
+    topicId: string,
+    subscriptionId: string,
+    projectId: string,
+    serviceAccount: string,
+    listeningFunction: Function
+  ) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+    const pubsub = await Pubsub(auth);
+    return await PubsubSubscribe(
+      topicId,
+      subscriptionId,
+      projectId,
+      serviceAccount,
+      listeningFunction
+    );
   }
 
   async signUpMatch(signUp: SignupMatch) {
@@ -140,22 +167,70 @@ export class OSC {
     auth.setClient_id(this.client_id);
     auth.setClient_secret(this.client_secret);
     auth.setScopes(Scopes.api_external);
-    const signupMatchRequest = await SignupMatchRequest(signUp, auth);
-    return signupMatchRequest;
+
+    return await SignupMatchRequest(signUp, auth);
   }
 
-  // async newToken() {
-  //   await this.auth();
-  //   const authSuccess = new AuthSuccess();
-  //   if (authSuccess && authSuccess.getAccess_token()) {
-  //     this.#expire_at = authSuccess.getExpire_at()
-  //       ? authSuccess.getExpire_at()
-  //       : moment().format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-  //     this.#access_token = authSuccess.getAccess_token();
-  //     return this.#access_token;
-  //   } else {
-  //     // throw new Exception("Não foi possível autenticar: ${resposta?.raw}")
-  //     console.log('Não foi possível autenticar');
-  //   }
-  // }
+  async getContract(customerServiceNumber: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await GetContracts(customerServiceNumber, auth);
+  }
+
+  async postContract(contract: Contract, customerServiceNumber: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await SignContracts(contract, customerServiceNumber, auth);
+  }
+
+  async pubsub() {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await Pubsub(auth);
+  }
+
+  async simpleSignUp(simpleSignUp: SimpleSignUp) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await SimpleSignUpRequest(simpleSignUp, auth);
+  }
+
+  async sendDocument(document: Document, id: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await DocumentAnalysis(document, id, auth);
+  }
+
+  async proposal(pipelineId: string, proposal: Proposal) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await ProposalsRequest(proposal, pipelineId, auth);
+  }
+
+  async simpleProposal(simpleProposal: Proposal, id: string) {
+    const auth = new Authorization();
+    auth.setClient_id(this.client_id);
+    auth.setClient_secret(this.client_secret);
+    auth.setScopes(Scopes.api_external);
+
+    return await SimpleProposalRequest(simpleProposal, id, auth);
+  }
 }

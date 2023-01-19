@@ -33,7 +33,7 @@ export const OAuth = async (auth: Authorization) => {
   };
 
   const response = await fetch(
-    `${process.env.auth_server_url}/auth`,
+    'https://auth.easycredito.com.br/client/auth',
     requestOptions
   );
   return response.text();

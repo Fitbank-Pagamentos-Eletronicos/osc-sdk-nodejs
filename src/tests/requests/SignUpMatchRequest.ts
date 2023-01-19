@@ -1,9 +1,8 @@
-import { SignupMatch } from '../../domains/SignupMatch';
+import { SignupMatch, LogData } from '../../domains/';
 import { ProductAuto } from '../../domains/ProductAuto';
 import { ProductLoan } from '../../domains/ProductLoan';
 import { ProductCard } from '../../domains/ProductCard';
 import { ProductHome } from '../../domains/ProductHome';
-import { LogData } from '../../domains/LogData';
 import {
   Banks,
   Education,

@@ -1,12 +1,11 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { SimpleSignUp } from '../domains/SimpleSignUp';
-import { Auth } from '../domains/Auth';
+import { Authorization, SimpleSignUp } from '../domains/';
 import { OSC } from '../../index';
 
 export const SimpleSignUpRequest = async (
   simpleSignUp: SimpleSignUp,
-  auth: Auth
+  auth: Authorization
 ) => {
   const myHeaders = new Headers();
 
@@ -40,7 +39,7 @@ export const SimpleSignUpRequest = async (
   };
 
   const response = await fetch(
-    `${process.env.server_url}/v2.1/process/simple_signup`,
+    'https://demo-api.easycredito.com.br/api/external/v2.1/process/simple_signup',
     requestOptions
   );
   return response.text();

@@ -1,13 +1,12 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { Auth } from '../domains/Auth';
+import { Authorization, Proposal } from '../domains/';
 import { OAuth } from './OAuth';
-import { Proposal } from '../domains/Proposal';
 
 export const ProposalsRequest = async (
   proposal: Proposal,
   id: string,
-  auth: Auth
+  auth: Authorization
 ) => {
   const myHeaders = new Headers();
 
@@ -28,7 +27,7 @@ export const ProposalsRequest = async (
   };
 
   const response = await fetch(
-    `${process.env.server_url}/v2.1/process/proposal/${id}`,
+    `https://demo-api.easycredito.com.br/api/external/v2.1/process/proposal/${id}`,
     requestOptions
   );
   return response.text();

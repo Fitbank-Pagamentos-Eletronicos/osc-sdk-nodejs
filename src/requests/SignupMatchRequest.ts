@@ -1,10 +1,12 @@
 // @ts-ignore
 import fetch, { RequestInit, Headers } from 'node-fetch';
-import { SignupMatch } from '../domains/SignupMatch';
-import { Auth } from '../domains/Auth';
+import { Authorization, SignupMatch } from '../domains/';
 import { OSC } from '../../index';
 
-export const SignupMatchRequest = async (signUp: SignupMatch, auth: Auth) => {
+export const SignupMatchRequest = async (
+  signUp: SignupMatch,
+  auth: Authorization
+) => {
   const myHeaders = new Headers();
 
   const osc = new OSC(
@@ -36,7 +38,7 @@ export const SignupMatchRequest = async (signUp: SignupMatch, auth: Auth) => {
   };
 
   const response = await fetch(
-    `${process.env.server_url}/v2.1/process/signup`,
+    'https://demo-api.easycredito.com.br/api/external/v2.1/process/signup',
     requestOptions
   );
   return response.text();
