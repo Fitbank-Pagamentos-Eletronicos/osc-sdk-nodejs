@@ -6,10 +6,12 @@
 
 First of all you need an access token. Head over to your github page go to:
 
-1.Settings;
-2.Developer Settings;
-3.Personal Access Tokens;
-4.Generate new token.
+<ol>
+<li>Settings</li>
+<li>Developer Settings</li>
+<li>Personal Access Tokens</li>
+<li>Generate new token</li>
+</ol>
 
 You should click the following permissions:
 
@@ -19,11 +21,12 @@ You should click the following permissions:
 
 Now, head over to the repository osc-sdk-nodejs go to:
 
-1.Settings
-2.Secrets and variables
-3.Actions
-4.New repository secret
-
+<ol>
+<li>Settings</li>
+<li>Secrets and variables</li>
+<li>Actions</li>
+<li>New repository secret</li>
+</ol>
 Name the secret `COMPANY_NAME_TOKEN`. This token will be needed in the next step.
 
 ## 🚀 Installing
