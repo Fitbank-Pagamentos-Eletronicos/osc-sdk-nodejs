@@ -6,7 +6,7 @@ on:
       - releases/*
 
 jobs:
-  publish-gpr:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
