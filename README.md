@@ -20,8 +20,9 @@ You should click the following permissions:
 Now, head over to the repository osc-sdk-nodejs go to:
 
 1.Settings
-2.Secrets
-3.New repository secret
+2.Secrets and variables
+3.Actions
+4.New repository secret
 
 Name the secret `COMPANY_NAME_TOKEN`. This token will be needed in the next step.
 
