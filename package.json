@@ -1,5 +1,5 @@
 {
-  "name": "@Fitbank-Pagamentos-Eletronicos/osc-sdk-nodejs",
+  "name": "osc-sdk-nodejs",
   "version": "1.0.0",
   "description": "sdk on node for osc project",
   "main": "index.ts",
