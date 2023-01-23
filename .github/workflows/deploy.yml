@@ -2,8 +2,8 @@ name: Deploy on NPM
 
 on:
   push:
-    branches:
-      - releases/*
+    tags:
+      - v\d+.\d+.\d+.*
 
 jobs:
   deploy:
